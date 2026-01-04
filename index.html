@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>someplus.work | Çok Yakında</title>
+    <meta name="description" content="someplus.work - Harika şeyler hazırlanıyor. Çok yakında sizlerle.">
+    <link rel="stylesheet" href="fonts/WEB/css/satoshi.css">
+    <style>
+        :root {
+            --bg-white: #ffffff;
+            --bg-light: #f8fafc;
+            --text-dark: #0f172a;
+            --text-gray: #64748b;
+            --accent-blue: #0ea5e9;
+            --accent-blue-light: #38bdf8;
+            --accent-blue-dark: #0284c7;
+            --border-light: #e2e8f0;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Satoshi-Variable', 'Satoshi-Regular', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            background-image: url('bg.png');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            overflow-x: hidden;
+            position: relative;
+            padding-top: 4rem;
+        }
+
+        /* Main Container */
+        .container {
+            text-align: center;
+            padding: 2rem;
+            max-width: 1200px;
+            width: 100%;
+            z-index: 10;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Logo */
+        .logo-container {
+            position: absolute;
+            top: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 10;
+        }
+
+        .logo img {
+            height: 50px;
+            width: auto;
+        }
+
+
+        /* Typography */
+        h1 {
+            font-size: 4.5rem;
+            line-height: 1.2;
+            margin-bottom: 2rem;
+            font-weight: 500;
+            color: #042a82;
+            white-space: nowrap;
+        }
+
+        .subtitle {
+            color: #2d7abc;
+            font-size: 1.25rem;
+            line-height: 1.7;
+            margin-bottom: 0;
+            font-weight: 400;
+        }
+
+        /* Info Section */
+        .info-section {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            flex-wrap: wrap;
+            animation: fadeIn 0.8s ease-out 1s both;
+        }
+
+        .info-item {
+            text-align: center;
+        }
+
+        .info-item-icon {
+            width: 48px;
+            height: 48px;
+            background: rgba(14, 165, 233, 0.08);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 0.75rem;
+            color: var(--accent-blue);
+        }
+
+        .info-item-icon svg {
+            width: 24px;
+            height: 24px;
+        }
+
+        .info-item-text {
+            color: var(--text-gray);
+            font-size: 0.875rem;
+            font-weight: 500;
+        }
+
+        /* Footer */
+        .footer {
+            position: absolute;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            color: #2d7abc;
+            font-size: 0.875rem;
+            z-index: 10;
+            text-align: center;
+        }
+
+        .footer span {
+            color: #0ea5e9;
+            font-weight: 600;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 3rem;
+                white-space: normal;
+            }
+
+            .subtitle {
+                font-size: 1.1rem;
+            }
+
+            .container {
+                padding: 1.5rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 2.25rem;
+                white-space: normal;
+            }
+
+            .subtitle {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Logo -->
+    <div class="logo-container">
+        <div class="logo">
+            <img src="logo.svg" alt="some+ Logo" style="width:200px;">
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="container">
+        <h1>Harika bir şeyler geliyor.</h1>
+
+        <p class="subtitle">
+            Yeni platformumuz üzerinde özenle çalışıyoruz.<br>
+            Çok yakında sizlerle buluşacağız.
+        </p>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        © 2025 some+ Tüm hakları saklıdır.
+    </footer>
+</body>
+
+</html>
