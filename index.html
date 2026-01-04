@@ -1,22 +1,43 @@
 <!DOCTYPE html>
 <html lang="tr">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>someplus.work | Çok Yakında</title>
-    <meta name="description" content="someplus.work - Harika şeyler hazırlanıyor. Çok yakında sizlerle.">
+    <title>someplus.work | Chrome, Firefox, WordPress & Magento Eklentileri</title>
+    <meta name="description" content="Dijital deneyiminizi geliştiren Chrome, Firefox, WordPress ve Magento eklentileri. Performans odaklı, minimalist ve güvenli çözümler.">
+    <meta name="keywords" content="chrome eklentisi, firefox addon, wordpress plugin, magento module, yazılım, eklenti geliştirme, someplus">
+    <meta name="author" content="someplus.work">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://someplus.work/">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="logo.svg">
+    <link rel="apple-touch-icon" href="logo.svg">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://someplus.work/">
+    <meta property="og:title" content="someplus.work | Dijital Deneyiminizi Genişletin">
+    <meta property="og:description" content="Chrome, Firefox, WordPress ve Magento için geliştirdiğimiz minimalist, performans odaklı eklentilerle tanışın.">
+    <meta property="og:image" content="https://someplus.work/bg.png">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://someplus.work/">
+    <meta property="twitter:title" content="someplus.work | Dijital Deneyiminizi Genişletin">
+    <meta property="twitter:description" content="Chrome, Firefox, WordPress ve Magento için geliştirdiğimiz minimalist, performans odaklı eklentilerle tanışın.">
+    <meta property="twitter:image" content="https://someplus.work/bg.png">
+
     <link rel="stylesheet" href="fonts/WEB/css/satoshi.css">
     <style>
         :root {
-            --bg-white: #ffffff;
-            --bg-light: #f8fafc;
-            --text-dark: #0f172a;
-            --text-gray: #64748b;
-            --accent-blue: #0ea5e9;
-            --accent-blue-light: #38bdf8;
-            --accent-blue-dark: #0284c7;
-            --border-light: #e2e8f0;
+            --bg-body: #ffffff;
+            --bg-card: #f8fafc;
+            --text-main: #0f172a;
+            --text-sub: #64748b;
+            --border-color: #e2e8f0;
+            --accent-color: #0ea5e9;
+            --hover-bg: #f1f5f9;
         }
 
         * {
@@ -26,183 +47,243 @@
         }
 
         body {
-            font-family: 'Satoshi-Variable', 'Satoshi-Regular', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-            background-image: url('bg.png');
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            overflow-x: hidden;
-            position: relative;
-            padding-top: 4rem;
+            font-family: 'Satoshi-Variable', 'Satoshi-Regular', sans-serif;
+            background-color: var(--bg-body);
+            color: var(--text-main);
+            line-height: 1.6;
         }
 
-        /* Main Container */
+        /* Layout */
         .container {
-            text-align: center;
+            max-width: 1100px;
+            margin: 0 auto;
             padding: 2rem;
-            max-width: 1200px;
-            width: 100%;
-            z-index: 10;
+        }
+
+        /* Header */
+        header {
+            padding: 2rem 0 4rem;
             display: flex;
-            flex-direction: column;
+            justify-content: space-between;
             align-items: center;
-            justify-content: center;
-        }
-
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        /* Logo */
-        .logo-container {
-            position: absolute;
-            top: 2rem;
-            left: 50%;
-            transform: translateX(-50%);
-            z-index: 10;
         }
 
         .logo img {
-            height: 50px;
+            height: 40px;
             width: auto;
         }
 
-
-        /* Typography */
-        h1 {
-            font-size: 4.5rem;
-            line-height: 1.2;
-            margin-bottom: 2rem;
-            font-weight: 500;
-            color: #042a82;
-            white-space: nowrap;
+        /* Hero Section */
+        .hero {
+            margin-bottom: 4rem;
+            max-width: 700px;
         }
 
-        .subtitle {
-            color: #2d7abc;
+        .hero h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            letter-spacing: -0.02em;
+        }
+
+        .hero p {
             font-size: 1.25rem;
-            line-height: 1.7;
-            margin-bottom: 0;
+            color: var(--text-sub);
             font-weight: 400;
         }
 
-        /* Info Section */
-        .info-section {
+        /* Sections & Grid */
+        .category-section {
+            margin-bottom: 5rem;
+        }
+
+        .category-title {
+            font-size: 0.875rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--text-sub);
+            margin-bottom: 2rem;
+            font-weight: 600;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 0.5rem;
+            display: inline-block;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        /* Cards */
+        .card {
+            background-color: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 2rem;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            color: inherit;
             display: flex;
-            justify-content: center;
-            gap: 3rem;
-            flex-wrap: wrap;
-            animation: fadeIn 0.8s ease-out 1s both;
+            flex-direction: column;
+            justify-content: space-between;
+            height: 100%;
         }
 
-        .info-item {
-            text-align: center;
+        .card:hover {
+            transform: translateY(-4px);
+            border-color: var(--accent-color);
+            box-shadow: 0 10px 30px -10px rgba(14, 165, 233, 0.1);
         }
 
-        .info-item-icon {
+        .card-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .icon-box {
             width: 48px;
             height: 48px;
-            background: rgba(14, 165, 233, 0.08);
+            background: #fff;
             border-radius: 12px;
             display: flex;
             align-items: center;
             justify-content: center;
-            margin: 0 auto 0.75rem;
-            color: var(--accent-blue);
+            border: 1px solid var(--border-color);
+            font-size: 1.5rem;
         }
 
-        .info-item-icon svg {
-            width: 24px;
-            height: 24px;
+        .card-title {
+            font-size: 1.25rem;
+            font-weight: 600;
         }
 
-        .info-item-text {
-            color: var(--text-gray);
+        .card-desc {
+            color: var(--text-sub);
+            font-size: 0.95rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .card-meta {
             font-size: 0.875rem;
+            color: var(--accent-color);
             font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
         }
 
         /* Footer */
-        .footer {
-            position: absolute;
-            bottom: 2rem;
-            left: 50%;
-            transform: translateX(-50%);
-            color: #2d7abc;
-            font-size: 0.875rem;
-            z-index: 10;
+        footer {
+            border-top: 1px solid var(--border-color);
+            padding: 2rem 0;
+            margin-top: 4rem;
             text-align: center;
-        }
-
-        .footer span {
-            color: #0ea5e9;
-            font-weight: 600;
+            color: var(--text-sub);
+            font-size: 0.875rem;
         }
 
         /* Responsive */
         @media (max-width: 768px) {
-            h1 {
-                font-size: 3rem;
-                white-space: normal;
+            .hero h1 {
+                font-size: 2.25rem;
             }
-
-            .subtitle {
-                font-size: 1.1rem;
+            
+            .grid {
+                grid-template-columns: 1fr;
             }
-
+            
             .container {
                 padding: 1.5rem;
             }
         }
-
-        @media (max-width: 480px) {
-            h1 {
-                font-size: 2.25rem;
-                white-space: normal;
-            }
-
-            .subtitle {
-                font-size: 1rem;
-            }
-        }
     </style>
 </head>
-
 <body>
-    <!-- Logo -->
-    <div class="logo-container">
-        <div class="logo">
-            <img src="logo.svg" alt="some+ Logo" style="width:200px;">
-        </div>
-    </div>
 
-    <!-- Main Content -->
     <div class="container">
-        <h1>Harika bir şeyler geliyor.</h1>
+        <header>
+            <div class="logo">
+                <img src="logo.svg" alt="some+">
+            </div>
+            <!-- Optional Nav could go here -->
+        </header>
 
-        <p class="subtitle">
-            Yeni platformumuz üzerinde özenle çalışıyoruz.<br>
-            Çok yakında sizlerle buluşacağız.
-        </p>
+        <section class="hero">
+            <h1>Dijital Deneyiminizi Genişletin</h1>
+            <p>Tarayıcılarınız ve e-ticaret siteleriniz için geliştirdiğimiz minimalist, performans odaklı eklentiler.</p>
+        </section>
+
+        <!-- Kategori 1: Tarayıcılar -->
+        <section class="category-section">
+            <h2 class="category-title">Tarayıcı Eklentileri</h2>
+            <div class="grid">
+                <!-- Chrome -->
+                <a href="https://someplus.work/smart_tab_suspender/" target="_blank" class="card">
+                    <div class="card-header">
+                        <div class="icon-box">
+                            <!-- Simple SVG for Chrome/Browser -->
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><circle cx="12" cy="12" r="4"></circle><line x1="21.17" y1="8" x2="12" y2="8"></line><line x1="3.95" y1="6.06" x2="8.54" y2="14"></line><line x1="10.88" y1="21.94" x2="15.46" y2="14"></line></svg>
+                        </div>
+                        <h3 class="card-title">Google Chrome</h3>
+                    </div>
+                    <p class="card-desc">Tarama deneyiminizi hızlandıran ve verimliliğinizi artıran araçlar.</p>
+                    <div class="card-meta">İncele &rarr;</div>
+                </a>
+
+                <!-- Firefox -->
+                <a href="https://addons.mozilla.org/tr/firefox/user/19607411/" target="_blank" class="card">
+                    <div class="card-header">
+                        <div class="icon-box">
+                            <!-- Simple SVG for Firefox/Browser -->
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a10 10 0 1 0 10 10H12V2z"></path><path d="M12 2a10 10 0 0 1 10 10H12V2z" transform="rotate(180 12 12)"></path></svg>
+                        </div>
+                        <h3 class="card-title">Mozilla Firefox</h3>
+                    </div>
+                    <p class="card-desc">Gizlilik odaklı ve güvenli tarayıcı eklentileri.</p>
+                    <div class="card-meta">İncele &rarr;</div>
+                </a>
+            </div>
+        </section>
+
+        <!-- Kategori 2: CMS & E-Ticaret -->
+        <section class="category-section">
+            <h2 class="category-title">CMS & E-Ticaret</h2>
+            <div class="grid">
+                <!-- WordPress -->
+                <a href="https://profiles.wordpress.org/someplus/" target="_blank" class="card">
+                    <div class="card-header">
+                        <div class="icon-box">
+                            <!-- Simple SVG for WordPress/CMS -->
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a9 9 0 1 1-6.219-8.56"></path></svg>
+                        </div>
+                        <h3 class="card-title">WordPress</h3>
+                    </div>
+                    <p class="card-desc">Blog ve kurumsal siteleriniz için yönetim kolaylığı sağlayan pluginler.</p>
+                    <div class="card-meta">İncele &rarr;</div>
+                </a>
+
+                <!-- Magento -->
+                <a href="https://someplus.work/mageassist/" target="_blank" class="card">
+                    <div class="card-header">
+                        <div class="icon-box">
+                            <!-- Simple SVG for Shop/Magento -->
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path><line x1="3" y1="6" x2="21" y2="6"></line><path d="M16 10a4 4 0 0 1-8 0"></path></svg>
+                        </div>
+                        <h3 class="card-title">Magento</h3>
+                    </div>
+                    <p class="card-desc">E-ticaret operasyonlarınızı ölçeklendirmek için güçlü modüller.</p>
+                    <div class="card-meta">İncele &rarr;</div>
+                </a>
+            </div>
+        </section>
+
+        <footer>
+            <p>&copy; 2026 someplus.work. Tüm hakları saklıdır.</p>
+        </footer>
     </div>
 
-    <!-- Footer -->
-    <footer class="footer">
-        © 2025 some+ Tüm hakları saklıdır.
-    </footer>
 </body>
-
 </html>
