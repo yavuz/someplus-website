@@ -1,289 +1,829 @@
 <!DOCTYPE html>
-<html lang="tr">
+<html lang="en" data-theme="light">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>someplus.work | Chrome, Firefox, WordPress & Magento Eklentileri</title>
+    <title data-i18n="page_title">someplus.work | Chrome, Firefox, WordPress & Magento Extensions</title>
     <meta name="description" content="Dijital deneyiminizi geliştiren Chrome, Firefox, WordPress ve Magento eklentileri. Performans odaklı, minimalist ve güvenli çözümler.">
     <meta name="keywords" content="chrome eklentisi, firefox addon, wordpress plugin, magento module, yazılım, eklenti geliştirme, someplus">
     <meta name="author" content="someplus.work">
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://someplus.work/">
-
-    <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="logo.svg">
     <link rel="apple-touch-icon" href="logo.svg">
-
-    <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://someplus.work/">
     <meta property="og:title" content="someplus.work | Dijital Deneyiminizi Genişletin">
     <meta property="og:description" content="Chrome, Firefox, WordPress ve Magento için geliştirdiğimiz minimalist, performans odaklı eklentilerle tanışın.">
     <meta property="og:image" content="https://someplus.work/bg.png">
-
-    <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
     <meta property="twitter:url" content="https://someplus.work/">
     <meta property="twitter:title" content="someplus.work | Dijital Deneyiminizi Genişletin">
     <meta property="twitter:description" content="Chrome, Firefox, WordPress ve Magento için geliştirdiğimiz minimalist, performans odaklı eklentilerle tanışın.">
     <meta property="twitter:image" content="https://someplus.work/bg.png">
-
     <link rel="stylesheet" href="fonts/WEB/css/satoshi.css">
     <style>
         :root {
-            --bg-body: #ffffff;
-            --bg-card: #f8fafc;
-            --text-main: #0f172a;
-            --text-sub: #64748b;
-            --border-color: #e2e8f0;
-            --accent-color: #0ea5e9;
-            --hover-bg: #f1f5f9;
+            --blue: #1B5AEB;
+            --blue-50: rgba(27, 90, 235, 0.05);
+            --blue-10: rgba(27, 90, 235, 0.1);
+            --blue-20: rgba(27, 90, 235, 0.2);
+            --ease: cubic-bezier(0.23, 1, 0.32, 1);
         }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
+        [data-theme="light"] {
+            --bg: #F6F7FB;
+            --surface: #FFFFFF;
+            --surface-alt: #F0F1F5;
+            --text-1: #0C0E16;
+            --text-2: #52556A;
+            --text-3: #9295A6;
+            --border: rgba(12, 14, 22, 0.07);
+            --card-shadow: 0 0 0 1px rgba(0,0,0,0.04), 0 2px 12px rgba(0,0,0,0.03);
+            --card-shadow-hover: 0 0 0 1px rgba(27,90,235,0.15), 0 12px 40px rgba(27,90,235,0.1);
         }
 
-        body {
-            font-family: 'Satoshi-Variable', 'Satoshi-Regular', sans-serif;
-            background-color: var(--bg-body);
-            color: var(--text-main);
-            line-height: 1.6;
+        [data-theme="dark"] {
+            --bg: #0A0B10;
+            --surface: #14151E;
+            --surface-alt: #1C1D2A;
+            --text-1: #EAEBF0;
+            --text-2: #8B8DA0;
+            --text-3: #55576A;
+            --border: rgba(255, 255, 255, 0.06);
+            --card-shadow: 0 0 0 1px rgba(255,255,255,0.04), 0 2px 12px rgba(0,0,0,0.2);
+            --card-shadow-hover: 0 0 0 1px rgba(27,90,235,0.3), 0 12px 40px rgba(27,90,235,0.12);
         }
 
-        /* Layout */
-        .container {
-            max-width: 1100px;
-            margin: 0 auto;
-            padding: 2rem;
-        }
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
-        /* Header */
-        header {
-            padding: 2rem 0 4rem;
+        html { scroll-behavior: smooth; }
+ 
+         body {
+             font-family: 'Satoshi-Variable', 'Satoshi-Regular', -apple-system, sans-serif;
+             background: var(--bg);
+             color: var(--text-1);
+             line-height: 1.6;
+             min-height: 100vh;
+             width: 100%;
+             overflow-x: hidden;
+             -webkit-font-smoothing: antialiased;
+             transition: background 0.5s var(--ease), color 0.5s var(--ease);
+         }
+
+        .page { max-width: 1100px; margin: 0 auto; padding: 0 2rem; width: 100%; }
+
+        /* ---- NAV ---- */
+        nav {
             display: flex;
             justify-content: space-between;
             align-items: center;
+            padding: 1.75rem 0;
+            opacity: 0; animation: enter 0.6s var(--ease) 0.1s forwards;
         }
 
-        .logo img {
+        .logo { display: flex; align-items: center; text-decoration: none; }
+        .logo img { height: 34px; transition: transform 0.4s var(--ease); }
+        .logo:hover img { transform: scale(1.04); }
+        [data-theme="dark"] .logo img { filter: brightness(0) invert(1); }
+
+        .nav-right { display: flex; align-items: center; gap: 0.75rem; }
+
+        .lang-btn {
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: var(--text-3);
+            background: var(--surface);
+            border: 1px solid var(--border);
+            padding: 0 0.75rem;
             height: 40px;
-            width: auto;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s var(--ease);
+            display: grid;
+            place-items: center;
+            min-width: 50px;
+        }
+        
+        .lang-btn:hover {
+            color: var(--blue);
+            border-color: var(--blue-20);
         }
 
-        /* Hero Section */
+        .theme-btn {
+            width: 40px; height: 40px;
+            border-radius: 10px;
+            border: 1px solid var(--border);
+            background: var(--surface);
+            cursor: pointer;
+            display: grid; place-items: center;
+            color: var(--text-3);
+            transition: all 0.4s var(--ease);
+            position: relative; overflow: hidden;
+        }
+        .theme-btn:hover { border-color: var(--blue-20); color: var(--blue); transform: scale(1.06); }
+        .theme-btn svg { width: 18px; height: 18px; position: absolute; transition: all 0.4s var(--ease); }
+        .theme-btn .sun { opacity: 0; transform: rotate(-90deg) scale(0); }
+        .theme-btn .moon { opacity: 1; transform: rotate(0) scale(1); }
+        [data-theme="dark"] .theme-btn .sun { opacity: 1; transform: rotate(0) scale(1); }
+        [data-theme="dark"] .theme-btn .moon { opacity: 0; transform: rotate(90deg) scale(0); }
+
+        /* ---- HERO ---- */
         .hero {
-            margin-bottom: 4rem;
-            max-width: 700px;
+            padding: 5rem 0 4.5rem;
+            display: grid;
+            grid-template-columns: 1fr auto;
+            align-items: end;
+            gap: 3rem;
+        }
+
+        .hero-content {
+            opacity: 0; animation: enter 0.7s var(--ease) 0.15s forwards;
         }
 
         .hero h1 {
-            font-size: 3rem;
-            font-weight: 700;
-            margin-bottom: 1rem;
-            letter-spacing: -0.02em;
+            font-size: clamp(2.6rem, 5vw, 3.8rem);
+            font-weight: 800;
+            letter-spacing: -0.04em;
+            line-height: 1.08;
+            margin-bottom: 1.25rem;
         }
 
         .hero p {
-            font-size: 1.25rem;
-            color: var(--text-sub);
+            font-size: 1.15rem;
+            color: var(--text-2);
+            max-width: 460px;
             font-weight: 400;
         }
 
-        /* Sections & Grid */
-        .category-section {
-            margin-bottom: 5rem;
+        .hero-stats {
+            display: flex;
+            gap: 2.5rem;
+            opacity: 0; animation: enter 0.7s var(--ease) 0.25s forwards;
         }
 
-        .category-title {
-            font-size: 0.875rem;
+        .stat {
+            text-align: center;
+            padding: 1.25rem 0;
+        }
+
+        .stat-num {
+            font-size: 2rem;
+            font-weight: 800;
+            color: var(--blue);
+            letter-spacing: -0.03em;
+            line-height: 1;
+        }
+
+        .stat-label {
+            font-size: 0.75rem;
+            color: var(--text-3);
             text-transform: uppercase;
             letter-spacing: 0.1em;
-            color: var(--text-sub);
-            margin-bottom: 2rem;
             font-weight: 600;
-            border-bottom: 1px solid var(--border-color);
-            padding-bottom: 0.5rem;
-            display: inline-block;
+            margin-top: 0.4rem;
         }
 
-        .grid {
+        /* ---- PRODUCTS ---- */
+        .products {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 2rem;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            padding-bottom: 5rem;
+            width: 100%;
+            max-width: 100%;
         }
 
-        /* Cards */
-        .card {
-            background-color: var(--bg-card);
-            border: 1px solid var(--border-color);
-            border-radius: 16px;
+        .product {
+            background: var(--surface);
+            border-radius: 20px;
             padding: 2rem;
-            transition: all 0.3s ease;
             text-decoration: none;
             color: inherit;
             display: flex;
             flex-direction: column;
-            justify-content: space-between;
-            height: 100%;
+            box-shadow: var(--card-shadow);
+            transition: all 0.5s var(--ease);
+            position: relative;
+            overflow: hidden;
+            opacity: 0;
+            animation: enter 0.6s var(--ease) forwards;
+            width: 100%;
+            max-width: 100%;
+            box-sizing: border-box;
         }
 
-        .card:hover {
-            transform: translateY(-4px);
-            border-color: var(--accent-color);
-            box-shadow: 0 10px 30px -10px rgba(14, 165, 233, 0.1);
+        .product:nth-child(1) { animation-delay: 0.3s; }
+        .product:nth-child(2) { animation-delay: 0.38s; }
+        .product:nth-child(3) { animation-delay: 0.46s; }
+        .product:nth-child(4) { animation-delay: 0.54s; }
+
+        .product.featured {
+            grid-column: 1 / -1;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            padding: 2.5rem;
         }
 
-        .card-header {
-            display: flex;
+        .product::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: 20px;
+            background: radial-gradient(circle at 100% 0%, var(--blue-50), transparent 50%);
+            opacity: 0;
+            transition: opacity 0.5s var(--ease);
+            pointer-events: none;
+        }
+
+        .product:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--card-shadow-hover);
+        }
+
+        .product:hover::after { opacity: 1; }
+
+        .product-top { display: flex; align-items: center; justify-content: space-between; margin-bottom: 1.5rem; }
+
+        .platform-badge {
+            display: inline-flex;
             align-items: center;
-            gap: 1rem;
-            margin-bottom: 1.5rem;
+            gap: 0.4rem;
+            padding: 0.35rem 0.85rem;
+            border-radius: 8px;
+            font-size: 0.72rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            background: var(--surface-alt);
+            color: var(--text-3);
+            transition: all 0.4s var(--ease);
         }
 
-        .icon-box {
-            width: 48px;
-            height: 48px;
-            background: #fff;
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border: 1px solid var(--border-color);
+        .platform-badge svg { width: 14px; height: 14px; }
+
+        .product:hover .platform-badge {
+            background: var(--blue-50);
+            color: var(--blue);
+        }
+
+        .product-arrow {
+            width: 36px; height: 36px;
+            border-radius: 50%;
+            background: var(--surface-alt);
+            display: grid; place-items: center;
+            color: var(--text-3);
+            transition: all 0.4s var(--ease);
+        }
+
+        .product-arrow svg { width: 16px; height: 16px; transition: transform 0.4s var(--ease); }
+
+        .product:hover .product-arrow {
+            background: var(--blue);
+            color: white;
+        }
+
+        .product:hover .product-arrow svg { transform: translateX(2px); }
+
+        .product-body { flex: 1; position: relative; z-index: 1; max-width: 100%; width: 100%; }
+
+        .product-name {
             font-size: 1.5rem;
+            font-weight: 750;
+            letter-spacing: -0.025em;
+            margin-bottom: 0.5rem;
         }
 
-        .card-title {
-            font-size: 1.25rem;
-            font-weight: 600;
+        .product.featured .product-name {
+            font-size: 1.75rem;
         }
 
-        .card-desc {
-            color: var(--text-sub);
+        .product-desc {
             font-size: 0.95rem;
+            color: var(--text-2);
+            line-height: 1.65;
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+        }
+
+        .product-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 1.25rem;
+        }
+
+        .tag {
+            font-size: 0.7rem;
+            font-weight: 600;
+            padding: 0.3rem 0.65rem;
+            border-radius: 6px;
+            background: var(--surface-alt);
+            color: var(--text-3);
+            letter-spacing: 0.02em;
+        }
+
+        /* featured right side */
+        .featured-visual {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background: var(--surface-alt);
+            border-radius: 14px;
+            padding: 2rem;
+            position: relative;
+        }
+
+        .featured-icon {
+            width: 80px; height: 80px;
+            border-radius: 22px;
+            background: linear-gradient(135deg, var(--blue), #4A7FF7);
+            display: grid; place-items: center;
+            color: white;
+            box-shadow: 0 8px 32px rgba(27, 90, 235, 0.3);
+        }
+
+        .featured-icon svg { width: 36px; height: 36px; }
+
+        .featured-platforms {
+            display: flex;
+            gap: 0.75rem;
+            margin-top: 1.5rem;
+        }
+
+        .featured-platform {
+            display: flex;
+            align-items: center;
+            gap: 0.35rem;
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: var(--text-3);
+            padding: 0.4rem 0.75rem;
+            background: var(--surface);
+            border-radius: 8px;
+        }
+
+        .featured-platform svg { width: 14px; height: 14px; }
+
+        /* ---- CHROME EXTENSIONS SECTION ---- */
+        .chrome-extensions-section {
+            grid-column: 1 / -1;
+            background: var(--surface);
+            border-radius: 20px;
+            padding: 2rem;
+            box-shadow: var(--card-shadow);
+            transition: all 0.5s var(--ease);
+            opacity: 0;
+            animation: enter 0.6s var(--ease) 0.3s forwards;
+        }
+
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
             margin-bottom: 1.5rem;
         }
 
-        .card-meta {
-            font-size: 0.875rem;
-            color: var(--accent-color);
-            font-weight: 500;
+        .section-title {
+            font-size: 1.5rem;
+            font-weight: 750;
+            letter-spacing: -0.025em;
+            margin-top: 0.5rem;
+            margin-bottom: 0;
+        }
+
+        .extensions-scroll {
             display: flex;
+            gap: 1rem;
+            overflow-x: auto;
+            overflow-y: hidden;
+            padding: 0.5rem 0 1rem;
+            scroll-behavior: smooth;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        .extensions-scroll::-webkit-scrollbar {
+            height: 6px;
+        }
+
+        .extensions-scroll::-webkit-scrollbar-track {
+            background: var(--surface-alt);
+            border-radius: 10px;
+        }
+
+        .extensions-scroll::-webkit-scrollbar-thumb {
+            background: var(--blue-20);
+            border-radius: 10px;
+            transition: background 0.3s var(--ease);
+        }
+
+        .extensions-scroll::-webkit-scrollbar-thumb:hover {
+            background: var(--blue);
+        }
+
+        .extension-item {
+            flex: 0 0 auto;
+            width: 140px;
+            display: flex;
+            flex-direction: column;
             align-items: center;
-            gap: 0.5rem;
-        }
-
-        /* Footer */
-        footer {
-            border-top: 1px solid var(--border-color);
-            padding: 2rem 0;
-            margin-top: 4rem;
             text-align: center;
-            color: var(--text-sub);
-            font-size: 0.875rem;
+            text-decoration: none;
+            color: inherit;
+            padding: 1.25rem;
+            background: var(--surface-alt);
+            border-radius: 14px;
+            transition: all 0.4s var(--ease);
+            position: relative;
+            overflow: hidden;
         }
 
-        /* Responsive */
+        .extension-item::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: 14px;
+            background: radial-gradient(circle at 50% 0%, var(--blue-50), transparent 70%);
+            opacity: 0;
+            transition: opacity 0.4s var(--ease);
+            pointer-events: none;
+        }
+
+        .extension-item:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 24px rgba(27, 90, 235, 0.15);
+            background: var(--surface);
+        }
+
+        .extension-item:hover::after {
+            opacity: 1;
+        }
+
+        .ext-icon {
+            width: 64px;
+            height: 64px;
+            border-radius: 14px;
+            margin-bottom: 0.75rem;
+            position: relative;
+            z-index: 1;
+            transition: transform 0.4s var(--ease);
+        }
+
+        .extension-item:hover .ext-icon {
+            transform: scale(1.1);
+        }
+
+        .ext-name {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--text-1);
+            position: relative;
+            z-index: 1;
+            line-height: 1.3;
+            transition: color 0.3s var(--ease);
+        }
+
+        .extension-item:hover .ext-name {
+            color: var(--blue);
+        }
+
+        /* ---- FOOTER ---- */
+        footer {
+            border-top: 1px solid var(--border);
+            padding: 2rem 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.82rem;
+            color: var(--text-3);
+            opacity: 0; animation: fade-in 0.8s var(--ease) 0.6s forwards;
+        }
+
+        .copyright-wrap { display: flex; align-items: center; gap: 0.4rem; }
+        .copyright-icon { width: 14px; height: 14px; }
+
+        footer a {
+            color: var(--text-3);
+            text-decoration: none;
+            transition: color 0.3s var(--ease);
+        }
+
+        footer a:hover { color: var(--blue); }
+
+        /* ---- ANIMATIONS ---- */
+        @keyframes enter {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes fade-in {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        /* ---- RESPONSIVE ---- */
         @media (max-width: 768px) {
-            .hero h1 {
-                font-size: 2.25rem;
-            }
-            
-            .grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .container {
-                padding: 1.5rem;
+            .page { padding: 0 1rem; max-width: 100%; }
+            .hero { grid-template-columns: 1fr; padding: 3rem 0 3rem; gap: 2rem; max-width: 100%; }
+            .hero-stats { justify-content: flex-start; gap: 2rem; }
+            .products { grid-template-columns: 1fr; max-width: 100%; }
+            .products > * { min-width: 0; } /* CRITICAL: Prevents grid items from expanding beyond parent */
+            .product { max-width: 100%; width: 100%; padding: 1.5rem; }
+            .product.featured { grid-template-columns: 1fr; }
+            .featured-visual { min-height: 160px; }
+            .hero h1 { font-size: 2.2rem; max-width: 100%; }
+            footer { flex-direction: column; gap: 0.75rem; text-align: center; }
+            .chrome-extensions-section { padding: 1.5rem; max-width: 100%; width: 100%; }
+            .section-header { max-width: 100%; }
+            .section-title { font-size: 1.25rem; max-width: 100%; }
+            .extensions-scroll { max-width: 100%; }
+            .extension-item { width: 120px; padding: 1rem; }
+            .ext-icon { width: 56px; height: 56px; }
+            .product-name { max-width: 100%; word-wrap: break-word; }
+            .product-desc { max-width: 100%; }
+            .product-top { max-width: 100%; }
+            .product-tags { max-width: 100%; flex-wrap: wrap; }
+            .product-body { max-width: 100%; }
+            nav { padding: 1.5rem 0; }
+        }
+
+        @media (max-width: 480px) {
+            .hero h1 { font-size: 1.9rem; }
+            .stat-num { font-size: 1.5rem; }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                animation-duration: 0.01ms !important;
+                transition-duration: 0.01ms !important;
             }
         }
     </style>
 </head>
 <body>
 
-    <div class="container">
-        <header>
-            <div class="logo">
-                <img src="logo.svg" alt="some+">
+<div class="page">
+    <nav>
+        <a href="/" class="logo"><img src="logo.svg" alt="someplus.work"></a>
+        <div class="nav-right">
+            <button class="lang-btn" onclick="toggleLanguage()" aria-label="Toggle language">
+                EN
+            </button>
+            <button class="theme-btn" onclick="toggleTheme()" aria-label="Toggle theme">
+                <svg class="sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+                <svg class="moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+            </button>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h1 data-i18n="hero_title">Expand Your Digital Experience</h1>
+            <p data-i18n="hero_desc">Minimalist, performance-oriented extensions for your browsers and e-commerce platforms.</p>
+        </div>
+        <div class="hero-stats">
+            <div class="stat">
+                <div class="stat-num">10</div>
+                <div class="stat-label" data-i18n="stat_product">Product</div>
             </div>
-            <!-- Optional Nav could go here -->
-        </header>
-
-        <section class="hero">
-            <h1>Dijital Deneyiminizi Genişletin</h1>
-            <p>Tarayıcılarınız ve e-ticaret siteleriniz için geliştirdiğimiz minimalist, performans odaklı eklentiler.</p>
-        </section>
-
-        <!-- Kategori 1: Tarayıcılar -->
-        <section class="category-section">
-            <h2 class="category-title">Tarayıcı Eklentileri</h2>
-            <div class="grid">
-                <!-- Chrome -->
-                <a href="https://someplus.work/smart_tab_suspender/" target="_blank" class="card">
-                    <div class="card-header">
-                        <div class="icon-box">
-                            <!-- Simple SVG for Chrome/Browser -->
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><circle cx="12" cy="12" r="4"></circle><line x1="21.17" y1="8" x2="12" y2="8"></line><line x1="3.95" y1="6.06" x2="8.54" y2="14"></line><line x1="10.88" y1="21.94" x2="15.46" y2="14"></line></svg>
-                        </div>
-                        <h3 class="card-title">Google Chrome</h3>
-                    </div>
-                    <p class="card-desc">Tarama deneyiminizi hızlandıran ve verimliliğinizi artıran araçlar.</p>
-                    <div class="card-meta">İncele &rarr;</div>
-                </a>
-
-                <!-- Firefox -->
-                <a href="https://addons.mozilla.org/tr/firefox/user/19607411/" target="_blank" class="card">
-                    <div class="card-header">
-                        <div class="icon-box">
-                            <!-- Simple SVG for Firefox/Browser -->
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a10 10 0 1 0 10 10H12V2z"></path><path d="M12 2a10 10 0 0 1 10 10H12V2z" transform="rotate(180 12 12)"></path></svg>
-                        </div>
-                        <h3 class="card-title">Mozilla Firefox</h3>
-                    </div>
-                    <p class="card-desc">Gizlilik odaklı ve güvenli tarayıcı eklentileri.</p>
-                    <div class="card-meta">İncele &rarr;</div>
-                </a>
+            <div class="stat">
+                <div class="stat-num">4</div>
+                <div class="stat-label" data-i18n="stat_platform">Platform</div>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <!-- Kategori 2: CMS & E-Ticaret -->
-        <section class="category-section">
-            <h2 class="category-title">CMS & E-Ticaret</h2>
-            <div class="grid">
-                <!-- WordPress -->
-                <a href="https://profiles.wordpress.org/someplus/" target="_blank" class="card">
-                    <div class="card-header">
-                        <div class="icon-box">
-                            <!-- Simple SVG for WordPress/CMS -->
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a9 9 0 1 1-6.219-8.56"></path></svg>
-                        </div>
-                        <h3 class="card-title">WordPress</h3>
-                    </div>
-                    <p class="card-desc">Blog ve kurumsal siteleriniz için yönetim kolaylığı sağlayan pluginler.</p>
-                    <div class="card-meta">İncele &rarr;</div>
+    <div class="products">
+
+        <!-- Chrome Extensions Grid -->
+        <div class="chrome-extensions-section">
+            <div class="section-header">
+                <div>
+                    <span class="platform-badge" data-i18n="platform_chrome">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="4"/><line x1="21.17" y1="8" x2="12" y2="8"/><line x1="3.95" y1="6.06" x2="8.54" y2="14"/><line x1="10.88" y1="21.94" x2="15.46" y2="14"/></svg>
+                        Chrome Extensions
+                    </span>
+                    <h3 class="section-title" data-i18n="section_chrome">Chrome Extensions</h3>
+                </div>
+            </div>
+            <div class="extensions-scroll">
+                <a href="https://chromewebstore.google.com/detail/smart-tab-suspender/mmhfonkfehekiofpkjiofjeoofloidog?authuser=0&hl=en" target="_blank" class="extension-item">
+                    <img src="images/icons/smart_tab_suspender.png" alt="Smart Tab Suspender" class="ext-icon">
+                    <span class="ext-name">Smart Tab Suspender</span>
                 </a>
-
-                <!-- Magento -->
-                <a href="https://someplus.work/mageassist/" target="_blank" class="card">
-                    <div class="card-header">
-                        <div class="icon-box">
-                            <!-- Simple SVG for Shop/Magento -->
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path><line x1="3" y1="6" x2="21" y2="6"></line><path d="M16 10a4 4 0 0 1-8 0"></path></svg>
-                        </div>
-                        <h3 class="card-title">Magento</h3>
-                    </div>
-                    <p class="card-desc">E-ticaret operasyonlarınızı ölçeklendirmek için güçlü modüller.</p>
-                    <div class="card-meta">İncele &rarr;</div>
+                <a href="https://chromewebstore.google.com/detail/tabtint/bngecoefhbooakaodjlfegpbjhlhkfif?authuser=0&hl=en" target="_blank" class="extension-item">
+                    <img src="images/icons/tabtint.png" alt="TabTint" class="ext-icon">
+                    <span class="ext-name">TabTint</span>
+                </a>
+                <a href="https://chromewebstore.google.com/detail/tabio/nckidmkgahoolemnaaklgcfpdmlfnofb?authuser=0&hl=en" target="_blank" class="extension-item">
+                    <img src="images/icons/tabio.png" alt="Tabio" class="ext-icon">
+                    <span class="ext-name">Tabio</span>
+                </a>
+                <a href="https://chromewebstore.google.com/detail/donefetti/pdckdimjeaaomlgdnhppaogacipeigod?authuser=0&hl=en" target="_blank" class="extension-item">
+                    <img src="images/icons/donefetti.png" alt="Donefetti" class="ext-icon">
+                    <span class="ext-name">Donefetti</span>
+                </a>
+                <a href="https://chromewebstore.google.com/detail/sidekick-wa/ijfnpjcikndpffampjljggnnobagahkf?authuser=0&hl=en" target="_blank" class="extension-item">
+                    <img src="images/icons/sidekick_whatsapp.png" alt="SideKick WA" class="ext-icon">
+                    <span class="ext-name">SideKick WA</span>
+                </a>
+                <a href="https://chromewebstore.google.com/detail/chromashift/ifngfcdoccfbgagjiahnbkajaikjaiek?authuser=0&hl=en" target="_blank" class="extension-item">
+                    <img src="images/icons/chroma_shift.png" alt="ChromaShift" class="ext-icon">
+                    <span class="ext-name">ChromaShift</span>
                 </a>
             </div>
-        </section>
+        </div>
 
-        <footer>
-            <p>&copy; 2026 someplus.work. Tüm hakları saklıdır.</p>
-        </footer>
+        <!-- Firefox Add-ons -->
+        <a href="https://addons.mozilla.org/en-US/firefox/user/19607411/" target="_blank" class="product">
+            <div class="product-top">
+                <span class="platform-badge" data-i18n="platform_firefox">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/></svg>
+                    Firefox
+                </span>
+                <div class="product-arrow">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7"/><path d="M7 7h10v10"/></svg>
+                </div>
+            </div>
+            <div class="product-body">
+                <h3 class="product-name" data-i18n="product_firefox">Firefox Add-ons</h3>
+                <p class="product-desc" data-i18n="desc_firefox">Privacy-focused, secure, and performance-friendly Firefox browser extensions.</p>
+                <div class="product-tags">
+                    <span class="tag" data-i18n="tag_privacy">Privacy</span>
+                    <span class="tag" data-i18n="tag_security">Security</span>
+                </div>
+            </div>
+        </a>
+
+        <!-- WordPress -->
+        <a href="https://profiles.wordpress.org/someplus/" target="_blank" class="product">
+            <div class="product-top">
+                <span class="platform-badge" data-i18n="platform_wordpress">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+                    WordPress
+                </span>
+                <div class="product-arrow">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7"/><path d="M7 7h10v10"/></svg>
+                </div>
+            </div>
+            <div class="product-body">
+                <h3 class="product-name" data-i18n="product_wordpress">WordPress Plugins</h3>
+                <p class="product-desc" data-i18n="desc_wordpress">WordPress plugins that provide ease of management for your blog and corporate sites.</p>
+                <div class="product-tags">
+                    <span class="tag">CMS</span>
+                    <span class="tag" data-i18n="tag_management">Management</span>
+                </div>
+            </div>
+        </a>
+
+        <!-- Adobe Commerce Extensions -->
+        <a href="https://commercemarketplace.adobe.com/partner/infosomepla35b" target="_blank" class="product">
+            <div class="product-top">
+                <span class="platform-badge" data-i18n="platform_adobe">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+                    Magento/Adobe
+                </span>
+                <div class="product-arrow">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7"/><path d="M7 7h10v10"/></svg>
+                </div>
+            </div>
+            <div class="product-body">
+                <h3 class="product-name" data-i18n="product_adobe">Adobe Commerce Extensions</h3>
+                <p class="product-desc" data-i18n="desc_adobe">Powerful Adobe Commerce modules to scale and manage your e-commerce operations.</p>
+                <div class="product-tags">
+                    <span class="tag" data-i18n="tag_ecommerce">E-Commerce</span>
+                    <span class="tag" data-i18n="tag_automation">Automation</span>
+                </div>
+            </div>
+        </a>
+
     </div>
+
+    <footer>
+        <span class="copyright-wrap" data-i18n="footer_copyright">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="copyright-icon"><circle cx="12" cy="12" r="10"/><path d="M14.83 14.83a4 4 0 1 1 0-5.66"/></svg>
+            2026 someplus.work
+        </span>
+        <span data-i18n="footer_rights">All rights reserved.</span>
+    </footer>
+</div>
+
+<script>
+    /* ---- THEME HANDLING ---- */
+    function toggleTheme() {
+        const html = document.documentElement;
+        const next = html.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
+        html.setAttribute('data-theme', next);
+        localStorage.setItem('theme', next);
+    }
+
+    (function() {
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme) {
+            document.documentElement.setAttribute('data-theme', savedTheme);
+        } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+            document.documentElement.setAttribute('data-theme', 'dark');
+        }
+    })();
+
+    /* ---- LANGUAGE HANDLING ---- */
+    const translations = {
+        en: {
+            page_title: "someplus.work | Chrome, Firefox, WordPress & Magento Extensions",
+            hero_title: "Expand Your Digital Experience",
+            hero_desc: "Minimalist, performance-oriented extensions for your browsers and e-commerce platforms.",
+            stat_product: "Product",
+            stat_platform: "Platform",
+            platform_chrome: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="4"/><line x1="21.17" y1="8" x2="12" y2="8"/><line x1="3.95" y1="6.06" x2="8.54" y2="14"/><line x1="10.88" y1="21.94" x2="15.46" y2="14"/></svg> Chrome Extensions',
+            section_chrome: "Chrome Extensions",
+            platform_firefox: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/></svg> Firefox',
+            product_firefox: "Firefox Add-ons",
+            desc_firefox: "Privacy-focused, secure, and performance-friendly Firefox browser extensions.",
+            tag_privacy: "Privacy",
+            tag_security: "Security",
+            platform_wordpress: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg> WordPress',
+            product_wordpress: "WordPress Plugins",
+            desc_wordpress: "WordPress plugins that provide ease of management for your blog and corporate sites.",
+            tag_management: "Management",
+            platform_adobe: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg> Adobe Commerce',
+            product_adobe: "Adobe Commerce Extensions",
+            desc_adobe: "Powerful Adobe Commerce modules to scale and manage your e-commerce operations.",
+            tag_ecommerce: "E-Commerce",
+            tag_automation: "Automation",
+            footer_copyright: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="copyright-icon"><circle cx="12" cy="12" r="10"/><path d="M14.83 14.83a4 4 0 1 1 0-5.66"/></svg> 2026 someplus.work',
+            footer_rights: "All rights reserved."
+        },
+        tr: {
+            page_title: "someplus.work | Chrome, Firefox, WordPress & Magento Eklentileri",
+            hero_title: "Dijital Deneyiminizi Genişletin",
+            hero_desc: "Tarayıcılarınız ve e-ticaret platformlarınız için geliştirdiğimiz minimalist, performans odaklı eklentiler.",
+            stat_product: "Ürün",
+            stat_platform: "Platform",
+            platform_chrome: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="4"/><line x1="21.17" y1="8" x2="12" y2="8"/><line x1="3.95" y1="6.06" x2="8.54" y2="14"/><line x1="10.88" y1="21.94" x2="15.46" y2="14"/></svg> Chrome Eklentileri',
+            section_chrome: "Chrome Eklentileri",
+            platform_firefox: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/></svg> Firefox',
+            product_firefox: "Firefox Eklentileri",
+            desc_firefox: "Gizlilik odaklı, güvenli ve performans dostu Firefox tarayıcı eklentileri.",
+            tag_privacy: "Gizlilik",
+            tag_security: "Güvenlik",
+            platform_wordpress: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg> WordPress',
+            product_wordpress: "WordPress Pluginleri",
+            desc_wordpress: "Blog ve kurumsal siteleriniz için yönetim kolaylığı sağlayan WordPress eklentileri.",
+            tag_management: "Yönetim",
+            platform_adobe: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg> Adobe Commerce',
+            product_adobe: "Adobe Commerce Eklentileri",
+            desc_adobe: "E-ticaret operasyonlarınızı ölçeklendirmek ve yönetmek için güçlü Adobe Commerce modülleri.",
+            tag_ecommerce: "E-Ticaret",
+            tag_automation: "Otomasyon",
+            footer_copyright: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="copyright-icon"><circle cx="12" cy="12" r="10"/><path d="M14.83 14.83a4 4 0 1 1 0-5.66"/></svg> 2026 someplus.work',
+            footer_rights: "Tüm hakları saklıdır."
+        }
+    };
+
+    function setLanguage(lang) {
+        document.documentElement.lang = lang;
+        const elements = document.querySelectorAll('[data-i18n]');
+        
+        elements.forEach(el => {
+            const key = el.getAttribute('data-i18n');
+            if (translations[lang][key]) {
+                if (key.startsWith('platform_') || key.startsWith('footer_')) {
+                     el.innerHTML = translations[lang][key];
+                } else {
+                    el.innerText = translations[lang][key];
+                }
+            }
+        });
+
+        // Update button text
+        const langBtn = document.querySelector('.lang-btn');
+        if(langBtn) langBtn.innerText = lang === 'en' ? 'TR' : 'EN';
+        
+        // Update Chrome Store links
+        const chromeLinks = document.querySelectorAll('.extensions-scroll a');
+        chromeLinks.forEach(link => {
+            try {
+                const url = new URL(link.href);
+                url.searchParams.set('hl', lang);
+                link.href = url.toString();
+            } catch(e) {}
+        });
+
+        localStorage.setItem('lang', lang);
+    }
+
+    function toggleLanguage() {
+        const current = document.documentElement.lang || 'en';
+        const next = current === 'en' ? 'tr' : 'en';
+        setLanguage(next);
+    }
+
+    // Init Language
+    const savedLang = localStorage.getItem('lang') || 'en';
+    setLanguage(savedLang);
+</script>
 
 </body>
 </html>
