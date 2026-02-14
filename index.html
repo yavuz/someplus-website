@@ -217,6 +217,7 @@
         .product:nth-child(2) { animation-delay: 0.38s; }
         .product:nth-child(3) { animation-delay: 0.46s; }
         .product:nth-child(4) { animation-delay: 0.54s; }
+        .product:nth-child(5) { animation-delay: 0.62s; }
 
         .product.featured {
             grid-column: 1 / -1;
@@ -262,6 +263,7 @@
         }
 
         .platform-badge svg { width: 14px; height: 14px; }
+        .platform-badge.no-transform { text-transform: none; }
 
         .product:hover .platform-badge {
             background: var(--blue-50);
@@ -589,7 +591,7 @@
                 <div class="stat-label" data-i18n="stat_product">Product</div>
             </div>
             <div class="stat">
-                <div class="stat-num">4</div>
+                <div class="stat-num">5</div>
                 <div class="stat-label" data-i18n="stat_platform">Platform</div>
             </div>
         </div>
@@ -699,6 +701,27 @@
             </div>
         </a>
 
+        <!-- iOS Apps -->
+        <a href="https://apps.apple.com/us/developer/yavuz-yildirim/id968847927" target="_blank" class="product">
+            <div class="product-top">
+                <span class="platform-badge no-transform" data-i18n="platform_ios">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>
+                    iOS
+                </span>
+                <div class="product-arrow">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7"/><path d="M7 7h10v10"/></svg>
+                </div>
+            </div>
+            <div class="product-body">
+                <h3 class="product-name" data-i18n="product_ios">iOS Apps</h3>
+                <p class="product-desc" data-i18n="desc_ios">Beautifully crafted iOS applications designed for simplicity and performance on iPhone and iPad.</p>
+                <div class="product-tags">
+                    <span class="tag" data-i18n="tag_mobile">Mobile</span>
+                    <span class="tag">Swift</span>
+                </div>
+            </div>
+        </a>
+
     </div>
 
     <footer>
@@ -731,7 +754,7 @@
     /* ---- LANGUAGE HANDLING ---- */
     const translations = {
         en: {
-            page_title: "someplus.work | Chrome, Firefox, WordPress & Magento Extensions",
+            page_title: "someplus.work | Chrome, Firefox, WordPress, Magento & iOS Extensions",
             hero_title: "Expand Your Digital Experience",
             hero_desc: "Minimalist, performance-oriented extensions for your browsers and e-commerce platforms.",
             stat_product: "Product",
@@ -752,11 +775,15 @@
             desc_adobe: "Powerful Adobe Commerce modules to scale and manage your e-commerce operations.",
             tag_ecommerce: "E-Commerce",
             tag_automation: "Automation",
+            platform_ios: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg> iOS',
+            product_ios: "iOS Apps",
+            desc_ios: "Beautifully crafted iOS applications designed for simplicity and performance on iPhone and iPad.",
+            tag_mobile: "Mobile",
             footer_copyright: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="copyright-icon"><circle cx="12" cy="12" r="10"/><path d="M14.83 14.83a4 4 0 1 1 0-5.66"/></svg> 2026 someplus.work',
             footer_rights: "All rights reserved."
         },
         tr: {
-            page_title: "someplus.work | Chrome, Firefox, WordPress & Magento Eklentileri",
+            page_title: "someplus.work | Chrome, Firefox, WordPress, Magento & iOS Eklentileri",
             hero_title: "Dijital Deneyiminizi Genişletin",
             hero_desc: "Tarayıcılarınız ve e-ticaret platformlarınız için geliştirdiğimiz minimalist, performans odaklı eklentiler.",
             stat_product: "Ürün",
@@ -777,6 +804,10 @@
             desc_adobe: "E-ticaret operasyonlarınızı ölçeklendirmek ve yönetmek için güçlü Adobe Commerce modülleri.",
             tag_ecommerce: "E-Ticaret",
             tag_automation: "Otomasyon",
+            platform_ios: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg> iOS',
+            product_ios: "iOS Uygulamaları",
+            desc_ios: "iPhone ve iPad için sadelik ve performans odaklı tasarlanmış iOS uygulamaları.",
+            tag_mobile: "Mobil",
             footer_copyright: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="copyright-icon"><circle cx="12" cy="12" r="10"/><path d="M14.83 14.83a4 4 0 1 1 0-5.66"/></svg> 2026 someplus.work',
             footer_rights: "Tüm hakları saklıdır."
         }
