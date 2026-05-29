@@ -587,7 +587,7 @@
         </div>
         <div class="hero-stats">
             <div class="stat">
-                <div class="stat-num">10</div>
+                <div class="stat-num">12</div>
                 <div class="stat-label" data-i18n="stat_product">Product</div>
             </div>
             <div class="stat">
@@ -619,6 +619,10 @@
                     <img src="images/icons/tabtint.png" alt="TabTint" class="ext-icon">
                     <span class="ext-name">TabTint</span>
                 </a>
+                <a href="https://someplus.work/openwithai/" target="_blank" rel="noopener noreferrer" class="extension-item">
+                    <img src="images/icons/openwithai.png" alt="Open with AI" class="ext-icon">
+                    <span class="ext-name">Open with AI</span>
+                </a>
                 <a href="https://chromewebstore.google.com/detail/tabio/nckidmkgahoolemnaaklgcfpdmlfnofb?authuser=0&hl=en" target="_blank" class="extension-item">
                     <img src="images/icons/tabio.png" alt="Tabio" class="ext-icon">
                     <span class="ext-name">Tabio</span>
@@ -634,6 +638,10 @@
                 <a href="https://chromewebstore.google.com/detail/chromashift/ifngfcdoccfbgagjiahnbkajaikjaiek?authuser=0&hl=en" target="_blank" class="extension-item">
                     <img src="images/icons/chroma_shift.png" alt="ChromaShift" class="ext-icon">
                     <span class="ext-name">ChromaShift</span>
+                </a>
+                <a href="https://chromewebstore.google.com/detail/send-to-phone-qr/ffdfngiplmmpfjehaalakfbanlkmneph?authuser=0&hl=en" target="_blank" class="extension-item">
+                    <img src="images/icons/send2phone.png" alt="Send to Phone (QR)" class="ext-icon">
+                    <span class="ext-name">Send to Phone (QR)</span>
                 </a>
             </div>
         </div>
@@ -836,9 +844,11 @@
         const chromeLinks = document.querySelectorAll('.extensions-scroll a');
         chromeLinks.forEach(link => {
             try {
-                const url = new URL(link.href);
-                url.searchParams.set('hl', lang);
-                link.href = url.toString();
+                const url = new URL(link.href, window.location.origin);
+                if (url.hostname === 'chromewebstore.google.com') {
+                    url.searchParams.set('hl', lang);
+                    link.href = url.toString();
+                }
             } catch(e) {}
         });
 
