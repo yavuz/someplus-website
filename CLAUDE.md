@@ -8,15 +8,17 @@ Static marketing website for **someplus.work** — a company that develops brows
 
 ## Architecture
 
-- **No build system or framework** — plain HTML/CSS/JS, served as static files
-- **No package manager** — no npm, no dependencies to install
-- **Two pages:**
-  - `index.html` — main landing page showcasing all products across platforms
-  - `chrome-extensions.html` — dedicated Chrome extensions showcase page (Turkish-only, no i18n)
+- **Framework:** vinext with the Next.js App Router, built for Cloudflare Workers
+- **Package manager:** npm
+- **Main routes:**
+  - `/` and `/en` — Turkish and English product showcases
+  - `/privacy` and `/en/privacy` — privacy approach
+  - `/support` and `/en/support` — support guidance
+- The original static pages are retained under `legacy/` for reference.
 
 ## Development
 
-Open `index.html` directly in a browser or use any static file server (e.g., `python3 -m http.server`). There are no build, lint, or test commands.
+Run `npm run dev` for local development and `npm run build` for the production build.
 
 ## Design System
 
@@ -25,19 +27,15 @@ Open `index.html` directly in a browser or use any static file server (e.g., `py
 - **Primary color:** `--blue: #1B5AEB` with opacity variants (`--blue-50`, `--blue-10`, `--blue-20`)
 - **CSS variables** for all colors/surfaces — defined per-theme in `[data-theme="light"]` / `[data-theme="dark"]` blocks
 - **Animation easing:** `--ease: cubic-bezier(0.23, 1, 0.32, 1)` used consistently throughout
-- All CSS is inlined in `<style>` tags within each HTML file (no external stylesheets besides the font)
+- Shared layout styles live in `app/globals.css`
 
 ## Internationalization (i18n)
 
-`index.html` supports EN/TR toggling:
-- Uses `data-i18n` attributes on elements, with a `translations` object in the inline `<script>`
-- Language preference persisted in `localStorage`
-- The language button text shows the *opposite* language (click "TR" to switch to Turkish)
-- Platform badges and footer use `innerHTML` (they contain SVG icons); other elements use `innerText`
-- Chrome Web Store links update their `hl` query param on language switch
-
-`chrome-extensions.html` is Turkish-only and does not have i18n support.
+Turkish is served from `/`, while English is served from `/en`. Privacy and
+support routes follow the same path convention. Keep both language versions in
+sync when changing user-facing copy.
 
 ## Extension Icons
 
-Extension icon images are stored in `images/icons/` as PNG files. When adding a new Chrome extension, add its icon there and reference it in both HTML files.
+Extension metadata is centralized in `lib/products.ts`. Public icon assets live
+in `public/images/icons/`.
