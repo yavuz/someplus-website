@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Tab Suspender - Save Memory & Boost Browser Performance</title>
+    <meta name="description" content="Suspend inactive tabs to free memory. Optional auto-suspend, whitelist, and estimated savings. Available for Chrome and Firefox.">
+    <meta name="keywords" content="tab suspender, memory saver, browser extension, chrome extension, firefox addon, tab management, reduce memory usage, auto suspend tabs">
+    <meta name="author" content="Yavuz Yildirim">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://someplus.work/smart_tab_suspender/">
+
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Smart Tab Suspender - Save Memory & Boost Browser Performance">
+    <meta property="og:description" content="Suspend inactive tabs to free memory. Optional auto-suspend, whitelist, and estimated savings. Available for Chrome and Firefox.">
+    <meta property="og:image" content="https://someplus.work/smart_tab_suspender/assets/icon.png">
+    <meta property="og:url" content="https://someplus.work/smart_tab_suspender/">
+    <meta property="og:site_name" content="Smart Tab Suspender">
+    <meta property="og:locale" content="en_US">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Smart Tab Suspender - Save Memory & Boost Browser Performance">
+    <meta name="twitter:description" content="Suspend inactive tabs to free memory. Optional auto-suspend, whitelist, and estimated savings. Available for Chrome and Firefox.">
+    <meta name="twitter:image" content="https://someplus.work/smart_tab_suspender/assets/icon.png">
+
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/icon.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/icon.png">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['DM Sans', 'sans-serif'],
+                        mono: ['DM Mono', 'monospace'],
+                    },
+                    colors: {
+                        brand: {
+                            50: '#eef4ff',
+                            100: '#d9e5ff',
+                            200: '#bcd2ff',
+                            300: '#8eb4ff',
+                            400: '#5989ff',
+                            500: '#3362ff',
+                            600: '#1b3ff5',
+                            700: '#142ce1',
+                            800: '#1726b6',
+                            900: '#19268f',
+                        },
+                        surface: {
+                            50: '#fafbfc',
+                            100: '#f4f5f7',
+                            200: '#e8eaed',
+                            300: '#d1d5db',
+                        }
+                    },
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Subtle noise texture overlay */
+        .noise::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            opacity: 0.025;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        /* Scroll-triggered fade-in */
+        .reveal {
+            opacity: 0;
+            transform: translateY(24px);
+            transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Stagger children */
+        .stagger > .reveal:nth-child(1) { transition-delay: 0ms; }
+        .stagger > .reveal:nth-child(2) { transition-delay: 80ms; }
+        .stagger > .reveal:nth-child(3) { transition-delay: 160ms; }
+        .stagger > .reveal:nth-child(4) { transition-delay: 240ms; }
+        .stagger > .reveal:nth-child(5) { transition-delay: 320ms; }
+        .stagger > .reveal:nth-child(6) { transition-delay: 400ms; }
+
+        /* Smooth gradient border */
+        .gradient-border {
+            position: relative;
+        }
+        .gradient-border::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: inherit;
+            padding: 1px;
+            background: linear-gradient(135deg, rgba(51,98,255,0.2), rgba(139,92,246,0.15), rgba(51,98,255,0.05));
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+            pointer-events: none;
+        }
+
+        /* Floating animation */
+        @keyframes gentle-float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-8px) rotate(1deg); }
+        }
+
+        /* Glow pulse */
+        @keyframes glow {
+            0%, 100% { opacity: 0.4; }
+            50% { opacity: 0.7; }
+        }
+    </style>
+</head>
+<body class="bg-white text-slate-700 font-sans antialiased overflow-x-hidden">
+
+    <!-- ===== HERO ===== -->
+    <div class="relative noise min-h-screen flex flex-col">
+        <!-- Background layers -->
+        <div class="absolute inset-0 bg-gradient-to-b from-surface-50 via-white to-white"></div>
+        <div class="absolute top-[-20%] right-[-10%] w-[600px] h-[600px] bg-brand-200 rounded-full blur-[150px] opacity-20" style="animation: glow 6s ease-in-out infinite;"></div>
+        <div class="absolute bottom-[-10%] left-[-10%] w-[500px] h-[500px] bg-violet-200 rounded-full blur-[150px] opacity-15" style="animation: glow 8s ease-in-out infinite 2s;"></div>
+
+        <!-- Nav -->
+        <nav class="relative z-10 max-w-6xl mx-auto w-full px-6 py-6">
+            <div class="flex items-center justify-between">
+                <a href="#" class="flex items-center gap-2.5 group">
+                    <img src="assets/icon.png" alt="Smart Tab Suspender" class="w-8 h-8 rounded-lg shadow-sm">
+                    <span class="text-slate-900 font-semibold text-sm tracking-tight">Smart Tab Suspender</span>
+                </a>
+                <div class="hidden sm:flex items-center gap-1">
+                    <a href="#features" class="px-4 py-2 text-sm text-slate-500 hover:text-slate-900 transition-colors rounded-lg hover:bg-surface-100">Features</a>
+                    <a href="#how-it-works" class="px-4 py-2 text-sm text-slate-500 hover:text-slate-900 transition-colors rounded-lg hover:bg-surface-100">How It Works</a>
+                    <a href="#download" class="ml-2 px-5 py-2 text-sm font-medium text-white bg-slate-900 hover:bg-slate-800 rounded-lg transition-all duration-200 shadow-sm">Download</a>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Hero content -->
+        <section class="relative z-10 flex-1 flex items-center justify-center px-6 pb-16 pt-8">
+            <div class="max-w-3xl mx-auto text-center">
+                <div class="flex justify-center mb-8">
+                    <img src="assets/snowflake.svg" alt="Snowflake" class="w-20 h-20 opacity-80" style="animation: gentle-float 4s ease-in-out infinite; filter: drop-shadow(0 0 24px rgba(51,98,255,0.3));">
+                </div>
+
+                <div class="inline-flex items-center gap-2 px-3.5 py-1.5 bg-brand-50 border border-brand-100 rounded-full text-brand-700 text-xs font-medium mb-8 tracking-wide">
+                    <span class="w-1.5 h-1.5 bg-brand-500 rounded-full animate-pulse"></span>
+                    Available for Chrome & Firefox
+                </div>
+
+                <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold leading-[1.1] mb-6 text-slate-900 tracking-tight">
+                    Save Memory,<br>
+                    <span class="bg-gradient-to-r from-brand-600 via-brand-500 to-violet-500 bg-clip-text text-transparent">Boost Performance</span>
+                </h1>
+
+                <p class="text-base sm:text-lg text-slate-500 mb-10 max-w-xl mx-auto leading-relaxed">
+                    Suspend inactive tabs to free memory, then restore with one click. Auto-suspend is optional — turn it on when you’re ready.
+                </p>
+
+                <div id="download" class="flex flex-col sm:flex-row items-center justify-center gap-3">
+                    <a href="https://chromewebstore.google.com/detail/smart-tab-suspender/mmhfonkfehekiofpkjiofjeoofloidog" target="_blank" class="w-full sm:w-auto group flex items-center justify-center gap-2.5 px-6 py-3.5 bg-slate-900 hover:bg-slate-800 text-white text-sm font-medium rounded-xl transition-all duration-200 shadow-lg shadow-slate-900/10">
+                        <img src="assets/chrome-logo.svg" alt="Chrome" class="w-5 h-5">
+                        Chrome Web Store
+                        <svg class="w-3.5 h-3.5 opacity-40 group-hover:opacity-70 group-hover:translate-x-0.5 transition-all" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+                    </a>
+                    <a href="https://addons.mozilla.org/en-US/firefox/addon/smart-tabsuspender/" target="_blank" class="w-full sm:w-auto group flex items-center justify-center gap-2.5 px-6 py-3.5 bg-white hover:bg-surface-50 text-slate-700 text-sm font-medium rounded-xl transition-all duration-200 border border-surface-200 shadow-sm">
+                        <img src="assets/firefox-logo.svg" alt="Firefox" class="w-5 h-5">
+                        Firefox Add-ons
+                        <svg class="w-3.5 h-3.5 opacity-30 group-hover:opacity-60 group-hover:translate-x-0.5 transition-all" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+                    </a>
+                </div>
+
+                <div class="mt-8 flex items-center justify-center gap-6 sm:gap-8 text-xs text-slate-400 font-medium">
+                    <span class="flex items-center gap-1.5">
+                        <svg class="w-3.5 h-3.5 text-emerald-500" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+                        Free & Open Source
+                    </span>
+                    <span class="flex items-center gap-1.5">
+                        <svg class="w-3.5 h-3.5 text-emerald-500" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+                        No Tracking
+                    </span>
+                    <span class="flex items-center gap-1.5">
+                        <svg class="w-3.5 h-3.5 text-emerald-500" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+                        Privacy First
+                    </span>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- ===== FEATURES ===== -->
+    <section id="features" class="relative bg-surface-50 noise">
+        <div class="max-w-6xl mx-auto px-6 py-24 sm:py-32">
+            <div class="text-center mb-16 reveal">
+                <p class="font-mono text-xs text-brand-600 tracking-widest uppercase mb-3">Features</p>
+                <h2 class="text-3xl sm:text-4xl font-bold text-slate-900 tracking-tight">Everything you need</h2>
+            </div>
+
+            <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 stagger">
+                <!-- Feature 1 -->
+                <div class="reveal group relative bg-white rounded-2xl p-7 gradient-border hover:shadow-lg hover:shadow-brand-50 transition-all duration-300 cursor-default">
+                    <div class="w-9 h-9 rounded-lg bg-brand-50 flex items-center justify-center mb-5 group-hover:bg-brand-100 transition-colors">
+                        <svg class="w-[18px] h-[18px] text-brand-600" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-sm font-semibold text-slate-900 mb-2">Optional Auto-Suspend</h3>
+                    <p class="text-sm text-slate-500 leading-relaxed">Enable auto-suspend after a custom idle timeout — or keep full manual control from the popup.</p>
+                </div>
+
+                <!-- Feature 2 -->
+                <div class="reveal group relative bg-white rounded-2xl p-7 gradient-border hover:shadow-lg hover:shadow-violet-50 transition-all duration-300 cursor-default">
+                    <div class="w-9 h-9 rounded-lg bg-violet-50 flex items-center justify-center mb-5 group-hover:bg-violet-100 transition-colors">
+                        <svg class="w-[18px] h-[18px] text-violet-600" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-sm font-semibold text-slate-900 mb-2">Tab Protection</h3>
+                    <p class="text-sm text-slate-500 leading-relaxed">Protect pinned tabs, active tabs, and tabs playing media from being suspended.</p>
+                </div>
+
+                <!-- Feature 3 -->
+                <div class="reveal group relative bg-white rounded-2xl p-7 gradient-border hover:shadow-lg hover:shadow-emerald-50 transition-all duration-300 cursor-default">
+                    <div class="w-9 h-9 rounded-lg bg-emerald-50 flex items-center justify-center mb-5 group-hover:bg-emerald-100 transition-colors">
+                        <svg class="w-[18px] h-[18px] text-emerald-600" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M3 13.125C3 12.504 3.504 12 4.125 12h2.25c.621 0 1.125.504 1.125 1.125v6.75C7.5 20.496 6.996 21 6.375 21h-2.25A1.125 1.125 0 013 19.875v-6.75zM9.75 8.625c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125v11.25c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 01-1.125-1.125V8.625zM16.5 4.125c0-.621.504-1.125 1.125-1.125h2.25C20.496 3 21 3.504 21 4.125v15.75c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 01-1.125-1.125V4.125z"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-sm font-semibold text-slate-900 mb-2">Estimated Savings Dashboard</h3>
+                    <p class="text-sm text-slate-500 leading-relaxed">See estimated memory impact over time with charts — clearly labeled as estimates, not OS measurements.</p>
+                </div>
+
+                <!-- Feature 4 -->
+                <div class="reveal group relative bg-white rounded-2xl p-7 gradient-border hover:shadow-lg hover:shadow-amber-50 transition-all duration-300 cursor-default">
+                    <div class="w-9 h-9 rounded-lg bg-amber-50 flex items-center justify-center mb-5 group-hover:bg-amber-100 transition-colors">
+                        <svg class="w-[18px] h-[18px] text-amber-600" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M16.5 10.5V6.75a4.5 4.5 0 10-9 0v3.75m-.75 11.25h10.5a2.25 2.25 0 002.25-2.25v-6.75a2.25 2.25 0 00-2.25-2.25H6.75a2.25 2.25 0 00-2.25 2.25v6.75a2.25 2.25 0 002.25 2.25z"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-sm font-semibold text-slate-900 mb-2">Site Whitelist</h3>
+                    <p class="text-sm text-slate-500 leading-relaxed">Never suspend important websites by adding them to your personal whitelist.</p>
+                </div>
+
+                <!-- Feature 5 -->
+                <div class="reveal group relative bg-white rounded-2xl p-7 gradient-border hover:shadow-lg hover:shadow-rose-50 transition-all duration-300 cursor-default">
+                    <div class="w-9 h-9 rounded-lg bg-rose-50 flex items-center justify-center mb-5 group-hover:bg-rose-100 transition-colors">
+                        <svg class="w-[18px] h-[18px] text-rose-600" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M14.857 17.082a23.848 23.848 0 005.454-1.31A8.967 8.967 0 0118 9.75v-.7V9A6 6 0 006 9v.75a8.967 8.967 0 01-2.312 6.022c1.733.64 3.56 1.085 5.455 1.31m5.714 0a24.255 24.255 0 01-5.714 0m5.714 0a3 3 0 11-5.714 0"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-sm font-semibold text-slate-900 mb-2">Memory Alerts</h3>
+                    <p class="text-sm text-slate-500 leading-relaxed">Get notified when system memory usage is high and needs your attention.</p>
+                </div>
+
+                <!-- Feature 6 -->
+                <div class="reveal group relative bg-white rounded-2xl p-7 gradient-border hover:shadow-lg hover:shadow-cyan-50 transition-all duration-300 cursor-default">
+                    <div class="w-9 h-9 rounded-lg bg-cyan-50 flex items-center justify-center mb-5 group-hover:bg-cyan-100 transition-colors">
+                        <svg class="w-[18px] h-[18px] text-cyan-600" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 6h9.75M10.5 6a1.5 1.5 0 11-3 0m3 0a1.5 1.5 0 10-3 0M3.75 6H7.5m3 12h9.75m-9.75 0a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m-3.75 0H7.5m9-6h3.75m-3.75 0a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m-9.75 0h9.75"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-sm font-semibold text-slate-900 mb-2">Customizable Settings</h3>
+                    <p class="text-sm text-slate-500 leading-relaxed">Fine-tune every aspect of the extension to match your personal workflow.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== HOW IT WORKS ===== -->
+    <section id="how-it-works" class="relative bg-white">
+        <div class="max-w-6xl mx-auto px-6 py-24 sm:py-32">
+            <div class="text-center mb-20 reveal">
+                <p class="font-mono text-xs text-brand-600 tracking-widest uppercase mb-3">Getting Started</p>
+                <h2 class="text-3xl sm:text-4xl font-bold text-slate-900 tracking-tight">Three simple steps</h2>
+            </div>
+
+            <div class="relative max-w-4xl mx-auto">
+                <!-- Connecting line -->
+                <div class="hidden sm:block absolute top-6 left-[calc(16.67%+20px)] right-[calc(16.67%+20px)] h-px">
+                    <div class="w-full h-full bg-gradient-to-r from-surface-200 via-brand-200 to-surface-200"></div>
+                </div>
+
+                <div class="grid sm:grid-cols-3 gap-12 sm:gap-6 stagger">
+                    <div class="reveal group text-center">
+                        <div class="relative z-10 w-12 h-12 mx-auto mb-8 rounded-full bg-white border border-surface-200 flex items-center justify-center group-hover:border-brand-300 group-hover:shadow-md group-hover:shadow-brand-50 transition-all duration-300">
+                            <span class="font-mono text-xs font-medium text-brand-600">01</span>
+                        </div>
+                        <h3 class="text-sm font-semibold text-slate-900 mb-2">Install</h3>
+                        <p class="text-sm text-slate-500 leading-relaxed max-w-[200px] mx-auto">Add the extension from your browser's store in seconds.</p>
+                    </div>
+
+                    <div class="reveal group text-center">
+                        <div class="relative z-10 w-12 h-12 mx-auto mb-8 rounded-full bg-white border border-surface-200 flex items-center justify-center group-hover:border-brand-300 group-hover:shadow-md group-hover:shadow-brand-50 transition-all duration-300">
+                            <span class="font-mono text-xs font-medium text-brand-600">02</span>
+                        </div>
+                        <h3 class="text-sm font-semibold text-slate-900 mb-2">Configure</h3>
+                        <p class="text-sm text-slate-500 leading-relaxed max-w-[200px] mx-auto">Set timing, protection rules, and whitelist your key sites.</p>
+                    </div>
+
+                    <div class="reveal group text-center">
+                        <div class="relative z-10 w-12 h-12 mx-auto mb-8 rounded-full bg-white border border-surface-200 flex items-center justify-center group-hover:border-brand-300 group-hover:shadow-md group-hover:shadow-brand-50 transition-all duration-300">
+                            <span class="font-mono text-xs font-medium text-brand-600">03</span>
+                        </div>
+                        <h3 class="text-sm font-semibold text-slate-900 mb-2">Browse Faster</h3>
+                        <p class="text-sm text-slate-500 leading-relaxed max-w-[200px] mx-auto">Memory drops instantly. Restore any tab with one click.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== CTA ===== -->
+    <section class="relative px-6 py-24 sm:py-32">
+        <div class="max-w-5xl mx-auto">
+            <div class="reveal relative overflow-hidden rounded-3xl bg-slate-950 px-8 sm:px-16 py-16 sm:py-20 text-center noise">
+                <!-- Ambient lights -->
+                <div class="absolute top-0 left-1/4 w-80 h-80 bg-brand-600 rounded-full blur-[140px] opacity-15"></div>
+                <div class="absolute bottom-0 right-1/4 w-64 h-64 bg-violet-600 rounded-full blur-[120px] opacity-10"></div>
+
+                <div class="relative z-10">
+                    <p class="font-mono text-xs text-brand-400 tracking-widest uppercase mb-5">Get Started</p>
+                    <h2 class="text-3xl sm:text-4xl font-bold mb-4 text-white tracking-tight leading-tight">Ready to optimize<br class="hidden sm:block"> your browser?</h2>
+                    <p class="text-slate-400 text-sm sm:text-base mb-10 max-w-md mx-auto leading-relaxed">Join users who keep more tabs open without the usual memory pressure.</p>
+
+                    <div class="flex flex-col sm:flex-row items-center justify-center gap-3">
+                        <a href="https://chromewebstore.google.com/detail/smart-tab-suspender/mmhfonkfehekiofpkjiofjeoofloidog" target="_blank" class="w-full sm:w-auto group flex items-center justify-center gap-2.5 px-7 py-3.5 bg-white text-slate-900 text-sm font-medium rounded-xl transition-all duration-200 hover:shadow-xl hover:shadow-white/10">
+                            <img src="assets/chrome-logo.svg" alt="Chrome" class="w-5 h-5">
+                            Download for Chrome
+                            <svg class="w-3.5 h-3.5 opacity-30 group-hover:opacity-60 group-hover:translate-x-0.5 transition-all" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+                        </a>
+                        <a href="https://addons.mozilla.org/en-US/firefox/addon/smart-tabsuspender/" target="_blank" class="w-full sm:w-auto group flex items-center justify-center gap-2.5 px-7 py-3.5 text-white text-sm font-medium rounded-xl transition-all duration-200 border border-white/10 hover:border-white/20 hover:bg-white/5">
+                            <img src="assets/firefox-logo.svg" alt="Firefox" class="w-5 h-5">
+                            Download for Firefox
+                            <svg class="w-3.5 h-3.5 opacity-20 group-hover:opacity-50 group-hover:translate-x-0.5 transition-all" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== FOOTER ===== -->
+    <footer class="max-w-6xl mx-auto px-6 pb-10 pt-4">
+        <div class="border-t border-surface-100 pt-8 flex flex-col sm:flex-row items-center justify-between gap-4">
+            <div class="flex items-center gap-2.5">
+                <img src="assets/icon.png" alt="Smart Tab Suspender" class="w-6 h-6 rounded-md">
+                <span class="text-xs text-slate-400 font-medium">Smart Tab Suspender</span>
+            </div>
+            <div class="flex items-center gap-6 text-xs font-medium">
+                <a href="https://github.com/yavuz" target="_blank" class="text-slate-400 hover:text-slate-600 transition-colors">GitHub</a>
+                <a href="https://buymeacoffee.com/yavuzyildirim" target="_blank" class="text-slate-400 hover:text-slate-600 transition-colors">Support</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scroll reveal observer -->
+    <script>
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
+
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+    </script>
+</body>
+</html>
