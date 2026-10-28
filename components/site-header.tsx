@@ -6,7 +6,7 @@ const copy = {
     nav: [
       ["/#hizmetler", "Hizmetler"],
       ["/#surec", "Süreç"],
-      ["/#referanslar", "Referanslar"],
+      ["/#projeler", "Projelerimiz"],
       ["/#sss", "SSS"],
     ],
     cta: "Teklif Al",

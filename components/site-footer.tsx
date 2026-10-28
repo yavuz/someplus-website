@@ -29,8 +29,8 @@ export function SiteFooter({ locale }: { locale: Locale }) {
           </div>
           <div>
             <h2>{isTr ? "Kurumsal" : "Company"}</h2>
-            <Link href={`${home}#${isTr ? "referanslar" : "work"}`}>
-              {isTr ? "Referanslar" : "Our work"}
+            <Link href={`${home}#${isTr ? "projeler" : "work"}`}>
+              {isTr ? "Projelerimiz" : "Our work"}
             </Link>
             <Link href={`${home}#${isTr ? "surec" : "process"}`}>
               {isTr ? "Çalışma süreci" : "How we work"}

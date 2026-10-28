@@ -9,7 +9,7 @@ import { SiteHeader } from "./site-header";
 
 const copy = {
   tr: {
-    ids: { services: "hizmetler", process: "surec", work: "referanslar", faq: "sss", quote: "teklif" },
+    ids: { services: "hizmetler", process: "surec", work: "projeler", faq: "sss", quote: "teklif" },
     eyebrow: "Kurumsal yazılım ve dijital çözümler",
     titleLead: "İşletmenizi dijitalde",
     titleAccent: "bir adım öne taşıyoruz.",
@@ -36,7 +36,7 @@ const copy = {
     proofTitle: "Yalnızca proje teslim etmiyoruz, ürün geliştiriyoruz.",
     proofDescription:
       "Kendi ürünlerimizi tasarlayıp geliştiriyor, yayında tutuyor ve gerçek kullanıcı geri bildirimleriyle iyileştiriyoruz. Bir ürünü yaşatmanın ne demek olduğunu bildiğimiz için projenizi teslimle bitmiş saymıyor, aynı mühendislik disiplinini sizin işinize taşıyoruz.",
-    proofCta: "Referansımızı inceleyin",
+    proofCta: "Ürünümüzü inceleyin",
     proofTags: ["Web", "iOS", "Android", "Yönetim paneli"],
     whyEyebrow: "Çalışma prensiplerimiz",
     whyTitle: "Güvenilir bir teknoloji ortağı.",
@@ -60,10 +60,10 @@ const copy = {
       ["Test ve yayın", "Kapsamlı testlerin ardından projeyi güvenle yayına alıyoruz."],
       ["Destek", "Yayın sonrasında bakım, izleme ve geliştirmelerle devam ediyoruz."],
     ],
-    workEyebrow: "Referanslar",
-    workTitle: "Öne çıkan projemiz.",
+    workEyebrow: "Kendi ürünümüz",
+    workTitle: "Fikirden yayına kendi geliştirdiğimiz ürün.",
     workDescription:
-      "Fikir aşamasından yayına kadar uçtan uca geliştirdiğimiz, bugün yayında olan ve servis işletmelerine hizmet veren bir platform.",
+      "Tezgah, tamamen kendi ekibimizle tasarlayıp geliştirdiğimiz ve yayında tuttuğumuz ürünümüz. Sizin projenizde kullanacağımız mühendislik yaklaşımının canlı bir örneği.",
     workLabel: "Servis ve tamir işletmeleri için işletme yönetimi",
     workBody:
       "Tezgah; iş kabulünü, müşteri bilgilendirmesini, stok ve kasa yönetimini tek platformda toplar. Ustalar işleri telefondan günceller, müşteriler işlerinin durumunu takip linkinden izler.",
@@ -126,7 +126,7 @@ const copy = {
     proofTitle: "We don’t just deliver projects. We build products.",
     proofDescription:
       "We design, build, and run products of our own, improving them with feedback from real users. Because we know what it takes to keep a product alive, we don’t treat your project as finished at handover; we bring the same engineering discipline to your work.",
-    proofCta: "See our work",
+    proofCta: "See our product",
     proofTags: ["Web", "iOS", "Android", "Admin panels"],
     whyEyebrow: "How we work",
     whyTitle: "A technology partner you can rely on.",
@@ -150,10 +150,10 @@ const copy = {
       ["Testing and launch", "After thorough testing, we take the project live with confidence."],
       ["Support", "After launch, we continue with maintenance, monitoring, and improvements."],
     ],
-    workEyebrow: "Our work",
-    workTitle: "Featured project.",
+    workEyebrow: "Our own product",
+    workTitle: "A product we built from idea to launch.",
     workDescription:
-      "A platform we built end to end, from idea to launch, that is live today and serving service businesses.",
+      "Tezgah is a product we designed, built, and run entirely in-house. It is a live example of the engineering approach we bring to your project.",
     workLabel: "Business management for service and repair shops",
     workBody:
       "Tezgah brings job intake, customer updates, inventory, and cash management onto one platform. Technicians update jobs from their phones, and customers follow progress through a tracking link.",
