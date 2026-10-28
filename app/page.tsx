@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { HomePage } from "@/components/home-page";
 
 export const metadata: Metadata = {
-  title: "Küçük, güçlü dijital araçlar",
+  title: { absolute: "someplus.work — Kurumsal Yazılım ve Dijital Çözümler" },
   alternates: {
     canonical: "/",
     languages: {

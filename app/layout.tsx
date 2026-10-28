@@ -16,11 +16,11 @@ export async function generateMetadata(): Promise<Metadata> {
   return {
     metadataBase: new URL(origin),
     title: {
-      default: "someplus.work — Küçük, güçlü dijital araçlar",
+      default: "someplus.work — Kurumsal Yazılım ve Dijital Çözümler",
       template: "%s | someplus.work",
     },
     description:
-      "Chrome, Firefox, WordPress, Adobe Commerce ve iOS için hafif, odaklı ve güvenilir dijital ürünler.",
+      "Kurumsal yazılım, web sitesi, e-ticaret, mobil uygulama ve yapay zekâ çözümleri. Fikirden yayına uçtan uca dijital hizmet.",
     applicationName: "someplus.work",
     authors: [{ name: "someplus.work" }],
     creator: "someplus.work",
@@ -32,35 +32,27 @@ export async function generateMetadata(): Promise<Metadata> {
     openGraph: {
       type: "website",
       siteName: "someplus.work",
-      title: "someplus.work — Küçük, güçlü dijital araçlar",
+      title: "someplus.work — Kurumsal Yazılım ve Dijital Çözümler",
       description:
-        "Daha sakin bir dijital gün için hafif, odaklı ve güvenilir ürünler.",
+        "Kurumsal yazılım, web, e-ticaret, mobil uygulama ve yapay zekâ alanlarında uçtan uca dijital çözümler.",
       images: [
         {
           url: `${origin}/og.png`,
           width: 1536,
           height: 1024,
-          alt: "someplus.work — Dijital ürünler. Daha az sürtünme.",
+          alt: "someplus.work",
         },
       ],
     },
     twitter: {
       card: "summary_large_image",
-      title: "someplus.work — Küçük, güçlü dijital araçlar",
+      title: "someplus.work — Kurumsal Yazılım ve Dijital Çözümler",
       description:
-        "Daha sakin bir dijital gün için hafif, odaklı ve güvenilir ürünler.",
+        "Kurumsal yazılım, web, e-ticaret, mobil uygulama ve yapay zekâ alanlarında uçtan uca dijital çözümler.",
       images: [`${origin}/og.png`],
     },
   };
 }
-
-const themeScript = `
-  (() => {
-    const saved = localStorage.getItem('theme');
-    const dark = saved ? saved === 'dark' : matchMedia('(prefers-color-scheme: dark)').matches;
-    document.documentElement.dataset.theme = dark ? 'dark' : 'light';
-  })();
-`;
 
 export default function RootLayout({
   children,
@@ -68,10 +60,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="tr" suppressHydrationWarning>
-      <head>
-        <script dangerouslySetInnerHTML={{ __html: themeScript }} />
-      </head>
+    <html lang="tr">
       <body>{children}</body>
     </html>
   );

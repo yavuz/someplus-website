@@ -1,24 +1,29 @@
 import Link from "next/link";
 import { type Locale } from "@/lib/products";
-import { ThemeToggle } from "./theme-toggle";
 
 const copy = {
   tr: {
-    products: "Ürünler",
-    principles: "Yaklaşım",
-    platforms: "Platformlar",
-    support: "Destek",
-    theme: "Temayı değiştir",
+    nav: [
+      ["/#hizmetler", "Hizmetler"],
+      ["/#surec", "Süreç"],
+      ["/#referanslar", "Referanslar"],
+      ["/#sss", "SSS"],
+    ],
+    cta: "Teklif Al",
+    ctaHref: "/#teklif",
     languageHref: "/en",
     languageLabel: "EN",
     home: "/",
   },
   en: {
-    products: "Products",
-    principles: "Principles",
-    platforms: "Platforms",
-    support: "Support",
-    theme: "Change theme",
+    nav: [
+      ["/en#services", "Services"],
+      ["/en#process", "Process"],
+      ["/en#work", "Our work"],
+      ["/en#faq", "FAQ"],
+    ],
+    cta: "Get a quote",
+    ctaHref: "/en#quote",
     languageHref: "/",
     languageLabel: "TR",
     home: "/en",
@@ -35,15 +40,16 @@ export function SiteHeader({ locale }: { locale: Locale }) {
           <img src="/logo.svg" alt="someplus.work" width="208" height="60" />
         </Link>
         <nav className="desktop-nav" aria-label="Main navigation">
-          <a href="#products">{labels.products}</a>
-          <a href="#principles">{labels.principles}</a>
-          <a href="#platforms">{labels.platforms}</a>
-          <Link href={locale === "tr" ? "/support" : "/en/support"}>
-            {labels.support}
-          </Link>
+          {labels.nav.map(([href, label]) => (
+            <Link href={href} key={href}>
+              {label}
+            </Link>
+          ))}
         </nav>
         <div className="header-actions">
-          <ThemeToggle label={labels.theme} />
+          <Link className="button button-primary header-cta" href={labels.ctaHref}>
+            {labels.cta}
+          </Link>
           <Link className="language-button" href={labels.languageHref}>
             {labels.languageLabel}
           </Link>
