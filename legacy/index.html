@@ -4,24 +4,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title data-i18n="page_title">someplus.work | Chrome, Firefox, WordPress & Magento Extensions</title>
-    <meta name="description" content="Dijital deneyiminizi geliştiren Chrome, Firefox, WordPress ve Magento eklentileri. Performans odaklı, minimalist ve güvenli çözümler.">
-    <meta name="keywords" content="chrome eklentisi, firefox addon, wordpress plugin, magento module, yazılım, eklenti geliştirme, someplus">
-    <meta name="author" content="someplus.work">
+    <title data-i18n="page_title">someplus.work | High-Performance Web & SaaS Product Studio</title>
+    <meta name="description" content="High-performance web applications, multi-tenant B2B SaaS platforms and digital tools. Built by someplus.work.">
     <meta name="robots" content="index, follow">
-    <link rel="canonical" href="https://someplus.work/">
     <link rel="icon" type="image/svg+xml" href="logo.svg">
-    <link rel="apple-touch-icon" href="logo.svg">
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://someplus.work/">
-    <meta property="og:title" content="someplus.work | Dijital Deneyiminizi Genişletin">
-    <meta property="og:description" content="Chrome, Firefox, WordPress ve Magento için geliştirdiğimiz minimalist, performans odaklı eklentilerle tanışın.">
-    <meta property="og:image" content="https://someplus.work/bg.png">
-    <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="https://someplus.work/">
-    <meta property="twitter:title" content="someplus.work | Dijital Deneyiminizi Genişletin">
-    <meta property="twitter:description" content="Chrome, Firefox, WordPress ve Magento için geliştirdiğimiz minimalist, performans odaklı eklentilerle tanışın.">
-    <meta property="twitter:image" content="https://someplus.work/bg.png">
     <link rel="stylesheet" href="fonts/WEB/css/satoshi.css">
     <style>
         :root {
@@ -36,43 +22,49 @@
             --bg: #F6F7FB;
             --surface: #FFFFFF;
             --surface-alt: #F0F1F5;
+            --surface-card: #FFFFFF;
             --text-1: #0C0E16;
             --text-2: #52556A;
             --text-3: #9295A6;
-            --border: rgba(12, 14, 22, 0.07);
+            --border: rgba(12, 14, 22, 0.08);
+            --border-hover: rgba(27, 90, 235, 0.3);
             --card-shadow: 0 0 0 1px rgba(0,0,0,0.04), 0 2px 12px rgba(0,0,0,0.03);
-            --card-shadow-hover: 0 0 0 1px rgba(27,90,235,0.15), 0 12px 40px rgba(27,90,235,0.1);
+            --card-shadow-hover: 0 0 0 1px rgba(27,90,235,0.2), 0 16px 48px rgba(27,90,235,0.08);
+            --badge-bg: rgba(27, 90, 235, 0.06);
+            --badge-text: #1B5AEB;
         }
 
         [data-theme="dark"] {
             --bg: #0A0B10;
             --surface: #14151E;
             --surface-alt: #1C1D2A;
+            --surface-card: #151722;
             --text-1: #EAEBF0;
             --text-2: #8B8DA0;
             --text-3: #55576A;
-            --border: rgba(255, 255, 255, 0.06);
-            --card-shadow: 0 0 0 1px rgba(255,255,255,0.04), 0 2px 12px rgba(0,0,0,0.2);
-            --card-shadow-hover: 0 0 0 1px rgba(27,90,235,0.3), 0 12px 40px rgba(27,90,235,0.12);
+            --border: rgba(255, 255, 255, 0.08);
+            --border-hover: rgba(27, 90, 235, 0.4);
+            --card-shadow: 0 0 0 1px rgba(255,255,255,0.04), 0 2px 12px rgba(0,0,0,0.3);
+            --card-shadow-hover: 0 0 0 1px rgba(27,90,235,0.35), 0 16px 48px rgba(0,0,0,0.5);
+            --badge-bg: rgba(27, 90, 235, 0.15);
+            --badge-text: #709BF7;
         }
 
         *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-
         html { scroll-behavior: smooth; }
- 
-         body {
-             font-family: 'Satoshi-Variable', 'Satoshi-Regular', -apple-system, sans-serif;
-             background: var(--bg);
-             color: var(--text-1);
-             line-height: 1.6;
-             min-height: 100vh;
-             width: 100%;
-             overflow-x: hidden;
-             -webkit-font-smoothing: antialiased;
-             transition: background 0.5s var(--ease), color 0.5s var(--ease);
-         }
 
-        .page { max-width: 1100px; margin: 0 auto; padding: 0 2rem; width: 100%; }
+        body {
+            font-family: 'Satoshi-Variable', 'Satoshi-Regular', -apple-system, sans-serif;
+            background: var(--bg);
+            color: var(--text-1);
+            line-height: 1.6;
+            min-height: 100vh;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+            transition: background 0.4s var(--ease), color 0.4s var(--ease);
+        }
+
+        .page { max-width: 1140px; margin: 0 auto; padding: 0 2rem; width: 100%; }
 
         /* ---- NAV ---- */
         nav {
@@ -80,173 +72,276 @@
             justify-content: space-between;
             align-items: center;
             padding: 1.75rem 0;
-            opacity: 0; animation: enter 0.6s var(--ease) 0.1s forwards;
+            border-bottom: 1px solid var(--border);
         }
 
         .logo { display: flex; align-items: center; text-decoration: none; }
-        .logo img { height: 34px; transition: transform 0.4s var(--ease); }
-        .logo:hover img { transform: scale(1.04); }
+        .logo img { height: 32px; transition: transform 0.3s var(--ease); }
+        .logo:hover img { transform: scale(1.03); }
         [data-theme="dark"] .logo img { filter: brightness(0) invert(1); }
+
+        .nav-links { display: flex; align-items: center; gap: 1.5rem; }
+        .nav-links a {
+            color: var(--text-2);
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+        .nav-links a:hover { color: var(--text-1); }
 
         .nav-right { display: flex; align-items: center; gap: 0.75rem; }
 
-        .lang-btn {
+        .lang-btn, .theme-btn {
             font-size: 0.85rem;
             font-weight: 700;
             color: var(--text-3);
             background: var(--surface);
             border: 1px solid var(--border);
             padding: 0 0.75rem;
-            height: 40px;
+            height: 38px;
             border-radius: 10px;
             cursor: pointer;
-            transition: all 0.3s var(--ease);
-            display: grid;
-            place-items: center;
-            min-width: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.25s var(--ease);
         }
-        
-        .lang-btn:hover {
-            color: var(--blue);
-            border-color: var(--blue-20);
+        .lang-btn:hover, .theme-btn:hover {
+            color: var(--text-1);
+            border-color: var(--border-hover);
         }
-
-        .theme-btn {
-            width: 40px; height: 40px;
-            border-radius: 10px;
-            border: 1px solid var(--border);
-            background: var(--surface);
-            cursor: pointer;
-            display: grid; place-items: center;
-            color: var(--text-3);
-            transition: all 0.4s var(--ease);
-            position: relative; overflow: hidden;
-        }
-        .theme-btn:hover { border-color: var(--blue-20); color: var(--blue); transform: scale(1.06); }
-        .theme-btn svg { width: 18px; height: 18px; position: absolute; transition: all 0.4s var(--ease); }
-        .theme-btn .sun { opacity: 0; transform: rotate(-90deg) scale(0); }
-        .theme-btn .moon { opacity: 1; transform: rotate(0) scale(1); }
-        [data-theme="dark"] .theme-btn .sun { opacity: 1; transform: rotate(0) scale(1); }
-        [data-theme="dark"] .theme-btn .moon { opacity: 0; transform: rotate(90deg) scale(0); }
+        .theme-btn { width: 38px; padding: 0; }
+        .theme-btn svg { width: 18px; height: 18px; }
+        [data-theme="light"] .moon { display: block; }
+        [data-theme="light"] .sun { display: none; }
+        [data-theme="dark"] .moon { display: none; }
+        [data-theme="dark"] .sun { display: block; }
 
         /* ---- HERO ---- */
         .hero {
-            padding: 5rem 0 4.5rem;
-            display: grid;
-            grid-template-columns: 1fr auto;
-            align-items: end;
-            gap: 3rem;
+            padding: 5rem 0 3.5rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1.75rem;
         }
 
-        .hero-content {
-            opacity: 0; animation: enter 0.7s var(--ease) 0.15s forwards;
+        .studio-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.4rem 0.9rem;
+            background: var(--badge-bg);
+            color: var(--badge-text);
+            border-radius: 100px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            letter-spacing: 0.02em;
+            width: fit-content;
+        }
+
+        .studio-badge span.dot {
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+            background: var(--blue);
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.4; transform: scale(0.85); }
         }
 
         .hero h1 {
-            font-size: clamp(2.6rem, 5vw, 3.8rem);
+            font-size: clamp(2.3rem, 5vw, 3.8rem);
             font-weight: 800;
             letter-spacing: -0.04em;
-            line-height: 1.08;
-            margin-bottom: 1.25rem;
+            line-height: 1.1;
+            max-width: 880px;
+            color: var(--text-1);
         }
 
-        .hero p {
-            font-size: 1.15rem;
+        .hero p.lead {
+            font-size: clamp(1.05rem, 2vw, 1.3rem);
             color: var(--text-2);
-            max-width: 460px;
-            font-weight: 400;
+            max-width: 760px;
+            line-height: 1.6;
         }
 
-        .hero-stats {
+        .hero-metrics {
             display: flex;
-            gap: 2.5rem;
-            opacity: 0; animation: enter 0.7s var(--ease) 0.25s forwards;
+            gap: 3rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid var(--border);
+            flex-wrap: wrap;
         }
 
-        .stat {
-            text-align: center;
-            padding: 1.25rem 0;
-        }
-
-        .stat-num {
+        .metric-num {
             font-size: 2rem;
             font-weight: 800;
-            color: var(--blue);
+            color: var(--text-1);
             letter-spacing: -0.03em;
             line-height: 1;
         }
-
-        .stat-label {
-            font-size: 0.75rem;
+        .metric-label {
+            font-size: 0.82rem;
             color: var(--text-3);
+            font-weight: 500;
+            margin-top: 0.35rem;
+        }
+
+        /* ---- CASE STUDIES (SELECTED WORK) ---- */
+        .section-header {
+            margin: 4rem 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .section-subtitle {
+            font-size: 0.78rem;
+            font-weight: 800;
             text-transform: uppercase;
             letter-spacing: 0.1em;
-            font-weight: 600;
-            margin-top: 0.4rem;
+            color: var(--blue);
+            margin-bottom: 0.4rem;
         }
 
-        /* ---- PRODUCTS ---- */
-        .products {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 1rem;
-            padding-bottom: 5rem;
-            width: 100%;
-            max-width: 100%;
+        .section-title {
+            font-size: 1.9rem;
+            font-weight: 800;
+            letter-spacing: -0.03em;
+            color: var(--text-1);
         }
 
-        .product {
-            background: var(--surface);
-            border-radius: 20px;
-            padding: 2rem;
-            text-decoration: none;
-            color: inherit;
+        .projects-grid {
             display: flex;
             flex-direction: column;
+            gap: 2rem;
+        }
+
+        .project-card {
+            background: var(--surface-card);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: 2.5rem;
             box-shadow: var(--card-shadow);
-            transition: all 0.5s var(--ease);
+            transition: all 0.35s var(--ease);
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr;
+            gap: 2.5rem;
+            align-items: center;
             position: relative;
             overflow: hidden;
-            opacity: 0;
-            animation: enter 0.6s var(--ease) forwards;
-            width: 100%;
-            max-width: 100%;
-            box-sizing: border-box;
         }
 
-        .product:nth-child(1) { animation-delay: 0.3s; }
-        .product:nth-child(2) { animation-delay: 0.38s; }
-        .product:nth-child(3) { animation-delay: 0.46s; }
-        .product:nth-child(4) { animation-delay: 0.54s; }
-        .product:nth-child(5) { animation-delay: 0.62s; }
-
-        .product.featured {
-            grid-column: 1 / -1;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 2rem;
-            padding: 2.5rem;
-        }
-
-        .product::after {
-            content: '';
-            position: absolute;
-            inset: 0;
-            border-radius: 20px;
-            background: radial-gradient(circle at 100% 0%, var(--blue-50), transparent 50%);
-            opacity: 0;
-            transition: opacity 0.5s var(--ease);
-            pointer-events: none;
-        }
-
-        .product:hover {
-            transform: translateY(-3px);
+        .project-card:hover {
+            border-color: var(--border-hover);
             box-shadow: var(--card-shadow-hover);
+            transform: translateY(-3px);
         }
 
-        .product:hover::after { opacity: 1; }
+        .card-category {
+            font-size: 0.75rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: var(--text-3);
+            margin-bottom: 0.75rem;
+        }
 
-        .product-top { display: flex; align-items: center; justify-content: space-between; margin-bottom: 1.5rem; }
+        .card-title {
+            font-size: 1.8rem;
+            font-weight: 800;
+            letter-spacing: -0.03em;
+            color: var(--text-1);
+            margin-bottom: 0.75rem;
+            line-height: 1.2;
+        }
+
+        .card-desc {
+            font-size: 0.95rem;
+            color: var(--text-2);
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+        }
+
+        .tags-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1.75rem;
+        }
+
+        .tag {
+            font-size: 0.75rem;
+            font-weight: 600;
+            background: var(--surface-alt);
+            color: var(--text-2);
+            padding: 0.35rem 0.7rem;
+            border-radius: 8px;
+            border: 1px solid var(--border);
+        }
+
+        .card-action {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            color: var(--blue);
+            font-size: 0.9rem;
+            font-weight: 700;
+            text-decoration: none;
+            transition: transform 0.2s;
+        }
+        .card-action:hover {
+            transform: translateX(4px);
+        }
+        .card-action svg { width: 16px; height: 16px; }
+
+        .card-highlight-box {
+            background: var(--surface-alt);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 1.75rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1.25rem;
+        }
+
+        .highlight-item {
+            display: flex;
+            flex-direction: column;
+            gap: 0.25rem;
+        }
+        .highlight-title {
+            font-size: 0.75rem;
+            font-weight: 700;
+            color: var(--text-3);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+        .highlight-val {
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--text-1);
+        }
+
+        /* ---- CHROME EXTENSIONS STRIP ---- */
+        .chrome-extensions-section {
+            background: var(--surface-card);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: 2rem 2.5rem;
+            box-shadow: var(--card-shadow);
+            margin-bottom: 2rem;
+            transition: all 0.35s var(--ease);
+        }
+        .chrome-extensions-section:hover {
+            border-color: var(--border-hover);
+        }
 
         .platform-badge {
             display: inline-flex;
@@ -259,309 +354,225 @@
             text-transform: uppercase;
             letter-spacing: 0.08em;
             background: var(--surface-alt);
-            color: var(--text-3);
-            transition: all 0.4s var(--ease);
+            color: var(--text-2);
+            margin-bottom: 0.5rem;
         }
-
         .platform-badge svg { width: 14px; height: 14px; }
         .platform-badge.no-transform { text-transform: none; }
 
-        .product:hover .platform-badge {
-            background: var(--blue-50);
-            color: var(--blue);
+        .extensions-scroll {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            gap: 1rem;
+            margin-top: 1.25rem;
         }
 
-        .product-arrow {
-            width: 36px; height: 36px;
+        .extension-item {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 0.85rem 1rem;
+            background: var(--surface-alt);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            text-decoration: none;
+            color: var(--text-1);
+            transition: all 0.25s var(--ease);
+        }
+        .extension-item:hover {
+            border-color: var(--border-hover);
+            transform: translateY(-2px);
+            background: var(--surface);
+        }
+        .ext-icon { width: 34px; height: 34px; border-radius: 8px; flex-shrink: 0; }
+        .ext-name { font-size: 0.88rem; font-weight: 700; }
+
+        /* ---- ECOSYSTEM PRODUCTS GRID (WordPress, Adobe, iOS, Firefox) ---- */
+        .products-grid-2x2 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 3.5rem;
+        }
+
+        .product-tile {
+            background: var(--surface-card);
+            border: 1px solid var(--border);
+            border-radius: 18px;
+            padding: 1.75rem;
+            box-shadow: var(--card-shadow);
+            text-decoration: none;
+            color: var(--text-1);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            transition: all 0.3s var(--ease);
+            position: relative;
+        }
+        .product-tile:hover {
+            border-color: var(--border-hover);
+            box-shadow: var(--card-shadow-hover);
+            transform: translateY(-3px);
+        }
+
+        .tile-top {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 1.25rem;
+        }
+
+        .tile-arrow {
+            width: 32px; height: 32px;
             border-radius: 50%;
             background: var(--surface-alt);
             display: grid; place-items: center;
             color: var(--text-3);
-            transition: all 0.4s var(--ease);
+            transition: all 0.3s var(--ease);
         }
-
-        .product-arrow svg { width: 16px; height: 16px; transition: transform 0.4s var(--ease); }
-
-        .product:hover .product-arrow {
+        .tile-arrow svg { width: 14px; height: 14px; }
+        .product-tile:hover .tile-arrow {
             background: var(--blue);
-            color: white;
+            color: #FFFFFF;
+            transform: translateX(2px);
         }
 
-        .product:hover .product-arrow svg { transform: translateX(2px); }
-
-        .product-body { flex: 1; position: relative; z-index: 1; max-width: 100%; width: 100%; }
-
-        .product-name {
-            font-size: 1.5rem;
-            font-weight: 750;
-            letter-spacing: -0.025em;
+        .tile-title {
+            font-size: 1.25rem;
+            font-weight: 800;
+            letter-spacing: -0.02em;
             margin-bottom: 0.5rem;
+            color: var(--text-1);
         }
 
-        .product.featured .product-name {
-            font-size: 1.75rem;
-        }
-
-        .product-desc {
-            font-size: 0.95rem;
+        .tile-desc {
+            font-size: 0.88rem;
             color: var(--text-2);
-            line-height: 1.65;
-            word-wrap: break-word;
-            overflow-wrap: break-word;
+            line-height: 1.6;
+            margin-bottom: 1.25rem;
         }
 
-        .product-tags {
+        .tile-tags {
             display: flex;
             flex-wrap: wrap;
-            gap: 0.5rem;
-            margin-top: 1.25rem;
+            gap: 0.4rem;
         }
-
-        .tag {
+        .tile-tag {
             font-size: 0.7rem;
             font-weight: 600;
-            padding: 0.3rem 0.65rem;
+            padding: 0.25rem 0.55rem;
             border-radius: 6px;
             background: var(--surface-alt);
             color: var(--text-3);
-            letter-spacing: 0.02em;
         }
 
-        /* featured right side */
-        .featured-visual {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            background: var(--surface-alt);
-            border-radius: 14px;
-            padding: 2rem;
-            position: relative;
+        /* ---- CAPABILITIES ---- */
+        .capabilities-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(310px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
         }
 
-        .featured-icon {
-            width: 80px; height: 80px;
-            border-radius: 22px;
-            background: linear-gradient(135deg, var(--blue), #4A7FF7);
-            display: grid; place-items: center;
-            color: white;
-            box-shadow: 0 8px 32px rgba(27, 90, 235, 0.3);
-        }
-
-        .featured-icon svg { width: 36px; height: 36px; }
-
-        .featured-platforms {
-            display: flex;
-            gap: 0.75rem;
-            margin-top: 1.5rem;
-        }
-
-        .featured-platform {
-            display: flex;
-            align-items: center;
-            gap: 0.35rem;
-            font-size: 0.75rem;
-            font-weight: 600;
-            color: var(--text-3);
-            padding: 0.4rem 0.75rem;
-            background: var(--surface);
-            border-radius: 8px;
-        }
-
-        .featured-platform svg { width: 14px; height: 14px; }
-
-        /* ---- CHROME EXTENSIONS SECTION ---- */
-        .chrome-extensions-section {
-            grid-column: 1 / -1;
-            background: var(--surface);
-            border-radius: 20px;
+        .capability-card {
+            background: var(--surface-card);
+            border: 1px solid var(--border);
+            border-radius: 18px;
             padding: 2rem;
             box-shadow: var(--card-shadow);
-            transition: all 0.5s var(--ease);
-            opacity: 0;
-            animation: enter 0.6s var(--ease) 0.3s forwards;
+            transition: all 0.3s var(--ease);
+        }
+        .capability-card:hover {
+            border-color: var(--border-hover);
+            transform: translateY(-2px);
         }
 
-        .section-header {
+        .cap-num {
+            font-size: 0.8rem;
+            font-weight: 800;
+            font-family: monospace;
+            color: var(--blue);
+            margin-bottom: 1rem;
+        }
+        .cap-title {
+            font-size: 1.2rem;
+            font-weight: 800;
+            letter-spacing: -0.02em;
+            color: var(--text-1);
+            margin-bottom: 0.6rem;
+        }
+        .cap-desc {
+            font-size: 0.88rem;
+            color: var(--text-2);
+            line-height: 1.6;
+        }
+
+        /* ---- CTA BANNER ---- */
+        .cta-section {
+            margin: 5rem 0;
+            background: linear-gradient(135deg, var(--blue) 0%, #1042B3 100%);
+            border-radius: 24px;
+            padding: 4rem 3rem;
+            color: #FFFFFF;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 1.5rem;
+            gap: 2rem;
+            flex-wrap: wrap;
         }
 
-        .section-title {
-            font-size: 1.5rem;
-            font-weight: 750;
-            letter-spacing: -0.025em;
-            margin-top: 0.5rem;
-            margin-bottom: 0;
-        }
-
-        .extensions-scroll {
-            display: flex;
-            gap: 1rem;
-            overflow-x: auto;
-            overflow-y: hidden;
-            padding: 0.5rem 0 1rem;
-            scroll-behavior: smooth;
-            -webkit-overflow-scrolling: touch;
-        }
-
-        .extensions-scroll::-webkit-scrollbar {
-            height: 6px;
-        }
-
-        .extensions-scroll::-webkit-scrollbar-track {
-            background: var(--surface-alt);
-            border-radius: 10px;
-        }
-
-        .extensions-scroll::-webkit-scrollbar-thumb {
-            background: var(--blue-20);
-            border-radius: 10px;
-            transition: background 0.3s var(--ease);
-        }
-
-        .extensions-scroll::-webkit-scrollbar-thumb:hover {
-            background: var(--blue);
-        }
-
-        .extension-item {
-            flex: 0 0 auto;
-            width: 140px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            text-align: center;
-            text-decoration: none;
-            color: inherit;
-            padding: 1.25rem;
-            background: var(--surface-alt);
-            border-radius: 14px;
-            transition: all 0.4s var(--ease);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .extension-item::after {
-            content: '';
-            position: absolute;
-            inset: 0;
-            border-radius: 14px;
-            background: radial-gradient(circle at 50% 0%, var(--blue-50), transparent 70%);
-            opacity: 0;
-            transition: opacity 0.4s var(--ease);
-            pointer-events: none;
-        }
-
-        .extension-item:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 8px 24px rgba(27, 90, 235, 0.15);
-            background: var(--surface);
-        }
-
-        .extension-item:hover::after {
-            opacity: 1;
-        }
-
-        .ext-icon {
-            width: 64px;
-            height: 64px;
-            border-radius: 14px;
+        .cta-content h2 {
+            font-size: clamp(1.8rem, 3.5vw, 2.5rem);
+            font-weight: 800;
+            letter-spacing: -0.03em;
+            line-height: 1.2;
             margin-bottom: 0.75rem;
-            position: relative;
-            z-index: 1;
-            transition: transform 0.4s var(--ease);
         }
 
-        .extension-item:hover .ext-icon {
-            transform: scale(1.1);
+        .cta-content p {
+            font-size: 1.05rem;
+            opacity: 0.85;
+            max-width: 580px;
+            line-height: 1.6;
         }
 
-        .ext-name {
-            font-size: 0.85rem;
-            font-weight: 600;
-            color: var(--text-1);
-            position: relative;
-            z-index: 1;
-            line-height: 1.3;
-            transition: color 0.3s var(--ease);
-        }
-
-        .extension-item:hover .ext-name {
+        .cta-btn {
+            background: #FFFFFF;
             color: var(--blue);
+            padding: 1rem 2rem;
+            border-radius: 12px;
+            font-size: 0.95rem;
+            font-weight: 800;
+            text-decoration: none;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+            transition: transform 0.2s, box-shadow 0.2s;
+            white-space: nowrap;
+        }
+        .cta-btn:hover {
+            transform: scale(1.03);
+            box-shadow: 0 8px 30px rgba(0,0,0,0.25);
         }
 
         /* ---- FOOTER ---- */
         footer {
+            padding: 2.5rem 0 3rem;
             border-top: 1px solid var(--border);
-            padding: 2rem 0;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            font-size: 0.82rem;
+            font-size: 0.85rem;
             color: var(--text-3);
-            opacity: 0; animation: fade-in 0.8s var(--ease) 0.6s forwards;
+            flex-wrap: wrap;
+            gap: 1rem;
         }
 
-        .copyright-wrap { display: flex; align-items: center; gap: 0.4rem; }
-        .copyright-icon { width: 14px; height: 14px; }
-
-        footer a {
-            color: var(--text-3);
-            text-decoration: none;
-            transition: color 0.3s var(--ease);
-        }
-
-        footer a:hover { color: var(--blue); }
-
-        /* ---- ANIMATIONS ---- */
-        @keyframes enter {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        @keyframes fade-in {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-
-        /* ---- RESPONSIVE ---- */
-        @media (max-width: 768px) {
-            .page { padding: 0 1rem; max-width: 100%; }
-            .hero { grid-template-columns: 1fr; padding: 3rem 0 3rem; gap: 2rem; max-width: 100%; }
-            .hero-stats { justify-content: flex-start; gap: 2rem; }
-            .products { grid-template-columns: 1fr; max-width: 100%; }
-            .products > * { min-width: 0; } /* CRITICAL: Prevents grid items from expanding beyond parent */
-            .product { max-width: 100%; width: 100%; padding: 1.5rem; }
-            .product.featured { grid-template-columns: 1fr; }
-            .featured-visual { min-height: 160px; }
-            .hero h1 { font-size: 2.2rem; max-width: 100%; }
-            footer { flex-direction: column; gap: 0.75rem; text-align: center; }
-            .chrome-extensions-section { padding: 1.5rem; max-width: 100%; width: 100%; }
-            .section-header { max-width: 100%; }
-            .section-title { font-size: 1.25rem; max-width: 100%; }
-            .extensions-scroll { max-width: 100%; }
-            .extension-item { width: 120px; padding: 1rem; }
-            .ext-icon { width: 56px; height: 56px; }
-            .product-name { max-width: 100%; word-wrap: break-word; }
-            .product-desc { max-width: 100%; }
-            .product-top { max-width: 100%; }
-            .product-tags { max-width: 100%; flex-wrap: wrap; }
-            .product-body { max-width: 100%; }
-            nav { padding: 1.5rem 0; }
-        }
-
-        @media (max-width: 480px) {
-            .hero h1 { font-size: 1.9rem; }
-            .stat-num { font-size: 1.5rem; }
-        }
-
-        @media (prefers-reduced-motion: reduce) {
-            *, *::before, *::after {
-                animation-duration: 0.01ms !important;
-                transition-duration: 0.01ms !important;
+        @media (max-width: 860px) {
+            .project-card {
+                grid-template-columns: 1fr;
+                padding: 2rem;
             }
+            .hero { padding: 3.5rem 0 2rem; }
+            .cta-section { padding: 3rem 2rem; }
         }
     </style>
 </head>
@@ -570,53 +581,120 @@
 <div class="page">
     <nav>
         <a href="/" class="logo"><img src="logo.svg" alt="someplus.work"></a>
+        <div class="nav-links">
+            <a href="#work" data-i18n="nav_work">Selected Work</a>
+            <a href="#ecosystem" data-i18n="nav_ecosystem">Ecosystem</a>
+            <a href="#capabilities" data-i18n="nav_capabilities">Capabilities</a>
+            <a href="/chrome-extensions.html" data-i18n="nav_lab">Chrome Extensions</a>
+        </div>
         <div class="nav-right">
             <button class="lang-btn" onclick="toggleLanguage()" aria-label="Toggle language">
-                EN
+                TR
             </button>
             <button class="theme-btn" onclick="toggleTheme()" aria-label="Toggle theme">
-                <svg class="sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
-                <svg class="moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+                <svg class="sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+                <svg class="moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
             </button>
         </div>
     </nav>
 
+    <!-- HERO -->
     <section class="hero">
-        <div class="hero-content">
-            <h1 data-i18n="hero_title">Expand Your Digital Experience</h1>
-            <p data-i18n="hero_desc">Minimalist, performance-oriented extensions for your browsers and e-commerce platforms.</p>
+        <div class="studio-badge">
+            <span class="dot"></span>
+            <span data-i18n="badge_studio">Product Engineering & AI Studio</span>
         </div>
-        <div class="hero-stats">
-            <div class="stat">
-                <div class="stat-num">12</div>
-                <div class="stat-label" data-i18n="stat_product">Product</div>
+        <h1 data-i18n="hero_title">
+            We build resilient B2B SaaS platforms, custom web apps & digital tools.
+        </h1>
+        <p class="lead" data-i18n="hero_desc">
+            Someplus engineers end-to-end digital software — from multi-tenant cloud platforms to custom web architectures and performance-focused client tools.
+        </p>
+        <div class="hero-metrics">
+            <div>
+                <div class="metric-num">5+</div>
+                <div class="metric-label" data-i18n="metric_platforms">Supported Platforms</div>
             </div>
-            <div class="stat">
-                <div class="stat-num">5</div>
-                <div class="stat-label" data-i18n="stat_platform">Platform</div>
+            <div>
+                <div class="metric-num">12+</div>
+                <div class="metric-label" data-i18n="metric_products">Published Digital Products</div>
+            </div>
+            <div>
+                <div class="metric-num">99.9%</div>
+                <div class="metric-label" data-i18n="metric_uptime">Cloud & API Reliability</div>
             </div>
         </div>
     </section>
 
-    <div class="products">
+    <!-- SELECTED WORK / FLAGSHIP SAAS -->
+    <div id="work">
+        <div class="section-header">
+            <div>
+                <div class="section-subtitle" data-i18n="work_subtitle">Flagship SaaS Architecture</div>
+                <h2 class="section-title" data-i18n="work_title">Selected Systems & Case Studies</h2>
+            </div>
+        </div>
 
-        <!-- Chrome Extensions Grid -->
-        <div class="chrome-extensions-section">
-            <div class="section-header">
-                <div>
-                    <span class="platform-badge" data-i18n="platform_chrome">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="4"/><line x1="21.17" y1="8" x2="12" y2="8"/><line x1="3.95" y1="6.06" x2="8.54" y2="14"/><line x1="10.88" y1="21.94" x2="15.46" y2="14"/></svg>
-                        Chrome Extensions
-                    </span>
-                    <h3 class="section-title" data-i18n="section_chrome">Chrome Extensions</h3>
+        <div class="project-card">
+            <div>
+                <div class="card-category">01 / B2B SaaS & Cloud ERP</div>
+                <h3 class="card-title">Tezgah — Multi-Tenant Service Operations</h3>
+                <p class="card-desc" data-i18n="tezgah_desc">
+                    A full-fledged cloud operating system designed for automotive service centers, repair shops, and field operations. Handles multi-branch isolation, dynamic work orders, inventory synchronization, customer SMS tracking, and Flutter mobile app APIs.
+                </p>
+                <div style="margin-bottom: 1.5rem;">
+                    <a href="https://tzgah.com" target="_blank" rel="noopener noreferrer" class="card-action">
+                        <span data-i18n="visit_tezgah">Visit tzgah.com</span>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                    </a>
                 </div>
             </div>
+            <div class="card-highlight-box">
+                <div class="highlight-item">
+                    <span class="highlight-title">Architecture</span>
+                    <span class="highlight-val">Multi-Tenant / Branch Isolated</span>
+                </div>
+                <div class="highlight-item">
+                    <span class="highlight-title">Key Capabilities</span>
+                    <span class="highlight-val">Work Order Tokens & Live Mobile Sync</span>
+                </div>
+                <div class="highlight-item">
+                    <span class="highlight-title">Production Status</span>
+                    <span class="highlight-val" style="color: #10B981;">Active Commercial Deployments</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ECOSYSTEM & IN-HOUSE PRODUCTS -->
+    <div id="ecosystem">
+        <div class="section-header">
+            <div>
+                <div class="section-subtitle" data-i18n="eco_subtitle">In-House Products & Tooling</div>
+                <h2 class="section-title" data-i18n="eco_title">Extensions, Plugins & Mobile Ecosystem</h2>
+            </div>
+        </div>
+
+        <!-- Chrome Extensions Showcase Strip -->
+        <div class="chrome-extensions-section">
+            <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.5rem;">
+                <div>
+                    <span class="platform-badge" data-i18n="platform_chrome">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="4"/><line x1="21.17" y1="8" x2="12" y2="8"/><line x1="3.95" y1="6.06" x2="8.54" y2="14"/><line x1="10.88" y1="21.94" x2="15.46" y2="14"/></svg>
+                        Chrome Web Store
+                    </span>
+                    <h3 style="font-size: 1.3rem; font-weight: 800; letter-spacing: -0.02em;" data-i18n="section_chrome">Chrome Extensions Portfolio</h3>
+                </div>
+                <a href="/chrome-extensions.html" class="card-action" style="font-size: 0.85rem;" data-i18n="view_all_chrome">
+                    View Full Directory →
+                </a>
+            </div>
             <div class="extensions-scroll">
-                <a href="https://chromewebstore.google.com/detail/smart-tab-suspender/mmhfonkfehekiofpkjiofjeoofloidog?authuser=0&hl=en" target="_blank" class="extension-item">
+                <a href="https://chromewebstore.google.com/detail/smart-tab-suspender/mmhfonkfehekiofpkjiofjeoofloidog?authuser=0&hl=en" target="_blank" rel="noopener noreferrer" class="extension-item">
                     <img src="images/icons/smart_tab_suspender.png" alt="Smart Tab Suspender" class="ext-icon">
                     <span class="ext-name">Smart Tab Suspender</span>
                 </a>
-                <a href="https://chromewebstore.google.com/detail/tabtint/bngecoefhbooakaodjlfegpbjhlhkfif?authuser=0&hl=en" target="_blank" class="extension-item">
+                <a href="https://chromewebstore.google.com/detail/tabtint/bngecoefhbooakaodjlfegpbjhlhkfif?authuser=0&hl=en" target="_blank" rel="noopener noreferrer" class="extension-item">
                     <img src="images/icons/tabtint.png" alt="TabTint" class="ext-icon">
                     <span class="ext-name">TabTint</span>
                 </a>
@@ -624,248 +702,287 @@
                     <img src="images/icons/openwithai.png" alt="Open with AI" class="ext-icon">
                     <span class="ext-name">Open with AI</span>
                 </a>
-                <a href="https://chromewebstore.google.com/detail/tabio/nckidmkgahoolemnaaklgcfpdmlfnofb?authuser=0&hl=en" target="_blank" class="extension-item">
+                <a href="https://chromewebstore.google.com/detail/tabio/nckidmkgahoolemnaaklgcfpdmlfnofb?authuser=0&hl=en" target="_blank" rel="noopener noreferrer" class="extension-item">
                     <img src="images/icons/tabio.png" alt="Tabio" class="ext-icon">
                     <span class="ext-name">Tabio</span>
                 </a>
-                <a href="https://chromewebstore.google.com/detail/donefetti/pdckdimjeaaomlgdnhppaogacipeigod?authuser=0&hl=en" target="_blank" class="extension-item">
+                <a href="https://chromewebstore.google.com/detail/donefetti/pdckdimjeaaomlgdnhppaogacipeigod?authuser=0&hl=en" target="_blank" rel="noopener noreferrer" class="extension-item">
                     <img src="images/icons/donefetti.png" alt="Donefetti" class="ext-icon">
                     <span class="ext-name">Donefetti</span>
                 </a>
-                <a href="https://chromewebstore.google.com/detail/sidekick-wa/ijfnpjcikndpffampjljggnnobagahkf?authuser=0&hl=en" target="_blank" class="extension-item">
+                <a href="https://chromewebstore.google.com/detail/sidekick-wa/ijfnpjcikndpffampjljggnnobagahkf?authuser=0&hl=en" target="_blank" rel="noopener noreferrer" class="extension-item">
                     <img src="images/icons/sidekick_whatsapp.png" alt="SideKick WA" class="ext-icon">
                     <span class="ext-name">SideKick WA</span>
                 </a>
-                <a href="https://chromewebstore.google.com/detail/chromashift/ifngfcdoccfbgagjiahnbkajaikjaiek?authuser=0&hl=en" target="_blank" class="extension-item">
+                <a href="https://chromewebstore.google.com/detail/chromashift/ifngfcdoccfbgagjiahnbkajaikjaiek?authuser=0&hl=en" target="_blank" rel="noopener noreferrer" class="extension-item">
                     <img src="images/icons/chroma_shift.png" alt="ChromaShift" class="ext-icon">
                     <span class="ext-name">ChromaShift</span>
                 </a>
-                <a href="https://chromewebstore.google.com/detail/send-to-phone-qr/ffdfngiplmmpfjehaalakfbanlkmneph?authuser=0&hl=en" target="_blank" class="extension-item">
+                <a href="https://chromewebstore.google.com/detail/send-to-phone-qr/ffdfngiplmmpfjehaalakfbanlkmneph?authuser=0&hl=en" target="_blank" rel="noopener noreferrer" class="extension-item">
                     <img src="images/icons/send2phone.png" alt="Send to Phone (QR)" class="ext-icon">
                     <span class="ext-name">Send to Phone (QR)</span>
                 </a>
             </div>
         </div>
 
-        <!-- Firefox Add-ons -->
-        <a href="https://addons.mozilla.org/en-US/firefox/user/19607411/" target="_blank" class="product">
-            <div class="product-top">
-                <span class="platform-badge" data-i18n="platform_firefox">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/></svg>
-                    Firefox
-                </span>
-                <div class="product-arrow">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7"/><path d="M7 7h10v10"/></svg>
-                </div>
-            </div>
-            <div class="product-body">
-                <h3 class="product-name" data-i18n="product_firefox">Firefox Add-ons</h3>
-                <p class="product-desc" data-i18n="desc_firefox">Privacy-focused, secure, and performance-friendly Firefox browser extensions.</p>
-                <div class="product-tags">
-                    <span class="tag" data-i18n="tag_privacy">Privacy</span>
-                    <span class="tag" data-i18n="tag_security">Security</span>
-                </div>
-            </div>
-        </a>
+        <!-- 4 Platform Tiles: WordPress, Adobe Commerce, iOS, Firefox -->
+        <div class="products-grid-2x2">
 
-        <!-- WordPress -->
-        <a href="https://profiles.wordpress.org/someplus/" target="_blank" class="product">
-            <div class="product-top">
-                <span class="platform-badge" data-i18n="platform_wordpress">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
-                    WordPress
-                </span>
-                <div class="product-arrow">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7"/><path d="M7 7h10v10"/></svg>
+            <!-- WordPress -->
+            <a href="https://profiles.wordpress.org/someplus/" target="_blank" rel="noopener noreferrer" class="product-tile">
+                <div>
+                    <div class="tile-top">
+                        <span class="platform-badge" data-i18n="platform_wordpress">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+                            WordPress
+                        </span>
+                        <div class="tile-arrow">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M7 17L17 7"/><path d="M7 7h10v10"/></svg>
+                        </div>
+                    </div>
+                    <h3 class="tile-title" data-i18n="product_wordpress">WordPress Plugins</h3>
+                    <p class="tile-desc" data-i18n="desc_wordpress">Custom plugins and management tools built for high-traffic blogs, publishers, and corporate WordPress installations.</p>
                 </div>
-            </div>
-            <div class="product-body">
-                <h3 class="product-name" data-i18n="product_wordpress">WordPress Plugins</h3>
-                <p class="product-desc" data-i18n="desc_wordpress">WordPress plugins that provide ease of management for your blog and corporate sites.</p>
-                <div class="product-tags">
-                    <span class="tag">CMS</span>
-                    <span class="tag" data-i18n="tag_management">Management</span>
-                </div>
-            </div>
-        </a>
+            </a>
 
-        <!-- Adobe Commerce Extensions -->
-        <a href="https://commercemarketplace.adobe.com/partner/infosomepla35b" target="_blank" class="product">
-            <div class="product-top">
-                <span class="platform-badge" data-i18n="platform_adobe">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
-                    Magento/Adobe
-                </span>
-                <div class="product-arrow">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7"/><path d="M7 7h10v10"/></svg>
+            <!-- Adobe Commerce / Magento -->
+            <a href="https://commercemarketplace.adobe.com/partner/infosomepla35b" target="_blank" rel="noopener noreferrer" class="product-tile">
+                <div>
+                    <div class="tile-top">
+                        <span class="platform-badge" data-i18n="platform_adobe">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+                            Adobe Commerce
+                        </span>
+                        <div class="tile-arrow">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M7 17L17 7"/><path d="M7 7h10v10"/></svg>
+                        </div>
+                    </div>
+                    <h3 class="tile-title" data-i18n="product_adobe">Adobe Commerce / Magento</h3>
+                    <p class="tile-desc" data-i18n="desc_adobe">Robust enterprise modules to scale catalog operations, checkout flows, and e-commerce integrations on Magento.</p>
                 </div>
-            </div>
-            <div class="product-body">
-                <h3 class="product-name" data-i18n="product_adobe">Adobe Commerce Extensions</h3>
-                <p class="product-desc" data-i18n="desc_adobe">Powerful Adobe Commerce modules to scale and manage your e-commerce operations.</p>
-                <div class="product-tags">
-                    <span class="tag" data-i18n="tag_ecommerce">E-Commerce</span>
-                    <span class="tag" data-i18n="tag_automation">Automation</span>
-                </div>
-            </div>
-        </a>
+            </a>
 
-        <!-- iOS Apps -->
-        <a href="https://apps.apple.com/us/developer/yavuz-yildirim/id968847927" target="_blank" class="product">
-            <div class="product-top">
-                <span class="platform-badge no-transform" data-i18n="platform_ios">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>
-                    iOS
-                </span>
-                <div class="product-arrow">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7"/><path d="M7 7h10v10"/></svg>
+            <!-- iOS Applications -->
+            <a href="https://apps.apple.com/us/developer/yavuz-yildirim/id968847927" target="_blank" rel="noopener noreferrer" class="product-tile">
+                <div>
+                    <div class="tile-top">
+                        <span class="platform-badge no-transform" data-i18n="platform_ios">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>
+                            Apple iOS
+                        </span>
+                        <div class="tile-arrow">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M7 17L17 7"/><path d="M7 7h10v10"/></svg>
+                        </div>
+                    </div>
+                    <h3 class="tile-title" data-i18n="product_ios">iOS Applications</h3>
+                    <p class="tile-desc" data-i18n="desc_ios">Beautifully crafted native mobile apps on the App Store designed for speed, fluid gestures, and offline performance.</p>
                 </div>
-            </div>
-            <div class="product-body">
-                <h3 class="product-name" data-i18n="product_ios">iOS Apps</h3>
-                <p class="product-desc" data-i18n="desc_ios">Beautifully crafted iOS applications designed for simplicity and performance on iPhone and iPad.</p>
-                <div class="product-tags">
-                    <span class="tag" data-i18n="tag_mobile">Mobile</span>
-                    <span class="tag">Swift</span>
-                </div>
-            </div>
-        </a>
+            </a>
 
+            <!-- Firefox Add-ons -->
+            <a href="https://addons.mozilla.org/en-US/firefox/user/19607411/" target="_blank" rel="noopener noreferrer" class="product-tile">
+                <div>
+                    <div class="tile-top">
+                        <span class="platform-badge" data-i18n="platform_firefox">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/></svg>
+                            Mozilla Firefox
+                        </span>
+                        <div class="tile-arrow">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M7 17L17 7"/><path d="M7 7h10v10"/></svg>
+                        </div>
+                    </div>
+                    <h3 class="tile-title" data-i18n="product_firefox">Firefox Add-ons</h3>
+                    <p class="tile-desc" data-i18n="desc_firefox">Privacy-respecting, secure, and resource-friendly browser add-ons distributed via Mozilla Add-ons (AMO).</p>
+                </div>
+            </a>
+
+        </div>
     </div>
 
+    <!-- CAPABILITIES -->
+    <div id="capabilities">
+        <div class="section-header">
+            <div>
+                <div class="section-subtitle" data-i18n="cap_subtitle">What We Do</div>
+                <h2 class="section-title" data-i18n="cap_title">Engineering Capabilities</h2>
+            </div>
+        </div>
+
+        <div class="capabilities-grid">
+            <div class="capability-card">
+                <div class="cap-num">01</div>
+                <h3 class="cap-title" data-i18n="cap1_title">B2B SaaS & Cloud Platforms</h3>
+                <p class="cap-desc" data-i18n="cap1_desc">
+                    Scalable multi-tenant cloud architectures with granular role-based permissions, automated subscription billing, mobile RESTful endpoints, and relational database optimization.
+                </p>
+            </div>
+
+            <div class="capability-card">
+                <div class="cap-num">02</div>
+                <h3 class="cap-title" data-i18n="cap2_title">Client-Side Tools & Browser Extensions</h3>
+                <p class="cap-desc" data-i18n="cap2_desc">
+                    High-performance WebExtensions, DOM manipulation, custom internal tooling, and productivity enhancements for Chromium and Firefox ecosystems.
+                </p>
+            </div>
+
+            <div class="capability-card">
+                <div class="cap-num">03</div>
+                <h3 class="cap-title" data-i18n="cap3_title">E-Commerce & Mobile Ecosystems</h3>
+                <p class="cap-desc" data-i18n="cap3_desc">
+                    Deep platform integrations across WordPress/WooCommerce, Adobe Commerce (Magento) and native iOS apps built for enterprise scaling.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- CTA BANNER -->
+    <section class="cta-section">
+        <div class="cta-content">
+            <h2 data-i18n="cta_title">Have an ambitious project in mind?</h2>
+            <p data-i18n="cta_desc">
+                Work directly with senior product engineers. No agency bloat, transparent technical architecture, and relentless attention to speed and detail.
+            </p>
+        </div>
+        <a href="mailto:info@someplus.work" class="cta-btn" data-i18n="cta_btn">Start a Conversation →</a>
+    </section>
+
+    <!-- FOOTER -->
     <footer>
-        <span class="copyright-wrap" data-i18n="footer_copyright">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="copyright-icon"><circle cx="12" cy="12" r="10"/><path d="M14.83 14.83a4 4 0 1 1 0-5.66"/></svg>
-            2026 someplus.work
-        </span>
-        <span data-i18n="footer_rights">All rights reserved.</span>
+        <div>© 2026 someplus.work — Product Engineering Studio.</div>
+        <div style="display: flex; gap: 1.5rem; flex-wrap: wrap;">
+            <a href="/chrome-extensions.html" style="color: var(--text-2); text-decoration: none;">Chrome Extensions</a>
+            <a href="https://profiles.wordpress.org/someplus/" target="_blank" rel="noopener noreferrer" style="color: var(--text-2); text-decoration: none;">WordPress</a>
+            <a href="https://commercemarketplace.adobe.com/partner/infosomepla35b" target="_blank" rel="noopener noreferrer" style="color: var(--text-2); text-decoration: none;">Adobe Commerce</a>
+            <a href="https://apps.apple.com/us/developer/yavuz-yildirim/id968847927" target="_blank" rel="noopener noreferrer" style="color: var(--text-2); text-decoration: none;">App Store</a>
+            <a href="mailto:info@someplus.work" style="color: var(--text-2); text-decoration: none;">info@someplus.work</a>
+        </div>
     </footer>
 </div>
 
 <script>
-    /* ---- THEME HANDLING ---- */
+    const translations = {
+        en: {
+            page_title: "someplus.work | High-Performance Web & SaaS Product Studio",
+            nav_work: "Selected Work",
+            nav_ecosystem: "Ecosystem",
+            nav_capabilities: "Capabilities",
+            nav_lab: "Chrome Extensions",
+            badge_studio: "Product Engineering Studio",
+            hero_title: "We build resilient B2B SaaS platforms, custom web apps & digital tools.",
+            hero_desc: "Someplus engineers end-to-end digital software — from multi-tenant cloud platforms to custom web architectures, native mobile apps, and e-commerce plugin ecosystems.",
+            metric_platforms: "Supported Platforms",
+            metric_products: "Published Digital Products",
+            metric_uptime: "Cloud & API Reliability",
+            work_subtitle: "Flagship SaaS Architecture",
+            work_title: "Selected Systems & Case Studies",
+            tezgah_desc: "A full-fledged cloud operating system designed for automotive service centers, repair shops, and field operations. Handles multi-branch isolation, dynamic work orders, inventory synchronization, customer SMS tracking, and Flutter mobile app APIs.",
+            visit_tezgah: "Visit tzgah.com",
+            eco_subtitle: "In-House Products & Tooling",
+            eco_title: "Extensions, Plugins & Mobile Ecosystem",
+            section_chrome: "Chrome Extensions Portfolio",
+            view_all_chrome: "View Full Directory →",
+            product_wordpress: "WordPress Plugins",
+            desc_wordpress: "Custom plugins and management tools built for high-traffic blogs, publishers, and corporate WordPress installations.",
+            product_adobe: "Adobe Commerce / Magento",
+            desc_adobe: "Robust enterprise modules to scale catalog operations, checkout flows, and e-commerce integrations on Magento.",
+            product_ios: "iOS Applications",
+            desc_ios: "Beautifully crafted native mobile apps on the App Store designed for speed, fluid gestures, and offline performance.",
+            product_firefox: "Firefox Add-ons",
+            desc_firefox: "Privacy-respecting, secure, and resource-friendly browser add-ons distributed via Mozilla Add-ons (AMO).",
+            tag_plugins: "Plugin Dev",
+            tag_ecommerce: "E-Commerce",
+            tag_privacy: "Privacy",
+            cap_subtitle: "What We Do",
+            cap_title: "Engineering Capabilities",
+            cap1_title: "B2B SaaS & Cloud Platforms",
+            cap1_desc: "Scalable multi-tenant cloud architectures with granular role-based permissions, automated subscription billing, mobile RESTful endpoints, and relational database optimization.",
+            cap2_title: "Client-Side Tools & Browser Extensions",
+            cap2_desc: "High-performance WebExtensions, DOM manipulation, custom internal tooling, and productivity enhancements for Chromium and Firefox ecosystems.",
+            cap3_title: "E-Commerce & Mobile Ecosystems",
+            cap3_desc: "Deep platform integrations across WordPress/WooCommerce, Adobe Commerce (Magento) and native iOS apps built for enterprise scaling.",
+            cta_title: "Have an ambitious project in mind?",
+            cta_desc: "Work directly with senior product engineers. No agency bloat, transparent technical architecture, and relentless attention to speed and detail.",
+            cta_btn: "Start a Conversation →"
+        },
+        tr: {
+            page_title: "someplus.work | Yüksek Performanslı Web ve SaaS Ürün Stüdyosu",
+            nav_work: "Seçilmiş Projeler",
+            nav_ecosystem: "Ekosistem",
+            nav_capabilities: "Yetkinlikler",
+            nav_lab: "Chrome Eklentileri",
+            badge_studio: "Yazılım & Ürün Mühendisliği Stüdyosu",
+            hero_title: "Ölçeklenebilir B2B SaaS platformları, özel web yazılımları ve dijital araçlar inşa ediyoruz.",
+            hero_desc: "Someplus, çok şubeli bulut platformlarından özel web mimarilerine, yerel mobil uygulamalara ve e-ticaret eklenti ekosistemlerine kadar uçtan uca yazılımlar geliştirir.",
+            metric_platforms: "Desteklenen Platform",
+            metric_products: "Yayımlanmış Dijital Ürün",
+            metric_uptime: "Bulut & API Güvenilirliği",
+            work_subtitle: "Amiral Gemisi SaaS Mimarisi",
+            work_title: "Seçilmiş Sistemler & Vaka Çalışmaları",
+            tezgah_desc: "Tamirhane, oto/motor servisleri ve saha operasyonları için geliştirilmiş bulut işletim sistemi. Çok şubeli mimari, dinamik iş emirleri, stok takibi, müşteri SMS bildirimleri ve Flutter mobil uygulama API'lerini yönetir.",
+            visit_tezgah: "tzgah.com'u İncele",
+            eco_subtitle: "Kendi Ürünlerimiz & Geliştirmeler",
+            eco_title: "Eklentiler, Modüller ve Mobil Ekosistem",
+            section_chrome: "Chrome Eklentileri Portföyü",
+            view_all_chrome: "Tüm Dizini Gör →",
+            product_wordpress: "WordPress Eklentileri",
+            desc_wordpress: "Yüksek trafikli yayıncılar, bloglar ve kurumsal siteler için geliştirilmiş özel WordPress eklentileri ve yönetim araçları.",
+            product_adobe: "Adobe Commerce / Magento",
+            desc_adobe: "Magento üzerinde katalog yönetimi, ödeme adımları ve e-ticaret operasyonlarını ölçeklendiren kurumsal modüller.",
+            product_ios: "iOS Uygulamaları",
+            desc_ios: "App Store'da yayımlanan, hız, akıcı arayüz ve çevrimdışı çalışma odaklı geliştirilmiş yerel mobil uygulamalar.",
+            product_firefox: "Firefox Eklentileri",
+            desc_firefox: "Gizlilik odaklı, güvenli ve hafif Mozilla Add-ons (AMO) tarayıcı eklentileri.",
+            tag_plugins: "Eklenti Geliştirme",
+            tag_ecommerce: "E-Ticaret",
+            tag_privacy: "Gizlilik",
+            cap_subtitle: "Neler Yapıyoruz?",
+            cap_title: "Mühendislik Yetkinliklerimiz",
+            cap1_title: "B2B SaaS ve Bulut Platformları",
+            cap1_desc: "Rol tabanlı yetkilendirme, abonelik altyapısı, mobil REST API'leri ve ilişkisel veritabanı optimizasyonuna sahip ölçeklenebilir bulut yazılımları.",
+            cap2_title: "İstemci Araçları & Tarayıcı Eklentileri",
+            cap2_desc: "Chromium ve Firefox ekosistemleri için yüksek performanslı WebExtensions geliştirme, DOM optimizasyonu ve üretkenlik artıran iç araçlar.",
+            cap3_title: "E-Ticaret & Mobil Ekosistemler",
+            cap3_desc: "WordPress, Adobe Commerce (Magento) ve kurumsal ölçekli yerel iOS uygulamaları üzerinde derin platform uzmanlığı.",
+            cta_title: "Önemli bir projeniz veya fikriniz mi var?",
+            cta_desc: "Doğrudan kıdemli ürün mühendisleriyle çalışın. Aracı ajans karmaşası yok; şeffaf mimari, hız ve yüksek mühendislik kalitesi var.",
+            cta_btn: "İletişime Geçin →"
+        }
+    };
+
+    let currentLang = 'tr';
+
+    function setLanguage(lang) {
+        currentLang = lang;
+        document.documentElement.lang = lang;
+        const btn = document.querySelector('.lang-btn');
+        if (btn) btn.innerText = lang === 'tr' ? 'EN' : 'TR';
+        
+        document.querySelectorAll('[data-i18n]').forEach(el => {
+            const key = el.getAttribute('data-i18n');
+            if (translations[lang] && translations[lang][key]) {
+                el.innerText = translations[lang][key];
+            }
+        });
+        localStorage.setItem('someplus_lang', lang);
+    }
+
+    function toggleLanguage() {
+        setLanguage(currentLang === 'tr' ? 'en' : 'tr');
+    }
+
     function toggleTheme() {
         const html = document.documentElement;
         const next = html.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
         html.setAttribute('data-theme', next);
-        localStorage.setItem('theme', next);
+        localStorage.setItem('someplus_theme', next);
     }
 
-    (function() {
-        const savedTheme = localStorage.getItem('theme');
-        if (savedTheme) {
-            document.documentElement.setAttribute('data-theme', savedTheme);
-        } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
-            document.documentElement.setAttribute('data-theme', 'dark');
-        }
-    })();
+    // Init
+    const savedTheme = localStorage.getItem('someplus_theme') || 'light';
+    document.documentElement.setAttribute('data-theme', savedTheme);
 
-    /* ---- LANGUAGE HANDLING ---- */
-    const translations = {
-        en: {
-            page_title: "someplus.work | Chrome, Firefox, WordPress, Magento & iOS Extensions",
-            hero_title: "Expand Your Digital Experience",
-            hero_desc: "Minimalist, performance-oriented extensions for your browsers and e-commerce platforms.",
-            stat_product: "Product",
-            stat_platform: "Platform",
-            platform_chrome: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="4"/><line x1="21.17" y1="8" x2="12" y2="8"/><line x1="3.95" y1="6.06" x2="8.54" y2="14"/><line x1="10.88" y1="21.94" x2="15.46" y2="14"/></svg> Chrome Extensions',
-            section_chrome: "Chrome Extensions",
-            platform_firefox: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/></svg> Firefox',
-            product_firefox: "Firefox Add-ons",
-            desc_firefox: "Privacy-focused, secure, and performance-friendly Firefox browser extensions.",
-            tag_privacy: "Privacy",
-            tag_security: "Security",
-            platform_wordpress: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg> WordPress',
-            product_wordpress: "WordPress Plugins",
-            desc_wordpress: "WordPress plugins that provide ease of management for your blog and corporate sites.",
-            tag_management: "Management",
-            platform_adobe: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg> Adobe Commerce',
-            product_adobe: "Adobe Commerce Extensions",
-            desc_adobe: "Powerful Adobe Commerce modules to scale and manage your e-commerce operations.",
-            tag_ecommerce: "E-Commerce",
-            tag_automation: "Automation",
-            platform_ios: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg> iOS',
-            product_ios: "iOS Apps",
-            desc_ios: "Beautifully crafted iOS applications designed for simplicity and performance on iPhone and iPad.",
-            tag_mobile: "Mobile",
-            footer_copyright: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="copyright-icon"><circle cx="12" cy="12" r="10"/><path d="M14.83 14.83a4 4 0 1 1 0-5.66"/></svg> 2026 someplus.work',
-            footer_rights: "All rights reserved."
-        },
-        tr: {
-            page_title: "someplus.work | Chrome, Firefox, WordPress, Magento & iOS Eklentileri",
-            hero_title: "Dijital Deneyiminizi Genişletin",
-            hero_desc: "Tarayıcılarınız ve e-ticaret platformlarınız için geliştirdiğimiz minimalist, performans odaklı eklentiler.",
-            stat_product: "Ürün",
-            stat_platform: "Platform",
-            platform_chrome: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="4"/><line x1="21.17" y1="8" x2="12" y2="8"/><line x1="3.95" y1="6.06" x2="8.54" y2="14"/><line x1="10.88" y1="21.94" x2="15.46" y2="14"/></svg> Chrome Eklentileri',
-            section_chrome: "Chrome Eklentileri",
-            platform_firefox: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/></svg> Firefox',
-            product_firefox: "Firefox Eklentileri",
-            desc_firefox: "Gizlilik odaklı, güvenli ve performans dostu Firefox tarayıcı eklentileri.",
-            tag_privacy: "Gizlilik",
-            tag_security: "Güvenlik",
-            platform_wordpress: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg> WordPress',
-            product_wordpress: "WordPress Pluginleri",
-            desc_wordpress: "Blog ve kurumsal siteleriniz için yönetim kolaylığı sağlayan WordPress eklentileri.",
-            tag_management: "Yönetim",
-            platform_adobe: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg> Adobe Commerce',
-            product_adobe: "Adobe Commerce Eklentileri",
-            desc_adobe: "E-ticaret operasyonlarınızı ölçeklendirmek ve yönetmek için güçlü Adobe Commerce modülleri.",
-            tag_ecommerce: "E-Ticaret",
-            tag_automation: "Otomasyon",
-            platform_ios: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg> iOS',
-            product_ios: "iOS Uygulamaları",
-            desc_ios: "iPhone ve iPad için sadelik ve performans odaklı tasarlanmış iOS uygulamaları.",
-            tag_mobile: "Mobil",
-            footer_copyright: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="copyright-icon"><circle cx="12" cy="12" r="10"/><path d="M14.83 14.83a4 4 0 1 1 0-5.66"/></svg> 2026 someplus.work',
-            footer_rights: "Tüm hakları saklıdır."
-        }
-    };
-
-    function setLanguage(lang) {
-        document.documentElement.lang = lang;
-        const elements = document.querySelectorAll('[data-i18n]');
-        
-        elements.forEach(el => {
-            const key = el.getAttribute('data-i18n');
-            if (translations[lang][key]) {
-                if (key.startsWith('platform_') || key.startsWith('footer_')) {
-                     el.innerHTML = translations[lang][key];
-                } else {
-                    el.innerText = translations[lang][key];
-                }
-            }
-        });
-
-        // Update button text
-        const langBtn = document.querySelector('.lang-btn');
-        if(langBtn) langBtn.innerText = lang === 'en' ? 'TR' : 'EN';
-        
-        // Update Chrome Store links
-        const chromeLinks = document.querySelectorAll('.extensions-scroll a');
-        chromeLinks.forEach(link => {
-            try {
-                const url = new URL(link.href, window.location.origin);
-                if (url.hostname === 'chromewebstore.google.com') {
-                    url.searchParams.set('hl', lang);
-                    link.href = url.toString();
-                }
-            } catch(e) {}
-        });
-
-        localStorage.setItem('lang', lang);
-    }
-
-    function toggleLanguage() {
-        const current = document.documentElement.lang || 'en';
-        const next = current === 'en' ? 'tr' : 'en';
-        setLanguage(next);
-    }
-
-    // Init Language
-    const savedLang = localStorage.getItem('lang') || 'en';
+    const savedLang = localStorage.getItem('someplus_lang') || 'tr';
     setLanguage(savedLang);
 </script>
-
 </body>
 </html>

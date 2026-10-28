@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Action Gallery — Open with AI</title>
+  <meta name="description" content="Browse ready-made Open with AI actions for writing, research, email, social posts, code review, learning, business work and translation." />
+  <link rel="stylesheet" href="styles.css?v=4" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+</head>
+<body class="actions-page">
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="index.html" class="brand">
+        <span class="brand-mark">✦</span>
+        <span class="brand-name">Open with AI</span>
+      </a>
+      <nav class="nav">
+        <a href="index.html#features">Features</a>
+        <a href="actions.html" class="nav-action-link" aria-current="page">
+          <span class="nav-action-icon">✦</span>
+          <span>Action Gallery</span>
+          <span class="nav-action-badge">50</span>
+        </a>
+        <a href="index.html#install" class="btn btn-ghost">Install</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="actions-shell">
+    <section class="actions-intro">
+      <div class="container actions-intro-inner">
+        <div>
+          <span class="eyebrow">Action gallery</span>
+          <h1 class="actions-title">Pick a workflow. Add it in one click.</h1>
+          <p class="actions-subtitle">A curated catalog of prompt actions for daily browser work. Search, filter, preview the prompt, and send it to Open with AI.</p>
+        </div>
+        <div class="actions-status-card">
+          <span class="status-kicker">Extension status</span>
+          <span id="extension-status" class="ext-status">Detecting extension…</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="actions-workspace">
+      <div class="container">
+        <div class="gallery-toolbar" aria-label="Gallery filters">
+          <div class="search-wrap">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <circle cx="11" cy="11" r="8"></circle>
+              <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+            </svg>
+            <input id="action-search" type="search" placeholder="Search actions, tags or prompt text" autocomplete="off" />
+          </div>
+          <div class="sort-wrap">
+            <label for="action-sort">Sort</label>
+            <select id="action-sort">
+              <option value="featured">Featured first</option>
+              <option value="az">A-Z</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="filter-panel">
+          <div>
+            <div class="filter-label">Category</div>
+            <div id="category-filters" class="chip-row" aria-label="Category filters"></div>
+          </div>
+          <div>
+            <div class="filter-label">Use case</div>
+            <div id="usecase-filters" class="chip-row" aria-label="Use case filters"></div>
+          </div>
+        </div>
+
+        <div class="results-bar">
+          <span id="results-count">0 actions</span>
+          <button id="clear-filters" class="text-button" type="button">Clear filters</button>
+        </div>
+
+        <div id="actions-grid" class="actions-grid"></div>
+
+        <div id="empty-state" class="empty-state hidden">
+          <h2>No matching actions</h2>
+          <p>Clear filters or request a new action for your workflow.</p>
+          <div class="empty-actions">
+            <button id="empty-clear" class="btn btn-secondary" type="button">Clear filters</button>
+            <a id="request-action-empty" class="btn btn-primary" href="#">Request an action</a>
+          </div>
+        </div>
+
+        <aside class="request-band">
+          <div>
+            <span class="eyebrow">Request an action</span>
+            <h2>Need a workflow that is not here yet?</h2>
+            <p>Send the action name, use case and a sample prompt. The gallery stays curated, but good requests can become public actions.</p>
+          </div>
+          <a id="request-action" class="btn btn-primary" href="#">Request an action</a>
+        </aside>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div class="footer-brand">
+        <span class="brand-mark">✦</span>
+        <span>Open with AI</span>
+      </div>
+      <div class="footer-links">
+        <a href="index.html#features">Features</a>
+        <a href="actions.html">Actions</a>
+        <a href="index.html#install">Install</a>
+        <a href="https://someplus.work">someplus.work</a>
+      </div>
+      <p class="footer-note">© 2026 Some Plus · Open with AI is not affiliated with OpenAI, Anthropic, Google, Perplexity, xAI or DeepSeek.</p>
+    </div>
+  </footer>
+
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+
+  <script src="gallery.js?v=4"></script>
+  <script src="gallery-import.js?v=1"></script>
+  <script src="actions.js?v=1"></script>
+</body>
+</html>
