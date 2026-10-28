@@ -63,7 +63,7 @@ export function QuoteForm({ locale }: { locale: Locale }) {
     setStatus("sending");
 
     try {
-      const response = await fetch("/api/teklif", {
+      const response = await fetch("/api/teklif.php", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
