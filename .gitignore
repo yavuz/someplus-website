@@ -4,3 +4,6 @@ dist/
 .wrangler/
 .DS_Store
 *.tsbuildinfo
+out/
+next-env.d.ts
+public/api/config.php
