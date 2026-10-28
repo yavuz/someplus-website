@@ -31,7 +31,7 @@ export default function SupportPage() {
           body: "İlgili ürünün resmi Chrome, Firefox, WordPress, Adobe Commerce veya App Store sayfasındaki destek bağlantısını kullan. Böylece talep doğrudan doğru ürüne bağlanır.",
         },
       ]}
-      backLabel="Ürünlere dön"
+      backLabel="Ana sayfaya dön"
     />
   );
 }

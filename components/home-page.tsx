@@ -1,119 +1,198 @@
 import Link from "next/link";
-import { type Locale, platformLinks, products } from "@/lib/products";
-import { ProductShowcase } from "./product-showcase";
+import { company, phoneHref, whatsappHref } from "@/lib/company";
+import { type Locale } from "@/lib/products";
+import { serviceHref, services } from "@/lib/services";
+import { QuoteForm } from "./quote-form";
+import { ServiceIcon } from "./service-icon";
 import { SiteFooter } from "./site-footer";
 import { SiteHeader } from "./site-header";
 
 const copy = {
   tr: {
-    eyebrow: "Bağımsız dijital ürün stüdyosu",
-    titleLead: "Daha sakin bir dijital gün için",
-    titleAccent: "küçük, güçlü araçlar.",
+    ids: { services: "hizmetler", process: "surec", work: "projeler", faq: "sss", quote: "teklif" },
+    eyebrow: "Kurumsal yazılım ve dijital çözümler",
+    titleLead: "İşletmenizi dijitalde",
+    titleAccent: "bir adım öne taşıyoruz.",
     description:
-      "Sekmelerden e-ticarete kadar, günlük işleri daha hızlı ve anlaşılır hâle getiren hafif ürünler tasarlıyoruz.",
-    primaryCta: "Ürünleri keşfet",
-    secondaryCta: "Yaklaşımımız",
-    signal: "Chrome · Firefox · WordPress · Adobe Commerce · iOS",
-    visualTitle: "Tek tek düşünülmüş.",
-    visualBody: "Hafif, odaklı ve gereksiz karmaşadan uzak.",
+      "Kurumsal yazılımdan e-ticarete, mobil uygulamadan yapay zekâ entegrasyonuna kadar fikirden yayına uçtan uca çözümler geliştiriyoruz.",
+    primaryCta: "Ücretsiz teklif alın",
+    secondaryCta: "Hizmetlerimiz",
+    panelTitle: "Hizmet alanlarımız",
+    panelBadge: "Uçtan uca",
+    noteLabel: "Analiz · Tasarım · Geliştirme · Yayın · Destek",
+    noteTitle: "Tek ekip, tek muhatap.",
+    noteBody: "Projenizin her aşamasını aynı ekip yönetir.",
     stats: [
-      ["8", "Chrome ürünü"],
-      ["5", "Platform"],
-      ["1", "Ortak yaklaşım"],
+      ["6", "Hizmet alanı"],
+      ["3", "Platform: Web, iOS, Android"],
+      ["1", "Ekip, tek muhatap"],
     ],
-    productsEyebrow: "Ürünler",
-    productsTitle: "Doğru anda işe yarayan araçlar.",
-    productsDescription:
-      "Her ürün tek bir gerçek probleme odaklanır. Büyük paketler yerine hızlı öğrenilen, sade araçlar.",
-    featureEyebrow: "Öne çıkan",
-    featureTitle: "İçeriği seç. Yapay zekâyı seç. Devam et.",
-    featureDescription:
-      "Open with AI, seçili metni veya açık sayfayı kullandığın yapay zekâ aracına taşır. Ücretsiz, açık ve hafif.",
-    featureCta: "Open with AI’ı keşfet",
-    principlesEyebrow: "Yaklaşım",
-    principlesTitle: "Daha az özellik değil. Daha az sürtünme.",
-    principles: [
-      [
-        "Odaklı",
-        "Her ürün, net bir işi mümkün olan en kısa yoldan tamamlar.",
-      ],
-      [
-        "Hafif",
-        "Kaynak tüketimini, gereksiz izinleri ve arayüz kalabalığını düşük tutarız.",
-      ],
-      [
-        "Güvenilir",
-        "Beklenmedik davranışlar yerine anlaşılır kontroller ve şeffaflık.",
-      ],
+    servicesEyebrow: "Hizmetler",
+    servicesTitle: "İhtiyacınız olan dijital çözüm, tek çatı altında.",
+    servicesDescription:
+      "İşletmenizin büyüklüğü ne olursa olsun, hedeflerinize uygun teknolojiyi seçiyor ve sonuç odaklı geliştiriyoruz.",
+    serviceCta: "Detaylı bilgi",
+    proofEyebrow: "Neden biz",
+    proofTitle: "Yalnızca proje teslim etmiyoruz, ürün geliştiriyoruz.",
+    proofDescription:
+      "Kendi ürünlerimizi tasarlayıp geliştiriyor, yayında tutuyor ve gerçek kullanıcı geri bildirimleriyle iyileştiriyoruz. Bir ürünü yaşatmanın ne demek olduğunu bildiğimiz için projenizi teslimle bitmiş saymıyor, aynı mühendislik disiplinini sizin işinize taşıyoruz.",
+    proofCta: "Ürünümüzü inceleyin",
+    proofTags: ["Web", "iOS", "Android", "Yönetim paneli"],
+    whyEyebrow: "Çalışma prensiplerimiz",
+    whyTitle: "Güvenilir bir teknoloji ortağı.",
+    why: [
+      ["Şeffaf süreç", "Net kapsam, net takvim ve düzenli ilerleme raporlarıyla projenin her aşamasından haberdar olursunuz."],
+      ["Ölçeklenebilir altyapı", "Bugünün ihtiyacını karşılarken yarının büyümesini taşıyabilecek, bakımı kolay sistemler kurarız."],
+      ["Uzun vadeli destek", "Yayın sonrası bakım, güvenlik güncellemeleri ve geliştirmelerle yanınızda olmaya devam ederiz."],
     ],
-    platformsEyebrow: "Platformlar",
-    platformsTitle: "Tek bir ekosistemle sınırlı değiliz.",
-    platformsDescription:
-      "Tarayıcıdan içerik yönetimine, e-ticaretten mobil uygulamalara kadar ürün geliştirdiğimiz alanlar.",
-    platformCta: "Platformu aç",
-    closingTitle: "Dijital iş akışında daha az sürtünme.",
-    closingDescription:
-      "Ürünleri keşfet, ihtiyacın olan aracı seç ve kaldığın yerden devam et.",
-    closingCta: "Tüm ürünleri gör",
-    supportCta: "Destek merkezi",
+    sectorsEyebrow: "Sektörler",
+    sectorsTitle: "Farklı sektörlerin dijital ihtiyaçlarına çözüm.",
+    sectors: ["Perakende ve e-ticaret", "Üretim ve sanayi", "Sağlık", "Eğitim", "Lojistik", "Turizm ve otelcilik", "Gayrimenkul", "Profesyonel hizmetler", "Kamu ve STK", "Girişimler"],
+    processEyebrow: "Süreç",
+    processTitle: "Fikirden yayına, planlı ve öngörülebilir.",
+    processDescription:
+      "Her projeyi aynı disiplinle yönetiyoruz; böylece sürprizlerle değil, planla ilerliyoruz.",
+    process: [
+      ["Analiz", "İhtiyaçlarınızı, hedeflerinizi ve mevcut sistemlerinizi birlikte inceliyoruz."],
+      ["Teklif ve planlama", "Kapsamı, takvimi ve bütçeyi netleştiren detaylı bir teklif hazırlıyoruz."],
+      ["Tasarım", "Kullanıcı deneyimini ve arayüzü, onayınıza sunarak tasarlıyoruz."],
+      ["Geliştirme", "Düzenli aralıklarla çalışan sürümler paylaşarak geliştiriyoruz."],
+      ["Test ve yayın", "Kapsamlı testlerin ardından projeyi güvenle yayına alıyoruz."],
+      ["Destek", "Yayın sonrasında bakım, izleme ve geliştirmelerle devam ediyoruz."],
+    ],
+    workEyebrow: "Kendi ürünümüz",
+    workTitle: "Fikirden yayına kendi geliştirdiğimiz ürün.",
+    workDescription:
+      "Tezgah, tamamen kendi ekibimizle tasarlayıp geliştirdiğimiz ve yayında tuttuğumuz ürünümüz. Sizin projenizde kullanacağımız mühendislik yaklaşımının canlı bir örneği.",
+    workLabel: "Servis ve tamir işletmeleri için işletme yönetimi",
+    workBody:
+      "Tezgah; iş kabulünü, müşteri bilgilendirmesini, stok ve kasa yönetimini tek platformda toplar. Ustalar işleri telefondan günceller, müşteriler işlerinin durumunu takip linkinden izler.",
+    workScopeTitle: "Neler geliştirdik",
+    workScope: [
+      "iOS ve Android mobil uygulamaları",
+      "İşletme sahipleri için web yönetim paneli",
+      "WhatsApp ve SMS ile otomatik müşteri bilgilendirme",
+      "İş emri, randevu, stok, kasa ve cari modülleri",
+    ],
+    workCta: "tzgah.com’u ziyaret edin",
+    workMock: {
+      business: "Adem Moto Servis",
+      status: "Motorunuz parça bekliyor",
+      steps: [["Teslim alındı", "09:12"], ["Arıza tespit edildi", "10:40"], ["Parça bekleniyor", ""], ["Teslime hazır", ""]],
+      noteLabel: "Ustanın notu",
+      note: "Balata yarın sabah geliyor, 14:00 gibi teslime hazır.",
+    },
+    faqEyebrow: "SSS",
+    faqTitle: "Sıkça sorulan sorular.",
+    faq: [
+      ["Bir proje ne kadar sürer?", "Süre, kapsama göre değişir. Kurumsal bir web sitesi genellikle birkaç hafta, özel yazılım ve mobil uygulama projeleri ise birkaç ay sürer. Analiz aşamasının ardından size net bir takvim sunarız."],
+      ["Fiyatlandırma nasıl yapılıyor?", "Ön görüşme ücretsizdir. İhtiyaçlarınızı dinledikten sonra kapsamı netleştirir, projeye göre sabit fiyatlı veya aylık çalışma modeline dayalı bir teklif hazırlarız."],
+      ["Başka bir ekibin geliştirdiği projeyi devralabilir misiniz?", "Evet. Önce mevcut kodu ve altyapıyı inceler, riskleri ve iyileştirme önerilerini raporlarız; ardından bakım ve geliştirmeyi devralırız."],
+      ["Yayın sonrasında destek veriyor musunuz?", "Evet. Düzenli bakım, güvenlik güncellemeleri, performans izleme ve yeni geliştirmeleri kapsayan destek paketleri sunuyoruz."],
+      ["Mevcut sistemlerimizle entegrasyon mümkün mü?", "Evet. ERP, CRM, muhasebe, ödeme, kargo ve pazaryeri gibi sistemlerle API veya uygun yöntemlerle entegrasyon sağlıyoruz."],
+    ],
+    quoteEyebrow: "Teklif alın",
+    quoteTitle: "Projenizi konuşalım.",
+    quoteDescription:
+      "Formu doldurun, ihtiyacınızı inceleyip size en kısa sürede dönüş yapalım. Ön görüşme ve teklif tamamen ücretsizdir.",
+    contactEmail: "E-posta",
+    contactPhone: "Telefon",
   },
   en: {
-    eyebrow: "Independent digital product studio",
-    titleLead: "Small, powerful tools for a",
-    titleAccent: "calmer digital day.",
+    ids: { services: "services", process: "process", work: "work", faq: "faq", quote: "quote" },
+    eyebrow: "Enterprise software and digital solutions",
+    titleLead: "We move your business",
+    titleAccent: "a step ahead in digital.",
     description:
-      "From browser tabs to commerce, we design lightweight products that make everyday work faster and clearer.",
-    primaryCta: "Explore products",
-    secondaryCta: "Our principles",
-    signal: "Chrome · Firefox · WordPress · Adobe Commerce · iOS",
-    visualTitle: "Thought through, one by one.",
-    visualBody: "Lightweight, focused, and free from unnecessary complexity.",
+      "From enterprise software to e-commerce, mobile apps to AI integration, we build end-to-end solutions from idea to launch.",
+    primaryCta: "Get a free quote",
+    secondaryCta: "Our services",
+    panelTitle: "What we do",
+    panelBadge: "End to end",
+    noteLabel: "Analysis · Design · Development · Launch · Support",
+    noteTitle: "One team, one point of contact.",
+    noteBody: "The same team manages every stage of your project.",
     stats: [
-      ["8", "Chrome products"],
-      ["5", "Platforms"],
-      ["1", "Shared approach"],
+      ["6", "Service areas"],
+      ["3", "Platforms: web, iOS, Android"],
+      ["1", "Team, one point of contact"],
     ],
-    productsEyebrow: "Products",
-    productsTitle: "Tools that help at the right moment.",
-    productsDescription:
-      "Each product focuses on one real problem. Simple tools that are quick to learn instead of oversized suites.",
-    featureEyebrow: "Featured",
-    featureTitle: "Select the content. Pick the AI. Keep moving.",
-    featureDescription:
-      "Open with AI carries selected text or the current page into the AI tool you use. Free, open, and lightweight.",
-    featureCta: "Explore Open with AI",
-    principlesEyebrow: "Principles",
-    principlesTitle: "Not fewer capabilities. Less friction.",
-    principles: [
-      [
-        "Focused",
-        "Every product completes a clear job through the shortest useful path.",
-      ],
-      [
-        "Lightweight",
-        "We keep resource use, unnecessary permissions, and interface clutter low.",
-      ],
-      [
-        "Dependable",
-        "Clear controls and transparency instead of surprising behavior.",
-      ],
+    servicesEyebrow: "Services",
+    servicesTitle: "The digital solution you need, under one roof.",
+    servicesDescription:
+      "Whatever the size of your business, we choose the right technology for your goals and build with results in mind.",
+    serviceCta: "Learn more",
+    proofEyebrow: "Why us",
+    proofTitle: "We don’t just deliver projects. We build products.",
+    proofDescription:
+      "We design, build, and run products of our own, improving them with feedback from real users. Because we know what it takes to keep a product alive, we don’t treat your project as finished at handover; we bring the same engineering discipline to your work.",
+    proofCta: "See our product",
+    proofTags: ["Web", "iOS", "Android", "Admin panels"],
+    whyEyebrow: "How we work",
+    whyTitle: "A technology partner you can rely on.",
+    why: [
+      ["Transparent process", "Clear scope, a clear timeline, and regular progress reports keep you informed at every stage."],
+      ["Scalable foundations", "We build maintainable systems that meet today’s needs and can carry tomorrow’s growth."],
+      ["Long-term support", "After launch, we stay with you through maintenance, security updates, and new development."],
     ],
-    platformsEyebrow: "Platforms",
-    platformsTitle: "We are not limited to one ecosystem.",
-    platformsDescription:
-      "The spaces where we build, from browsers and content management to commerce and mobile apps.",
-    platformCta: "Open platform",
-    closingTitle: "Less friction in your digital workflow.",
-    closingDescription:
-      "Explore the products, choose the right tool, and get back to what matters.",
-    closingCta: "See all products",
-    supportCta: "Support center",
+    sectorsEyebrow: "Industries",
+    sectorsTitle: "Solutions for the digital needs of many industries.",
+    sectors: ["Retail and e-commerce", "Manufacturing", "Healthcare", "Education", "Logistics", "Tourism and hospitality", "Real estate", "Professional services", "Public sector and NGOs", "Startups"],
+    processEyebrow: "Process",
+    processTitle: "From idea to launch, planned and predictable.",
+    processDescription:
+      "We run every project with the same discipline, so we move forward with a plan rather than surprises.",
+    process: [
+      ["Analysis", "We review your needs, goals, and existing systems together."],
+      ["Proposal and planning", "We prepare a detailed proposal that clarifies scope, timeline, and budget."],
+      ["Design", "We design the user experience and interface with your approval at each step."],
+      ["Development", "We build iteratively, sharing working versions at regular intervals."],
+      ["Testing and launch", "After thorough testing, we take the project live with confidence."],
+      ["Support", "After launch, we continue with maintenance, monitoring, and improvements."],
+    ],
+    workEyebrow: "Our own product",
+    workTitle: "A product we built from idea to launch.",
+    workDescription:
+      "Tezgah is a product we designed, built, and run entirely in-house. It is a live example of the engineering approach we bring to your project.",
+    workLabel: "Business management for service and repair shops",
+    workBody:
+      "Tezgah brings job intake, customer updates, inventory, and cash management onto one platform. Technicians update jobs from their phones, and customers follow progress through a tracking link.",
+    workScopeTitle: "What we built",
+    workScope: [
+      "iOS and Android mobile apps",
+      "Web admin panel for business owners",
+      "Automatic customer updates via WhatsApp and SMS",
+      "Work order, appointment, inventory, cash, and accounts modules",
+    ],
+    workCta: "Visit tzgah.com",
+    workMock: {
+      business: "Adem Moto Servis",
+      status: "Your motorcycle is waiting for parts",
+      steps: [["Received", "09:12"], ["Diagnosed", "10:40"], ["Waiting for parts", ""], ["Ready for pickup", ""]],
+      noteLabel: "Technician’s note",
+      note: "Brake pads arrive tomorrow morning, ready around 14:00.",
+    },
+    faqEyebrow: "FAQ",
+    faqTitle: "Frequently asked questions.",
+    faq: [
+      ["How long does a project take?", "It depends on scope. A corporate website usually takes a few weeks, while custom software and mobile apps take a few months. After the analysis phase we give you a clear timeline."],
+      ["How is pricing determined?", "The initial consultation is free. After hearing your needs we clarify the scope and prepare a fixed-price or monthly engagement proposal."],
+      ["Can you take over a project built by another team?", "Yes. We first review the existing code and infrastructure, report risks and improvement suggestions, and then take over maintenance and development."],
+      ["Do you provide support after launch?", "Yes. We offer support packages covering regular maintenance, security updates, performance monitoring, and new development."],
+      ["Can you integrate with our existing systems?", "Yes. We integrate with ERP, CRM, accounting, payment, shipping, and marketplace systems through APIs or other suitable methods."],
+    ],
+    quoteEyebrow: "Get a quote",
+    quoteTitle: "Let’s talk about your project.",
+    quoteDescription:
+      "Fill in the form and we will review your needs and get back to you shortly. The consultation and quote are completely free.",
+    contactEmail: "Email",
+    contactPhone: "Phone",
   },
 };
 
 export function HomePage({ locale }: { locale: Locale }) {
   const text = copy[locale];
-  const openWithAi = products.find((product) => product.slug === "open-with-ai")!;
+  const { ids } = text;
 
   return (
     <>
@@ -128,34 +207,37 @@ export function HomePage({ locale }: { locale: Locale }) {
               </h1>
               <p>{text.description}</p>
               <div className="hero-actions">
-                <a className="button button-primary" href="#products">
+                <a className="button button-primary" href={`#${ids.quote}`}>
                   {text.primaryCta}
-                  <span aria-hidden="true">↓</span>
+                  <span aria-hidden="true">→</span>
                 </a>
-                <a className="button button-secondary" href="#principles">
+                <a className="button button-secondary" href={`#${ids.services}`}>
                   {text.secondaryCta}
                 </a>
               </div>
             </div>
 
-            <div className="hero-visual" aria-label={text.visualTitle}>
+            <div className="hero-visual" aria-hidden="true">
               <div className="visual-orbit orbit-one" />
               <div className="visual-orbit orbit-two" />
-              <div className="product-cluster">
-                {products.slice(0, 5).map((product, index) => (
-                  <div className={`cluster-icon icon-${index + 1}`} key={product.slug}>
-                    <img src={product.icon} alt="" width="64" height="64" />
-                  </div>
-                ))}
-                <div className="cluster-core">
-                  <span>someplus</span>
-                  <strong>+</strong>
+              <div className="hero-panel">
+                <div className="hero-panel-head">
+                  <strong>{text.panelTitle}</strong>
+                  <span>{text.panelBadge}</span>
                 </div>
+                <ul>
+                  {services.map((service) => (
+                    <li key={service.id}>
+                      <ServiceIcon name={service.icon} />
+                      {service.title[locale]}
+                    </li>
+                  ))}
+                </ul>
               </div>
               <div className="visual-note">
-                <span>{text.signal}</span>
-                <strong>{text.visualTitle}</strong>
-                <p>{text.visualBody}</p>
+                <span>{text.noteLabel}</span>
+                <strong>{text.noteTitle}</strong>
+                <p>{text.noteBody}</p>
               </div>
             </div>
           </div>
@@ -170,55 +252,62 @@ export function HomePage({ locale }: { locale: Locale }) {
           </div>
         </section>
 
-        <section className="section products-section" id="products">
+        <section className="section services-section" id={ids.services}>
           <div className="shell">
             <div className="section-heading">
               <div>
-                <span className="eyebrow">{text.productsEyebrow}</span>
-                <h2>{text.productsTitle}</h2>
+                <span className="eyebrow">{text.servicesEyebrow}</span>
+                <h2>{text.servicesTitle}</h2>
               </div>
-              <p>{text.productsDescription}</p>
+              <p>{text.servicesDescription}</p>
             </div>
-            <ProductShowcase locale={locale} />
+            <div className="service-grid">
+              {services.map((service) => (
+                <Link className="service-card" href={serviceHref(service, locale)} key={service.id}>
+                  <span className="service-card-icon">
+                    <ServiceIcon name={service.icon} />
+                  </span>
+                  <h3>{service.title[locale]}</h3>
+                  <p>{service.summary[locale]}</p>
+                  <span className="service-card-link">
+                    {text.serviceCta} <b aria-hidden="true">→</b>
+                  </span>
+                </Link>
+              ))}
+            </div>
           </div>
         </section>
 
         <section className="section feature-section">
           <div className="shell feature-card">
             <div className="feature-visual">
-              <img src={openWithAi.icon} alt="" width="112" height="112" />
-              <span>ChatGPT</span>
-              <span>Claude</span>
-              <span>Gemini</span>
-              <span>Perplexity</span>
+              <img src="/logo.svg" alt="" width="112" height="112" className="feature-logo" />
+              {text.proofTags.map((tag) => (
+                <span key={tag}>{tag}</span>
+              ))}
             </div>
             <div className="feature-copy">
-              <span className="eyebrow eyebrow-light">{text.featureEyebrow}</span>
-              <h2>{text.featureTitle}</h2>
-              <p>{text.featureDescription}</p>
-              <a
-                className="button button-white"
-                href={openWithAi.href}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                {text.featureCta}
-                <span aria-hidden="true">↗</span>
+              <span className="eyebrow eyebrow-light">{text.proofEyebrow}</span>
+              <h2>{text.proofTitle}</h2>
+              <p>{text.proofDescription}</p>
+              <a className="button button-white" href={`#${ids.work}`}>
+                {text.proofCta}
+                <span aria-hidden="true">↓</span>
               </a>
             </div>
           </div>
         </section>
 
-        <section className="section principles-section" id="principles">
+        <section className="section principles-section">
           <div className="shell">
             <div className="section-heading compact">
               <div>
-                <span className="eyebrow">{text.principlesEyebrow}</span>
-                <h2>{text.principlesTitle}</h2>
+                <span className="eyebrow">{text.whyEyebrow}</span>
+                <h2>{text.whyTitle}</h2>
               </div>
             </div>
             <div className="principle-grid">
-              {text.principles.map(([title, description], index) => (
+              {text.why.map(([title, description], index) => (
                 <article key={title}>
                   <span>0{index + 1}</span>
                   <h3>{title}</h3>
@@ -229,54 +318,146 @@ export function HomePage({ locale }: { locale: Locale }) {
           </div>
         </section>
 
-        <section className="section platforms-section" id="platforms">
+        <section className="section sectors-section">
+          <div className="shell sectors-inner">
+            <div>
+              <span className="eyebrow">{text.sectorsEyebrow}</span>
+              <h2>{text.sectorsTitle}</h2>
+            </div>
+            <ul className="sector-list">
+              {text.sectors.map((sector) => (
+                <li key={sector}>{sector}</li>
+              ))}
+            </ul>
+          </div>
+        </section>
+
+        <section className="section process-section" id={ids.process}>
           <div className="shell">
             <div className="section-heading">
               <div>
-                <span className="eyebrow">{text.platformsEyebrow}</span>
-                <h2>{text.platformsTitle}</h2>
+                <span className="eyebrow">{text.processEyebrow}</span>
+                <h2>{text.processTitle}</h2>
               </div>
-              <p>{text.platformsDescription}</p>
+              <p>{text.processDescription}</p>
             </div>
-            <div className="platform-list">
-              {platformLinks.map((platform, index) => {
-                const external = platform.href.startsWith("http");
-                return (
-                  <a
-                    href={platform.href}
-                    key={platform.name}
-                    target={external ? "_blank" : undefined}
-                    rel={external ? "noopener noreferrer" : undefined}
-                  >
-                    <span className="platform-index">0{index + 1}</span>
-                    <strong>{platform.name}</strong>
-                    <span>{platform.note[locale]}</span>
-                    <span className="platform-action">
-                      {text.platformCta} <b aria-hidden="true">↗</b>
-                    </span>
-                  </a>
-                );
-              })}
+            <ol className="process-grid">
+              {text.process.map(([title, description], index) => (
+                <li key={title}>
+                  <span>0{index + 1}</span>
+                  <h3>{title}</h3>
+                  <p>{description}</p>
+                </li>
+              ))}
+            </ol>
+          </div>
+        </section>
+
+        <section className="section work-section" id={ids.work}>
+          <div className="shell">
+            <div className="section-heading">
+              <div>
+                <span className="eyebrow">{text.workEyebrow}</span>
+                <h2>{text.workTitle}</h2>
+              </div>
+              <p>{text.workDescription}</p>
+            </div>
+            <article className="work-card">
+              <div className="work-copy">
+                <span className="work-label">{text.workLabel}</span>
+                <h3>Tezgah</h3>
+                <p>{text.workBody}</p>
+                <h4>{text.workScopeTitle}</h4>
+                <ul>
+                  {text.workScope.map((item) => (
+                    <li key={item}>{item}</li>
+                  ))}
+                </ul>
+                <div className="work-tags">
+                  <span>iOS</span>
+                  <span>Android</span>
+                  <span>Web</span>
+                </div>
+                <a className="button button-primary" href="https://tzgah.com" target="_blank" rel="noopener noreferrer">
+                  {text.workCta}
+                  <span aria-hidden="true">↗</span>
+                </a>
+              </div>
+              <div className="work-visual" aria-hidden="true">
+                <div className="work-phone">
+                  <span className="work-url">tzgah.com/t/8KX2</span>
+                  <strong>{text.workMock.business}</strong>
+                  <p>{text.workMock.status}</p>
+                  <small>Honda PCX · 34 ABC 123</small>
+                  <ol>
+                    {text.workMock.steps.map(([step, time], index) => (
+                      <li className={index < 2 ? "done" : index === 2 ? "current" : ""} key={step}>
+                        <span>{step}</span>
+                        {time && <time>{time}</time>}
+                      </li>
+                    ))}
+                  </ol>
+                  <div className="work-note">
+                    <span>{text.workMock.noteLabel}</span>
+                    {text.workMock.note}
+                  </div>
+                </div>
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <section className="section faq-section" id={ids.faq}>
+          <div className="shell faq-inner">
+            <div>
+              <span className="eyebrow">{text.faqEyebrow}</span>
+              <h2>{text.faqTitle}</h2>
+            </div>
+            <div className="faq-list">
+              {text.faq.map(([question, answer]) => (
+                <details key={question}>
+                  <summary>{question}</summary>
+                  <p>{answer}</p>
+                </details>
+              ))}
             </div>
           </div>
         </section>
 
-        <section className="section closing-section">
-          <div className="shell closing-card">
-            <span className="closing-mark">+</span>
-            <h2>{text.closingTitle}</h2>
-            <p>{text.closingDescription}</p>
-            <div>
-              <a className="button button-primary" href="#products">
-                {text.closingCta}
-              </a>
-              <Link
-                className="button button-secondary"
-                href={locale === "tr" ? "/support" : "/en/support"}
-              >
-                {text.supportCta}
-              </Link>
+        <section className="section quote-section" id={ids.quote}>
+          <div className="shell quote-card">
+            <div className="quote-copy">
+              <span className="eyebrow">{text.quoteEyebrow}</span>
+              <h2>{text.quoteTitle}</h2>
+              <p>{text.quoteDescription}</p>
+              <dl className="contact-list">
+                <div>
+                  <dt>{text.contactEmail}</dt>
+                  <dd>
+                    <a href={`mailto:${company.email}`}>{company.email}</a>
+                  </dd>
+                </div>
+                {company.phone && (
+                  <div>
+                    <dt>{text.contactPhone}</dt>
+                    <dd>
+                      <a href={phoneHref(company.phone)}>{company.phone}</a>
+                    </dd>
+                  </div>
+                )}
+                {company.whatsapp && (
+                  <div>
+                    <dt>WhatsApp</dt>
+                    <dd>
+                      <a href={whatsappHref(company.whatsapp)} target="_blank" rel="noopener noreferrer">
+                        {company.whatsapp}
+                      </a>
+                    </dd>
+                  </div>
+                )}
+              </dl>
             </div>
+            <QuoteForm locale={locale} />
           </div>
         </section>
       </main>

@@ -31,7 +31,7 @@ export default function EnglishSupportPage() {
           body: "Use the support link on the product’s official Chrome, Firefox, WordPress, Adobe Commerce, or App Store page so the request is tied to the right product.",
         },
       ]}
-      backLabel="Back to products"
+      backLabel="Back to home"
     />
   );
 }
