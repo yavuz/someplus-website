@@ -20,5 +20,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${base}/en/privacy/`, lastModified: updated, priority: 0.5 },
     { url: `${base}/support/`, lastModified: updated, priority: 0.6 },
     { url: `${base}/en/support/`, lastModified: updated, priority: 0.6 },
+    { url: `${base}/gundem/`, lastModified: new Date("2026-11-02"), priority: 0.5 },
   ];
 }

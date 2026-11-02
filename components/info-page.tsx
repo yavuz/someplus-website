@@ -1,11 +1,12 @@
 import Link from "next/link";
+import type { ReactNode } from "react";
 import { type Locale } from "@/lib/products";
 import { SiteFooter } from "./site-footer";
 import { SiteHeader } from "./site-header";
 
 type Section = {
   title: string;
-  body: string;
+  body: ReactNode;
 };
 
 export function InfoPage({
