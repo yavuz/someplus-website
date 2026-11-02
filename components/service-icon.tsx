@@ -37,6 +37,13 @@ const paths: Record<IconName, React.ReactNode> = {
       <path d="M14.7 6.3a4 4 0 0 0-5.4 5.4L3.6 17.4a1.9 1.9 0 0 0 2.7 2.7l5.7-5.7a4 4 0 0 0 5.4-5.4l-2.5 2.5-2.4-.3-.3-2.4 2.5-2.5Z" />
     </>
   ),
+  inspection: (
+    <>
+      <path d="M9 3.5h6a1 1 0 0 1 1 1V6H8V4.5a1 1 0 0 1 1-1Z" />
+      <path d="M16 5h1.5A1.5 1.5 0 0 1 19 6.5v13a1.5 1.5 0 0 1-1.5 1.5h-11A1.5 1.5 0 0 1 5 19.5v-13A1.5 1.5 0 0 1 6.5 5H8" />
+      <path d="m8.8 13.3 2.2 2.2 4.2-4.6" />
+    </>
+  ),
 };
 
 export function ServiceIcon({ name }: { name: IconName }) {

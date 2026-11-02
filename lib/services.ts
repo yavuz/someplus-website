@@ -6,7 +6,8 @@ export type ServiceIcon =
   | "commerce"
   | "mobile"
   | "ai"
-  | "support";
+  | "support"
+  | "inspection";
 
 export type Service = {
   id: string;
