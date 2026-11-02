@@ -2069,23 +2069,6 @@ img {
   flex-wrap: wrap;
 }
 
-.roadmap h2 + p {
-  margin: 18px 0 0;
-  color: var(--muted);
-  line-height: 1.7;
-}
-
-.roadmap li {
-  font-size: 1rem;
-  line-height: 1.5;
-}
-
-.roadmap li::before {
-  content: "";
-  border: 2px dashed var(--blue);
-  background: transparent;
-}
-
 .related-services {
   background: var(--surface);
 }

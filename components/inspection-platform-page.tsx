@@ -41,16 +41,6 @@ const copy = {
       ["Kuruluşa ayrı veritabanı", "Her muayene kuruluşunun verisi kendi veritabanında tutulur."],
       ["Yetki ve işlem geçmişi", "Rol ve tesis bazlı yetkilendirme; kim, neyi, ne zaman yaptı kayıt altında."],
     ],
-    roadmapEyebrow: "Geliştirme sürüyor",
-    roadmapTitle: "Henüz tamamlanmayanlar.",
-    roadmapDescription:
-      "Platformun bugün yapmadığı işleri açıkça yazıyoruz. Aşağıdakiler üzerinde çalışmaya devam ediyoruz.",
-    roadmap: [
-      "E-imza sağlayıcısıyla doğrudan entegrasyon (bugün imza akışı, imzalı PDF’in platforma yüklenmesiyle ilerliyor)",
-      "Eski sistemlerden veri aktarımı",
-      "Saha uygulamasının gerçek cihaz kabul testleri ve App Store / Google Play yayını",
-      "E-posta bildirimleri",
-    ],
     closingTitle: "Kuruluşunuz için konuşalım.",
     closingBody:
       "Muayene süreçlerinizi dinleyelim, platformu kendi iş akışınız üzerinden birlikte inceleyelim.",
@@ -90,16 +80,6 @@ const copy = {
       ["Client portal", "Clients reach their reports and the documents shared with them through their own portal."],
       ["Separate database per organisation", "Each inspection body’s data is kept in its own database."],
       ["Permissions and audit trail", "Role- and site-based permissions, with a record of who did what and when."],
-    ],
-    roadmapEyebrow: "In development",
-    roadmapTitle: "Not finished yet.",
-    roadmapDescription:
-      "We are open about what the platform does not do today. We are still working on the following.",
-    roadmap: [
-      "Direct integration with an e-signature provider (today the signing flow runs by uploading the signed PDF to the platform)",
-      "Data migration from legacy systems",
-      "Acceptance testing on real devices and App Store / Google Play release of the field app",
-      "Email notifications",
     ],
     closingTitle: "Let’s talk about your organisation.",
     closingBody:
@@ -181,21 +161,6 @@ export function InspectionPlatformPage({ locale }: { locale: Locale }) {
                 </article>
               ))}
             </div>
-          </div>
-        </section>
-
-        <section className="section">
-          <div className="shell deliverables roadmap">
-            <div>
-              <span className="eyebrow">{text.roadmapEyebrow}</span>
-              <h2>{text.roadmapTitle}</h2>
-              <p>{text.roadmapDescription}</p>
-            </div>
-            <ul>
-              {text.roadmap.map((item) => (
-                <li key={item}>{item}</li>
-              ))}
-            </ul>
           </div>
         </section>
 
