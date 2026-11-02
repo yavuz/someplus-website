@@ -1423,6 +1423,10 @@ img {
   box-shadow: var(--shadow);
 }
 
+.work-card + .work-card {
+  margin-top: 28px;
+}
+
 .work-label {
   color: var(--blue);
   font-size: 0.82rem;
@@ -1522,6 +1526,10 @@ img {
   background: var(--canvas);
   box-shadow: 0 30px 70px rgba(20, 36, 76, 0.18);
   transform: rotate(2deg);
+}
+
+.work-phone-tilt-left {
+  transform: rotate(-2deg);
 }
 
 .work-url {
@@ -2056,6 +2064,28 @@ img {
   font-weight: 850;
 }
 
+.service-hero .work-tags {
+  margin: 28px 0 0;
+  flex-wrap: wrap;
+}
+
+.roadmap h2 + p {
+  margin: 18px 0 0;
+  color: var(--muted);
+  line-height: 1.7;
+}
+
+.roadmap li {
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+.roadmap li::before {
+  content: "";
+  border: 2px dashed var(--blue);
+  background: transparent;
+}
+
 .related-services {
   background: var(--surface);
 }
@@ -2165,6 +2195,10 @@ img {
 
   .work-visual {
     min-height: 400px;
+  }
+
+  .work-card + .work-card {
+    margin-top: 18px;
   }
 
   .quote-section {

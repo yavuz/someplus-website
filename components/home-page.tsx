@@ -36,7 +36,7 @@ const copy = {
     proofTitle: "Yalnızca proje teslim etmiyoruz, ürün geliştiriyoruz.",
     proofDescription:
       "Kendi ürünlerimizi tasarlayıp geliştiriyor, yayında tutuyor ve gerçek kullanıcı geri bildirimleriyle iyileştiriyoruz. Bir ürünü yaşatmanın ne demek olduğunu bildiğimiz için projenizi teslimle bitmiş saymıyor, aynı mühendislik disiplinini sizin işinize taşıyoruz.",
-    proofCta: "Ürünümüzü inceleyin",
+    proofCta: "Ürünlerimizi inceleyin",
     proofTags: ["Web", "iOS", "Android", "Yönetim paneli"],
     whyEyebrow: "Çalışma prensiplerimiz",
     whyTitle: "Güvenilir bir teknoloji ortağı.",
@@ -60,10 +60,10 @@ const copy = {
       ["Test ve yayın", "Kapsamlı testlerin ardından projeyi güvenle yayına alıyoruz."],
       ["Destek", "Yayın sonrasında bakım, izleme ve geliştirmelerle devam ediyoruz."],
     ],
-    workEyebrow: "Kendi ürünümüz",
-    workTitle: "Fikirden yayına kendi geliştirdiğimiz ürün.",
+    workEyebrow: "Kendi ürünlerimiz",
+    workTitle: "Fikirden yayına kendi geliştirdiğimiz ürünler.",
     workDescription:
-      "Tezgah, tamamen kendi ekibimizle tasarlayıp geliştirdiğimiz ve yayında tuttuğumuz ürünümüz. Sizin projenizde kullanacağımız mühendislik yaklaşımının canlı bir örneği.",
+      "Tezgah ve 17020, tamamen kendi ekibimizle tasarlayıp geliştirdiğimiz ürünlerimiz. Sizin projenizde kullanacağımız mühendislik yaklaşımının canlı örnekleri.",
     workLabel: "Servis ve tamir işletmeleri için işletme yönetimi",
     workBody:
       "Tezgah; iş kabulünü, müşteri bilgilendirmesini, stok ve kasa yönetimini tek platformda toplar. Ustalar işleri telefondan günceller, müşteriler işlerinin durumunu takip linkinden izler.",
@@ -75,6 +75,28 @@ const copy = {
       "İş emri, randevu, stok, kasa ve cari modülleri",
     ],
     workCta: "tzgah.com’u ziyaret edin",
+    inspection: {
+      label: "Muayene kuruluşları için yönetim platformu",
+      body: "ISO/IEC 17020 kapsamında periyodik kontrol yapan muayene kuruluşları için iş emrinden imzalı rapora tek zincir. Ekip planlama, saha muayenesi, dört göz teknik onay, sabitlenen PDF rapor ve müşteri portalı aynı platformda.",
+      scope: [
+        "Web yönetim panelleri ve müşteri portalı",
+        "Android, iPhone ve iPad için çevrimdışı çalışan saha uygulaması",
+        "Dört göz onay, PDF rapor ve sıralı e-imza akışı",
+        "Kalibrasyon, TÜRKAK Ek-1, İSG-KATİP ve kalite yönetimi modülleri",
+      ],
+      tags: ["Web", "Android", "iPhone", "iPad"],
+      cta: "Ürün sayfasını inceleyin",
+      href: "/17020",
+      mock: {
+        header: "İş emri · Periyodik kontrol",
+        title: "Muayene raporu",
+        status: "Rapor imza sırasında",
+        meta: "Karekodla doğrulanabilir",
+        steps: [["Ekip planlandı", "done"], ["Saha muayenesi", "done"], ["Dört göz teknik onay", "done"], ["E-imza", "current"], ["Müşteri portalında teslim", ""]],
+        noteLabel: "Sonraki kontrol",
+        note: "Tarih onayla birlikte hesaplandı; yeni iş emri olarak planlanacak.",
+      },
+    },
     workMock: {
       business: "Adem Moto Servis",
       status: "Motorunuz parça bekliyor",
@@ -126,7 +148,7 @@ const copy = {
     proofTitle: "We don’t just deliver projects. We build products.",
     proofDescription:
       "We design, build, and run products of our own, improving them with feedback from real users. Because we know what it takes to keep a product alive, we don’t treat your project as finished at handover; we bring the same engineering discipline to your work.",
-    proofCta: "See our product",
+    proofCta: "See our products",
     proofTags: ["Web", "iOS", "Android", "Admin panels"],
     whyEyebrow: "How we work",
     whyTitle: "A technology partner you can rely on.",
@@ -150,10 +172,10 @@ const copy = {
       ["Testing and launch", "After thorough testing, we take the project live with confidence."],
       ["Support", "After launch, we continue with maintenance, monitoring, and improvements."],
     ],
-    workEyebrow: "Our own product",
-    workTitle: "A product we built from idea to launch.",
+    workEyebrow: "Our own products",
+    workTitle: "Products we built from idea to launch.",
     workDescription:
-      "Tezgah is a product we designed, built, and run entirely in-house. It is a live example of the engineering approach we bring to your project.",
+      "Tezgah and 17020 are products we designed and built entirely in-house. They are live examples of the engineering approach we bring to your project.",
     workLabel: "Business management for service and repair shops",
     workBody:
       "Tezgah brings job intake, customer updates, inventory, and cash management onto one platform. Technicians update jobs from their phones, and customers follow progress through a tracking link.",
@@ -165,6 +187,28 @@ const copy = {
       "Work order, appointment, inventory, cash, and accounts modules",
     ],
     workCta: "Visit tzgah.com",
+    inspection: {
+      label: "Management platform for inspection bodies",
+      body: "One chain from work order to signed report, for inspection bodies carrying out periodic inspections under ISO/IEC 17020. Team planning, field inspection, four-eyes technical approval, locked PDF reports, and a client portal on one platform.",
+      scope: [
+        "Web admin panels and a client portal",
+        "Offline-capable field app for Android, iPhone, and iPad",
+        "Four-eyes approval, PDF reports, and a sequential e-signature flow",
+        "Calibration, TÜRKAK Annex 1, İSG-KATİP, and quality management modules",
+      ],
+      tags: ["Web", "Android", "iPhone", "iPad"],
+      cta: "See the product page",
+      href: "/en/17020",
+      mock: {
+        header: "Work order · Periodic inspection",
+        title: "Inspection report",
+        status: "Report is in the signing order",
+        meta: "Verifiable by QR code",
+        steps: [["Team scheduled", "done"], ["Field inspection", "done"], ["Four-eyes approval", "done"], ["E-signature", "current"], ["Delivered via client portal", ""]],
+        noteLabel: "Next inspection",
+        note: "Date calculated on approval; it will be scheduled as a new work order.",
+      },
+    },
     workMock: {
       business: "Adem Moto Servis",
       status: "Your motorcycle is waiting for parts",
@@ -400,6 +444,47 @@ export function HomePage({ locale }: { locale: Locale }) {
                   <div className="work-note">
                     <span>{text.workMock.noteLabel}</span>
                     {text.workMock.note}
+                  </div>
+                </div>
+              </div>
+            </article>
+            <article className="work-card">
+              <div className="work-copy">
+                <span className="work-label">{text.inspection.label}</span>
+                <h3>17020</h3>
+                <p>{text.inspection.body}</p>
+                <h4>{text.workScopeTitle}</h4>
+                <ul>
+                  {text.inspection.scope.map((item) => (
+                    <li key={item}>{item}</li>
+                  ))}
+                </ul>
+                <div className="work-tags">
+                  {text.inspection.tags.map((tag) => (
+                    <span key={tag}>{tag}</span>
+                  ))}
+                </div>
+                <Link className="button button-primary" href={text.inspection.href}>
+                  {text.inspection.cta}
+                  <span aria-hidden="true">→</span>
+                </Link>
+              </div>
+              <div className="work-visual" aria-hidden="true">
+                <div className="work-phone work-phone-tilt-left">
+                  <span className="work-url">{text.inspection.mock.header}</span>
+                  <strong>{text.inspection.mock.title}</strong>
+                  <p>{text.inspection.mock.status}</p>
+                  <small>{text.inspection.mock.meta}</small>
+                  <ol>
+                    {text.inspection.mock.steps.map(([step, state]) => (
+                      <li className={state} key={step}>
+                        <span>{step}</span>
+                      </li>
+                    ))}
+                  </ol>
+                  <div className="work-note">
+                    <span>{text.inspection.mock.noteLabel}</span>
+                    {text.inspection.mock.note}
                   </div>
                 </div>
               </div>
