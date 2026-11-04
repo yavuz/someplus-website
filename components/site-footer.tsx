@@ -35,6 +35,9 @@ export function SiteFooter({ locale }: { locale: Locale }) {
             <Link href={isTr ? "/17020" : "/en/17020"}>
               {isTr ? "17020 Muayene Yönetimi" : "17020 Inspection Management"}
             </Link>
+            <Link href={isTr ? "/sofraplan" : "/en/sofraplan"}>
+              {isTr ? "SofraPlan Catering Yönetimi" : "SofraPlan Catering Management"}
+            </Link>
             <Link href={`${home}#${isTr ? "surec" : "process"}`}>
               {isTr ? "Çalışma süreci" : "How we work"}
             </Link>

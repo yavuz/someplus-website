@@ -63,7 +63,7 @@ const copy = {
     workEyebrow: "Kendi ürünlerimiz",
     workTitle: "Fikirden yayına kendi geliştirdiğimiz ürünler.",
     workDescription:
-      "Tezgah ve 17020, tamamen kendi ekibimizle tasarlayıp geliştirdiğimiz ürünlerimiz. Sizin projenizde kullanacağımız mühendislik yaklaşımının canlı örnekleri.",
+      "Tezgah, 17020 ve SofraPlan, tamamen kendi ekibimizle tasarlayıp geliştirdiğimiz ürünlerimiz. Sizin projenizde kullanacağımız mühendislik yaklaşımının canlı örnekleri.",
     workLabel: "Servis ve tamir işletmeleri için işletme yönetimi",
     workBody:
       "Tezgah; iş kabulünü, müşteri bilgilendirmesini, stok ve kasa yönetimini tek platformda toplar. Ustalar işleri telefondan günceller, müşteriler işlerinin durumunu takip linkinden izler.",
@@ -95,6 +95,35 @@ const copy = {
         steps: [["Ekip planlandı", "done"], ["Saha muayenesi", "done"], ["Dört göz teknik onay", "done"], ["E-imza", "current"], ["Müşteri portalında teslim", ""]],
         noteLabel: "Sonraki kontrol",
         note: "Tarih onayla birlikte hesaplandı; yeni iş emri olarak planlanacak.",
+      },
+    },
+    sofraplan: {
+      label: "Toplu yemek ve tabldot üreticileri için yönetim platformu",
+      body: "Toplu yemek firmaları için reçete maliyetinden hakedişe tek zincir. Çift fireli hammadde hesabı, 4 kap tabldot menü planlama, aşçıbaşı üretim föyü, sahada kaybolan termobox/küvet takibi ve asgari garanti hesaplı hakediş mutabakatı.",
+      scope: [
+        "Firma yönetim paneli ve müşteri sipariş portalı",
+        "Çift fireli (ayıklama + pişme) hassas reçete maliyet motoru",
+        "Aşçıbaşı mutfak föyü ve hat ayrımı (taşıma vs yerinde)",
+        "Termobox ve küvet emanet bakiye mutabakatı",
+        "72 saat şahit numune ve HACCP denetim raporları",
+      ],
+      tags: ["Web paneli", "Müşteri portalı", "Saha sevkiyatı"],
+      cta: "Ürün sayfasını inceleyin",
+      href: "/sofraplan",
+      mock: {
+        header: "Günün Üretimi · 2.450 Porsiyon",
+        title: "Öğle Tabldot Üretim Föyü",
+        status: "Kazan reçeteleri hazırlandı",
+        meta: "4 kap dengesi doğrulandı",
+        steps: [
+          ["Siparişler kilitlendi (Cut-off)", "done"],
+          ["Depo hammadde çıkışı", "done"],
+          ["Kazan üretimi & Şahit numune", "current"],
+          ["Termobox sevkiyatı", ""],
+          ["Hakediş mutabakatı", ""],
+        ],
+        noteLabel: "Emanet Takibi",
+        note: "142 termobox ve 380 küvet sahada; teslimat sırasında boşlar toplanacak.",
       },
     },
     workMock: {
@@ -175,7 +204,7 @@ const copy = {
     workEyebrow: "Our own products",
     workTitle: "Products we built from idea to launch.",
     workDescription:
-      "Tezgah and 17020 are products we designed and built entirely in-house. They are live examples of the engineering approach we bring to your project.",
+      "Tezgah, 17020, and SofraPlan are products we designed and built entirely in-house. They are live examples of the engineering approach we bring to your project.",
     workLabel: "Business management for service and repair shops",
     workBody:
       "Tezgah brings job intake, customer updates, inventory, and cash management onto one platform. Technicians update jobs from their phones, and customers follow progress through a tracking link.",
@@ -207,6 +236,35 @@ const copy = {
         steps: [["Team scheduled", "done"], ["Field inspection", "done"], ["Four-eyes approval", "done"], ["E-signature", "current"], ["Delivered via client portal", ""]],
         noteLabel: "Next inspection",
         note: "Date calculated on approval; it will be scheduled as a new work order.",
+      },
+    },
+    sofraplan: {
+      label: "Management platform for contract catering and mass food service",
+      body: "One unbroken chain from recipe costing to billing for contract caterers. Dual-waste raw ingredient math, 4-course menu planning, kitchen production sheets, container tracking, and guaranteed minimum monthly reconciliation.",
+      scope: [
+        "Operations panel and client order portal",
+        "Dual-waste (prep + cooking) precision recipe costing engine",
+        "Kitchen production sheets and facility split (dispatch vs on-site)",
+        "Gastronorm container and thermal box deposit reconciliation",
+        "72-hour witness sample and HACCP audit compliance",
+      ],
+      tags: ["Web panel", "Client portal", "Dispatch"],
+      cta: "See the product page",
+      href: "/en/sofraplan",
+      mock: {
+        header: "Today’s Production · 2,450 Portions",
+        title: "Lunch Catering Sheet",
+        status: "Batch cauldron recipes ready",
+        meta: "4-course balance verified",
+        steps: [
+          ["Orders locked (Cut-off)", "done"],
+          ["Warehouse pull completed", "done"],
+          ["Batch cooking & Witness sample", "current"],
+          ["Thermal box dispatch", ""],
+          ["Monthly reconciliation", ""],
+        ],
+        noteLabel: "Container Tracking",
+        note: "142 thermal boxes and 380 pans in the field; empties to collect on delivery.",
       },
     },
     workMock: {
@@ -485,6 +543,58 @@ export function HomePage({ locale }: { locale: Locale }) {
                   <div className="work-note">
                     <span>{text.inspection.mock.noteLabel}</span>
                     {text.inspection.mock.note}
+                  </div>
+                </div>
+              </div>
+            </article>
+            <article className="work-card">
+              <div className="work-copy">
+                <span className="work-label">{text.sofraplan.label}</span>
+                <h3>SofraPlan</h3>
+                <p>{text.sofraplan.body}</p>
+                <h4>{text.workScopeTitle}</h4>
+                <ul>
+                  {text.sofraplan.scope.map((item) => (
+                    <li key={item}>{item}</li>
+                  ))}
+                </ul>
+                <div className="work-tags">
+                  {text.sofraplan.tags.map((tag) => (
+                    <span key={tag}>{tag}</span>
+                  ))}
+                </div>
+                <div style={{ display: "flex", gap: "0.75rem", flexWrap: "wrap", alignItems: "center" }}>
+                  <Link className="button button-primary" href={text.sofraplan.href}>
+                    {text.sofraplan.cta}
+                    <span aria-hidden="true">→</span>
+                  </Link>
+                  <a
+                    className="button button-secondary"
+                    href="https://sofra.someplus.work"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    Canlı Demo
+                    <span aria-hidden="true">↗</span>
+                  </a>
+                </div>
+              </div>
+              <div className="work-visual" aria-hidden="true">
+                <div className="work-phone work-phone-tilt-left">
+                  <span className="work-url">{text.sofraplan.mock.header}</span>
+                  <strong>{text.sofraplan.mock.title}</strong>
+                  <p>{text.sofraplan.mock.status}</p>
+                  <small>{text.sofraplan.mock.meta}</small>
+                  <ol>
+                    {text.sofraplan.mock.steps.map(([step, state]) => (
+                      <li className={state} key={step}>
+                        <span>{step}</span>
+                      </li>
+                    ))}
+                  </ol>
+                  <div className="work-note">
+                    <span>{text.sofraplan.mock.noteLabel}</span>
+                    {text.sofraplan.mock.note}
                   </div>
                 </div>
               </div>

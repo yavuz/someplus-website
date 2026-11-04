@@ -44,6 +44,15 @@ const paths: Record<IconName, React.ReactNode> = {
       <path d="m8.8 13.3 2.2 2.2 4.2-4.6" />
     </>
   ),
+  catering: (
+    <>
+      <path d="M3 18h18" />
+      <path d="M4 15a8 8 0 0 1 16 0" />
+      <path d="M12 7V5" />
+      <circle cx="12" cy="4" r="1" />
+      <rect x="2" y="18" width="20" height="2.5" rx="1" />
+    </>
+  ),
 };
 
 export function ServiceIcon({ name }: { name: IconName }) {

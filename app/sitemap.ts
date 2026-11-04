@@ -22,6 +22,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${base}/en/support/`, lastModified: updated, priority: 0.6 },
     { url: `${base}/17020/`, lastModified: new Date("2026-11-02"), priority: 0.8 },
     { url: `${base}/en/17020/`, lastModified: new Date("2026-11-02"), priority: 0.7 },
+    { url: `${base}/sofraplan/`, lastModified: new Date("2026-11-04"), priority: 0.8 },
+    { url: `${base}/en/sofraplan/`, lastModified: new Date("2026-11-04"), priority: 0.7 },
     { url: `${base}/gundem/`, lastModified: new Date("2026-11-02"), priority: 0.5 },
   ];
 }
