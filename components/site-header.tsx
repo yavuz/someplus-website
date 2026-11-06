@@ -30,7 +30,13 @@ const copy = {
   },
 };
 
-export function SiteHeader({ locale }: { locale: Locale }) {
+export function SiteHeader({
+  locale,
+  languageHref,
+}: {
+  locale: Locale;
+  languageHref?: string;
+}) {
   const labels = copy[locale];
 
   return (
@@ -50,7 +56,7 @@ export function SiteHeader({ locale }: { locale: Locale }) {
           <Link className="button button-primary header-cta" href={labels.ctaHref}>
             {labels.cta}
           </Link>
-          <Link className="language-button" href={labels.languageHref}>
+          <Link className="language-button" href={languageHref ?? labels.languageHref}>
             {labels.languageLabel}
           </Link>
         </div>
