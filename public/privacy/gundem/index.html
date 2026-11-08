@@ -21,7 +21,7 @@
 <main>
 
 <h1>Gündem Gizlilik Politikası</h1>
-<p class="meta">Son güncelleme: 30 Ekim 2026 · <a href="#en">English version below</a></p>
+<p class="meta">Son güncelleme: 8 Kasım 2026 · <a href="#en">English version below</a></p>
 
 <p>Bu politika, iOS ve Android için yayınlanan <strong>Gündem</strong> uygulamasının ("Uygulama") hangi verileri nasıl işlediğini açıklar. Uygulama, Yavuz Yıldırım tarafından geliştirilmektedir.</p>
 
@@ -39,7 +39,7 @@
 <p>Haberler, uygulamada listelenen haber sitelerinin herkese açık RSS akışlarından doğrudan çekilir. Bu sırada cihazınız ilgili siteye bağlanır ve o site, her internet bağlantısında olduğu gibi IP adresinizi görebilir. "Haberin tamamını oku" veya "Tarayıcıda aç" seçildiğinde haber, ilgili sitenin kendi sayfasında açılır; bu sitelerin kendi gizlilik politikaları geçerlidir.</p>
 
 <h2>Reklamlar (Google AdMob)</h2>
-<p>Uygulama, Google LLC'nin sunduğu Google AdMob hizmetiyle banner reklam gösterir. AdMob, reklamları sunmak, ölçmek, sıklığını sınırlamak ve sahtekârlığı önlemek amacıyla şu verileri toplayıp işleyebilir:</p>
+<p>Uygulama, Google LLC'nin sunduğu Google AdMob hizmetiyle banner ve haber akışı içi reklamlar gösterir. AdMob, reklamları sunmak, ölçmek, sıklığını sınırlamak ve sahtekârlığı önlemek amacıyla şu verileri toplayıp işleyebilir:</p>
 <ul>
   <li>Cihaz tanımlayıcıları (Android'de reklam kimliği),</li>
   <li>IP adresi ve buna dayalı yaklaşık konum,</li>
@@ -49,8 +49,14 @@
 <p>iOS'ta uygulama, uygulamalar arası takip izni (App Tracking Transparency) istemez ve reklam tanımlayıcısına (IDFA) erişmez. Android'de reklam kimliğinizi sıfırlayabilir veya kişiselleştirilmiş reklamları cihazınızın <em>Ayarlar › Google › Reklamlar</em> (veya <em>Gizlilik › Reklamlar</em>) bölümünden kapatabilirsiniz.</p>
 <p>Google'ın bu verileri nasıl kullandığı hakkında: <a href="https://policies.google.com/technologies/partner-sites">policies.google.com/technologies/partner-sites</a> ve <a href="https://policies.google.com/privacy">Google Gizlilik Politikası</a>.</p>
 
+<h2>Analitik ve bildirimler (Firebase)</h2>
+<p>Uygulama, kullanımını ve kalitesini ölçmek için Google Analytics for Firebase kullanır. Uygulama açılışları, oturumlar, haber kaynağı/kategori etkileşimleri, bildirim izni tercihi ve SDK'nın otomatik satın alma olayları işlenebilir. Cihaz/uygulama bilgileri, uygulama örneği veya cihaz tanımlayıcıları ve IP adresinden türetilen yaklaşık konum Google tarafından işlenebilir. Kullanıcının eklediği özel kaynakların adresleri analitik olaylarına gönderilmez. Uygulama analitiğinde reklam depolaması, reklam kişiselleştirme sinyalleri ve reklam amaçlı kullanıcı verisi izni kapalıdır. Analitik depolama AB, Birleşik Krallık ve İsviçre'de kapalı tutulur; diğer bölgelerde reklam onay sistemi bölgeyi belirledikten sonra açılır.</p>
+<p>Bildirimler için Firebase Cloud Messaging kullanılır. APNs/FCM belirteçleri ve uygulama kurulum kimliği ile cihaz modeli, dil, saat dilimi, işletim sistemi ve uygulama sürümü bildirim hizmeti için işlenebilir. Bildirim tercihini uygulama ve sistem ayarlarından değiştirebilirsiniz. SDK'lar hata, performans ve teknik tanılama verilerini hizmet kalitesi için işleyebilir. Firebase veri türleri: <a href="https://firebase.google.com/docs/ios/app-store-data-collection">Firebase veri toplama açıklaması</a>.</p>
+<h2>Satın almalar ve yerel veriler</h2>
+<p>Pro satın alma işlemleri Apple veya Google'ın mağaza sistemiyle yapılır; ödeme kartı bilgileri geliştiriciye iletilmez. Pro durumu, okundu bilgisi ve kaydedilen haberler cihazda tutulur. Firebase'in otomatik satın alma analitiği, mağaza ödeme bilgilerinden ayrıdır.</p>
+
 <h2>Verilerin paylaşılması</h2>
-<p>Geliştirici olarak sizinle ilgili kişisel veri toplamıyor, satmıyor veya paylaşmıyoruz. Yukarıda açıklanan reklam verileri doğrudan Google tarafından toplanır ve Google'ın politikalarına tabidir.</p>
+<p>Hesap veya iletişim bilgilerinizi istemeyiz ve verilerinizi satmayız. Yukarıda belirtilen reklam, analitik ve bildirim verileri Google hizmetleri tarafından işlenir. Geliştirici, Firebase üzerinden kullanım raporlarına erişebilir. Bu hizmetlerin veri saklama ve silme süreçleri Google'ın politikaları ve ilgili hizmet ayarlarına tabidir.</p>
 
 <h2>Çocuklar</h2>
 <p>Uygulama 13 yaşın altındaki çocuklara yönelik değildir ve bilerek çocuklardan kişisel veri toplamaz.</p>
@@ -65,7 +71,7 @@
 
 <section id="en" lang="en">
 <h1>Gündem Privacy Policy</h1>
-<p class="meta">Last updated: October 30, 2026</p>
+<p class="meta">Last updated: November 8, 2026</p>
 
 <p>This policy explains how the <strong>Gündem</strong> app for iOS and Android ("the App"), developed by Yavuz Yıldırım, handles data.</p>
 
@@ -83,12 +89,18 @@
 <p>Stories are loaded directly from the public RSS feeds of the news sites listed in the App. Your device connects to those sites, which can see your IP address as with any internet connection. When you open a full story, it opens on the publisher's own website, which is governed by its own privacy policy.</p>
 
 <h2>Advertising (Google AdMob)</h2>
-<p>The App shows banner ads through Google AdMob, provided by Google LLC. To serve and measure ads, cap their frequency and prevent fraud, AdMob may collect and process device identifiers (the advertising ID on Android), your IP address and approximate location derived from it, device and app information, and ad interactions.</p>
+<p>The App shows banner and in-feed ads through Google AdMob, provided by Google LLC. To serve and measure ads, cap their frequency and prevent fraud, AdMob may collect and process device identifiers (the advertising ID on Android), your IP address and approximate location derived from it, device and app information, and ad interactions.</p>
 <p>On iOS the App does not request App Tracking Transparency permission and does not access the advertising identifier (IDFA). On Android you can reset your advertising ID or opt out of personalized ads in your device settings.</p>
 <p>See <a href="https://policies.google.com/technologies/partner-sites">How Google uses information from sites or apps that use its services</a> and the <a href="https://policies.google.com/privacy">Google Privacy Policy</a>.</p>
 
+<h2>Analytics and notifications (Firebase)</h2>
+<p>The App uses Google Analytics for Firebase to measure usage and quality. App opens, sessions, interactions with news sources/categories, notification permission choices and the SDK's automatic purchase events may be processed. Google may process device/app information, app-instance or device identifiers and approximate location derived from IP addresses. Addresses of custom sources added by users are not sent in analytics events. Advertising storage, ad personalization signals and ad user data consent are disabled for app analytics. Analytics storage remains disabled in the EU, UK and Switzerland; elsewhere it is enabled after the consent system determines the region.</p>
+<p>Firebase Cloud Messaging is used for notifications. APNs/FCM tokens and an installation ID, together with device model, language, time zone, OS and app version, may be processed for messaging. Notification preferences can be changed in the app and system settings. SDKs may process crash, performance and technical diagnostic data to maintain service quality. See <a href="https://firebase.google.com/docs/ios/app-store-data-collection">Firebase's data collection disclosure</a>.</p>
+<h2>Purchases and local data</h2>
+<p>Pro purchases use Apple's or Google's store systems; payment card details are not sent to the developer. Pro status, read markers and saved stories are stored on the device. Firebase's automatic purchase analytics is separate from store payment information.</p>
+
 <h2>Sharing</h2>
-<p>We do not collect, sell or share personal data about you. The advertising data described above is collected directly by Google under Google's policies.</p>
+<p>We do not request account or contact information and do not sell your data. The advertising, analytics and messaging data described above is processed by Google services. The developer can access usage reports through Firebase. Retention and deletion are governed by Google's policies and the relevant service settings.</p>
 
 <h2>Children</h2>
 <p>The App is not directed to children under 13 and does not knowingly collect personal data from children.</p>
