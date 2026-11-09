@@ -2385,6 +2385,7 @@ img {
 .ezan-store span {
   display: grid;
   line-height: 1.1;
+  text-align: left;
 }
 
 .ezan-store small {
@@ -2860,13 +2861,14 @@ img {
   justify-content: center;
 }
 
-.ezan-closing-card small {
+/* Yalnız destek notu: .ezan-store içindeki <small> etiketine dokunmamalı */
+.ezan-closing-card > small {
   margin-top: 28px;
   color: rgba(246, 243, 236, 0.62);
   font-size: 0.86rem;
 }
 
-.ezan-closing-card small a {
+.ezan-closing-card > small a {
   color: var(--ezan-gold);
 }
 
