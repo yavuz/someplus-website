@@ -54,7 +54,8 @@
 <p>If you choose "Plan with my calendar", the App asks for calendar access and reads only the busy and free times of your events, on your phone, to suggest good hours. Event titles are not used, and nothing from your calendar leaves your phone. If you add a suggested time to your calendar, the App creates that event in your calendar.</p>
 
 <h2>Notifications, widgets, Live Activities and Siri</h2>
-<p>Morning summaries, golden hour reminders and the weekend plan are scheduled on your phone as local notifications. The home and lock screen widgets, the lock screen countdown (Live Activity) and Siri answers use the forecast already saved on your phone; they do not send anything.</p>
+<p>Morning summaries, golden hour reminders and the weekend plan are scheduled on your phone as local notifications. The home and lock screen widgets and Siri answers use the forecast already saved on your phone; they do not send anything.</p>
+<p>The lock screen countdown (Live Activity) also uses the saved forecast. So that it disappears exactly when the golden hour ends, even if the App is closed, the App sends our server the countdown's push address (a random token Apple creates for this one countdown), the time the golden hour ends and what the countdown shows (activity name, time range and short sentence). At that time the server asks Apple to remove the countdown and deletes the record; if the countdown is closed earlier, the record is deleted then. The token cannot be used to identify you or to send you notifications, and no other information is stored with it. You can turn the countdown off in Profile.</p>
 
 <h2>Light journal and preferences</h2>
 <p>When you tap "I went out", the date and the activity are saved on your phone to draw your weekly light traces. Your activities, temperature preference, sensitivities, waking hours and sound settings are also saved only on your phone.</p>
@@ -69,7 +70,7 @@
 <p>The App is not directed at children under 13 and does not knowingly collect information from them.</p>
 
 <h2>Keeping and deleting data</h2>
-<p>Everything the App saves is on your phone and is removed when you delete the App. Because we keep no data that identifies you, there is nothing on our side to delete; weather kept by our server expires within an hour.</p>
+<p>Everything the App saves is on your phone and is removed when you delete the App. Because we keep no data that identifies you, there is nothing on our side to delete; weather kept by our server expires within an hour, and a countdown's record is deleted when its golden hour ends (at most two hours later if Apple cannot be reached).</p>
 
 <h2>Your rights</h2>
 <p>Under the EU General Data Protection Regulation (GDPR), the Turkish Personal Data Protection Law (KVKK, No. 6698) and similar laws you have the right to access, correct or delete your personal data and to object to its processing. For questions or requests, write to <a href="mailto:info@someplus.work?subject=Solaya%20privacy">info@someplus.work</a>.</p>
@@ -108,7 +109,8 @@
 <p>"Takvimime göre planla"yı seçerseniz uygulama takvim izni ister ve iyi saatleri önermek için etkinliklerinizin yalnızca dolu ve boş zamanlarını telefonunuzda okur. Etkinlik adları kullanılmaz ve takviminizden hiçbir şey telefonunuzdan çıkmaz. Önerilen bir saati takviminize eklerseniz uygulama o etkinliği takviminizde oluşturur.</p>
 
 <h2>Bildirimler, widget'lar, Canlı Etkinlikler ve Siri</h2>
-<p>Sabah özeti, altın saat hatırlatıcısı ve hafta sonu planı telefonunuzda yerel bildirim olarak kurulur. Ana ekran ve kilit ekranı widget'ları, kilit ekranı geri sayımı (Canlı Etkinlik) ve Siri cevapları telefonda zaten kayıtlı tahmini kullanır; hiçbir şey göndermez.</p>
+<p>Sabah özeti, altın saat hatırlatıcısı ve hafta sonu planı telefonunuzda yerel bildirim olarak kurulur. Ana ekran ve kilit ekranı widget'ları ve Siri cevapları telefonda zaten kayıtlı tahmini kullanır; hiçbir şey göndermez.</p>
+<p>Kilit ekranı geri sayımı (Canlı Etkinlik) da kayıtlı tahmini kullanır. Uygulama kapalı olsa bile altın saat bitince tam vaktinde kalksın diye uygulama sunucumuza geri sayımın push adresini (Apple'ın yalnızca bu geri sayım için oluşturduğu rastgele bir belirteç), altın saatin bitiş saatini ve geri sayımda yazanları (aktivite adı, saat aralığı ve kısa cümle) gönderir. Sunucu o saatte Apple'dan geri sayımı kaldırmasını ister ve kaydı siler; geri sayım daha önce kapanırsa kayıt o an silinir. Bu belirteç sizi tanımlamak ya da size bildirim göndermek için kullanılamaz ve yanında başka bilgi saklanmaz. Geri sayımı Profil'den kapatabilirsiniz.</p>
 
 <h2>Işık günlüğü ve tercihler</h2>
 <p>"Çıktım"a bastığınızda tarih ve aktivite, haftalık ışık izlerinizi çizmek için telefonunuzda saklanır. Aktiviteleriniz, sıcaklık tercihiniz, hassasiyetleriniz, uyanık olduğunuz saatler ve ses ayarlarınız da yalnızca telefonunuzda saklanır.</p>
@@ -123,7 +125,7 @@
 <p>Uygulama 13 yaşından küçük çocuklara yönelik değildir ve onlardan bilerek bilgi toplamaz.</p>
 
 <h2>Saklama ve silme</h2>
-<p>Uygulamanın kaydettiği her şey telefonunuzdadır ve uygulamayı sildiğinizde silinir. Sizi tanımlayan bir veri saklamadığımız için bizim tarafımızda silinecek bir şey yoktur; sunucudaki hava verisi bir saat içinde kendiliğinden silinir.</p>
+<p>Uygulamanın kaydettiği her şey telefonunuzdadır ve uygulamayı sildiğinizde silinir. Sizi tanımlayan bir veri saklamadığımız için bizim tarafımızda silinecek bir şey yoktur; sunucudaki hava verisi bir saat içinde kendiliğinden silinir, geri sayım kaydı ise altın saat bitince silinir (Apple'a ulaşılamazsa en geç iki saat sonra).</p>
 
 <h2>Haklarınız</h2>
 <p>6698 sayılı KVKK ve AB Genel Veri Koruma Tüzüğü kapsamında kişisel verilerinize erişme, düzeltilmesini veya silinmesini isteme ve işlenmesine itiraz etme haklarına sahipsiniz. Sorularınız ve talepleriniz için <a href="mailto:info@someplus.work?subject=Solaya%20gizlilik">info@someplus.work</a> adresine yazabilirsiniz.</p>
