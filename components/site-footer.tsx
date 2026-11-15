@@ -41,6 +41,9 @@ export function SiteFooter({ locale }: { locale: Locale }) {
             <Link href={isTr ? "/ezan" : "/en/ezan"}>
               {isTr ? "Ezan – Namaz Saatleri" : "Ezan – Prayer Times"}
             </Link>
+            <Link href={isTr ? "/solaya" : "/en/solaya"}>
+              {isTr ? "Solaya – Dışarı Çıkma Saati" : "Solaya – Best Time Outside"}
+            </Link>
             <Link href={`${home}#${isTr ? "surec" : "process"}`}>
               {isTr ? "Çalışma süreci" : "How we work"}
             </Link>
