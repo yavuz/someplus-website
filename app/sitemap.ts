@@ -26,6 +26,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${base}/en/sofraplan/`, lastModified: new Date("2026-11-04"), priority: 0.7 },
     { url: `${base}/ezan/`, lastModified: new Date("2026-11-06"), priority: 0.8 },
     { url: `${base}/en/ezan/`, lastModified: new Date("2026-11-06"), priority: 0.7 },
+    { url: `${base}/solaya/`, lastModified: new Date("2026-11-15"), priority: 0.8 },
+    { url: `${base}/en/solaya/`, lastModified: new Date("2026-11-15"), priority: 0.7 },
     { url: `${base}/gundem/`, lastModified: new Date("2026-11-02"), priority: 0.5 },
   ];
 }
