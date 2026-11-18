@@ -1,0 +1,24 @@
+.links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+.store {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 12px 24px;
+  border-radius: 18px;
+  background: #f6c66b;
+  color: #29251f;
+  text-decoration: none;
+  box-shadow: 0 10px 40px rgba(246, 198, 107, 0.2);
+  transition: transform 160ms ease, background 160ms ease;
+}
+.store span { font-weight: 700; font-size: 17px; }
+.store small { font-size: 12px; }
+.store:hover { background: #f8d38e; transform: translateY(-2px); }
+.store:focus-visible { outline: 3px solid #70501c; outline-offset: 4px; }
+@media (prefers-reduced-motion: reduce) {
+  .store { transition: none; }
+}

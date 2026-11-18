@@ -3,6 +3,7 @@ import { type Locale } from "@/lib/products";
 import { SiteFooter } from "./site-footer";
 import { SiteHeader } from "./site-header";
 import { SolayaOrb } from "./solaya-orb";
+import { SolayaStoreLinks } from "./solaya-store-links";
 
 // Uygulamanın kürelerinin renkleri (app/lib/theme/palette.dart ile aynı).
 const colors = {
@@ -25,7 +26,6 @@ const copy = {
     tagline: "Dışarı çıkmak için en iyi an.",
     intro:
       "Rakam yok, tablo yok. Solaya havayı senin için okur ve tek bir ışığa çevirir: altınsa çık. Koşu, yürüyüş, çocuklarla park, köpek gezdirme, bisiklet ya da çamaşır; her biri için günün en tatlı saatini bulur.",
-    soon: "Yakında App Store’da",
     heroNote: ["Hesap gerekmez", "Konumun ~10 km’ye yuvarlanır", "6 dil"],
     orbHint: "Küreye dokun ya da tutup esnet",
     states: [
@@ -110,7 +110,7 @@ const copy = {
         "Hayır. İzin vermezsen bölgendeki büyük bir şehrin havasını okur. İzin verirsen konumun yaklaşık 10 km’lik bir kareye yuvarlanarak gönderilir.",
       ],
       ["Hangi dillerde?", "Türkçe, İngilizce, İspanyolca, Almanca, Portekizce ve Japonca."],
-      ["Android var mı?", "Önce iPhone. Android sürümü hazırlanıyor."],
+      ["Android var mı?", "Evet. Solaya, iOS için App Store’da ve Android için Google Play’de yayında."],
     ],
     closingTitle: "Işığa bak, dışarı çık.",
     privacy: "Gizlilik politikası",
@@ -124,7 +124,6 @@ const copy = {
     tagline: "The best time to be outside.",
     intro:
       "No numbers, no charts. Solaya reads the weather for you and turns it into a single light: gold means go. Running, walking, the park with kids, the dog, a ride or the laundry; it finds the sweetest hours of the day for each.",
-    soon: "Coming soon to the App Store",
     heroNote: ["No account", "Location rounded to ~10 km", "6 languages"],
     orbHint: "Tap the light, or hold and stretch it",
     states: [
@@ -209,7 +208,7 @@ const copy = {
         "No. Without permission it reads the weather of a big city in your region. With permission, your location is rounded to a ~10 km square before it is sent.",
       ],
       ["Which languages?", "English, Turkish, Spanish, German, Portuguese and Japanese."],
-      ["Is there an Android version?", "iPhone comes first. The Android version is on its way."],
+      ["Is there an Android version?", "Yes. Solaya is available on the App Store for iOS and Google Play for Android."],
     ],
     closingTitle: "Look at the light, go outside.",
     privacy: "Privacy policy",
@@ -242,10 +241,7 @@ export function SolayaPage({ locale }: { locale: Locale }) {
                 <span>{text.tagline}</span>
               </h1>
               <p>{text.intro}</p>
-              <span className="solaya-soon">
-                <AppleMark />
-                {text.soon}
-              </span>
+              <SolayaStoreLinks locale={locale} />
               <ul className="solaya-note">
                 {text.heroNote.map((item) => (
                   <li key={item}>{item}</li>
@@ -333,10 +329,7 @@ export function SolayaPage({ locale }: { locale: Locale }) {
           <div className="shell">
             <img className="solaya-icon" src="/images/solaya/icon.png" alt="" width="88" height="88" />
             <h2>{text.closingTitle}</h2>
-            <span className="solaya-soon">
-              <AppleMark />
-              {text.soon}
-            </span>
+            <SolayaStoreLinks locale={locale} />
             <p className="solaya-links">
               <a href="/privacy/solaya/">{text.privacy}</a>
               <span aria-hidden="true">·</span>
@@ -347,17 +340,6 @@ export function SolayaPage({ locale }: { locale: Locale }) {
       </main>
       <SiteFooter locale={locale} />
     </>
-  );
-}
-
-function AppleMark() {
-  return (
-    <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true">
-      <path
-        fill="currentColor"
-        d="M16.37 12.64c-.02-2.2 1.8-3.26 1.88-3.31-1.03-1.5-2.62-1.7-3.18-1.73-1.35-.14-2.64.8-3.33.8-.69 0-1.74-.78-2.87-.76-1.47.02-2.83.86-3.59 2.18-1.53 2.66-.39 6.6 1.1 8.76.73 1.06 1.6 2.24 2.73 2.2 1.1-.05 1.51-.71 2.84-.71 1.32 0 1.7.71 2.86.69 1.18-.02 1.93-1.07 2.65-2.13.84-1.22 1.18-2.41 1.2-2.47-.03-.01-2.3-.88-2.32-3.52zM14.2 6.17c.6-.73 1.01-1.75.9-2.76-.87.04-1.92.58-2.54 1.31-.56.64-1.05 1.67-.92 2.66.97.08 1.96-.49 2.56-1.21z"
-      />
-    </svg>
   );
 }
 
