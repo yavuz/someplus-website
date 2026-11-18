@@ -10,12 +10,10 @@ export function SolayaStoreLinks({ locale }: { locale: Locale }) {
   return (
     <div className={styles.links} aria-label={locale === "tr" ? "Solaya’yı indir" : "Download Solaya"}>
       <a className={styles.store} href={solayaStores.apple}>
-        <span>App Store</span>
-        <small>{locale === "tr" ? "iOS için indir" : "Download for iOS"}</small>
+        <img className={styles.apple} src={`/images/store-badges/app-store-${locale}.svg`} alt={locale === "tr" ? "App Store’dan indirin" : "Download on the App Store"} />
       </a>
       <a className={styles.store} href={solayaStores.google}>
-        <span>Google Play</span>
-        <small>{locale === "tr" ? "Android için indir" : "Download for Android"}</small>
+        <img className={locale === "en" ? `${styles.google} ${styles.googleEn}` : styles.google} src={`/images/store-badges/google-play-${locale}.png`} alt={locale === "tr" ? "Google Play’den alın" : "Get it on Google Play"} />
       </a>
     </div>
   );

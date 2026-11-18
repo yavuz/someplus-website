@@ -1,24 +1,19 @@
 .links {
   display: flex;
   flex-wrap: wrap;
-  gap: 12px;
+  align-items: center;
+  gap: 16px;
 }
 .store {
   display: inline-flex;
-  flex-direction: column;
-  align-items: flex-start;
-  padding: 12px 24px;
-  border-radius: 18px;
-  background: #f6c66b;
-  color: #29251f;
+  align-items: center;
+  justify-content: center;
+  min-height: 72px;
   text-decoration: none;
-  box-shadow: 0 10px 40px rgba(246, 198, 107, 0.2);
-  transition: transform 160ms ease, background 160ms ease;
 }
-.store span { font-weight: 700; font-size: 17px; }
-.store small { font-size: 12px; }
-.store:hover { background: #f8d38e; transform: translateY(-2px); }
-.store:focus-visible { outline: 3px solid #70501c; outline-offset: 4px; }
-@media (prefers-reduced-motion: reduce) {
-  .store { transition: none; }
-}
+.store img { display: block; max-width: none; width: auto; }
+.store .apple { height: 48px; }
+/* Google supplies its own clear space inside the PNG. Keep the artwork intact. */
+.store .google { height: 62.5px; }
+.store .googleEn { height: 71.43px; }
+.store:focus-visible { outline: 3px solid #70501c; outline-offset: 4px; border-radius: 6px; }
