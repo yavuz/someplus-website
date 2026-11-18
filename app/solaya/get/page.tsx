@@ -6,6 +6,25 @@ import { SolayaStoreLinks } from "@/components/solaya-store-links";
 export const metadata: Metadata = {
   title: "Solaya’yı indir",
   description: "Solaya’yı iOS için App Store’dan veya Android için Google Play’den indir.",
+  openGraph: {
+    type: "website",
+    url: "https://someplus.work/solaya/get/",
+    title: "Solaya — Dışarı çıkmak için en iyi an",
+    description: "Altınsa çık. Solaya havayı senin için okur, dışarı çıkmak için en iyi saati bulur. iOS ve Android için indir.",
+    siteName: "Solaya",
+    locale: "tr_TR",
+    images: [{ url: "https://someplus.work/images/solaya/icon.png", width: 512, height: 512, alt: "Solaya uygulama ikonu" }],
+  },
+  twitter: {
+    card: "summary",
+    title: "Solaya — Dışarı çıkmak için en iyi an",
+    description: "Altınsa çık. Dışarı çıkmak için en iyi saati bul. iOS ve Android için indir.",
+    images: ["https://someplus.work/images/solaya/icon.png"],
+  },
+  other: {
+    "apple-itunes-app": "app-id=6834972254",
+    "google-play-app": "app-id=app.solaya",
+  },
   robots: { index: false, follow: true },
 };
 
