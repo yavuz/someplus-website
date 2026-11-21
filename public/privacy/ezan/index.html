@@ -21,16 +21,17 @@
 <main>
 
 <h1>Ezan Gizlilik Politikası</h1>
-<p class="meta">Son güncelleme: 5 Kasım 2026 · <a href="#en">English version below</a></p>
+<p class="meta">Son güncelleme: 22 Kasım 2026 · <a href="#en">English version below</a></p>
 
-<p>Bu politika, iPhone, Apple Watch ve Android için yayınlanan <strong>Ezan</strong> uygulamasının ("Uygulama") hangi bilgileri nasıl kullandığını açıklar. Uygulama, Yavuz Yıldırım tarafından geliştirilmektedir.</p>
+<p>Bu politika, iPhone, Apple Watch, Apple TV, Android telefon, Wear OS ve Android TV için yayınlanan <strong>Ezan</strong> uygulamasının ("Uygulama") hangi bilgileri nasıl kullandığını açıklar. Uygulama, Yavuz Yıldırım tarafından geliştirilmektedir.</p>
 
 <h2>Özet</h2>
 <ul>
   <li>Uygulamada hesap yoktur. Adınızı, e-posta adresinizi veya telefon numaranızı istemeyiz.</li>
   <li>Namaz vakitleri ve kıble yönü konumunuza göre <strong>cihazınızda</strong> hesaplanır. Konumunuz bizim sunucularımıza gönderilmez.</li>
-  <li>Uygulamanın kendisinde analiz veya kullanıcı takibi aracı yoktur.</li>
-  <li>Ücretsiz sürümde Google AdMob ile reklam gösterilir. Reklamlarla ilgili veri işleme Google tarafından yapılır.</li>
+  <li>Telefon uygulamaları, çökme raporları ve kullanım istatistikleri için Google Firebase (Crashlytics ve Analytics) kullanır. Bunu <em>Ayarlar › Hakkında › Çökme raporları ve kullanım istatistikleri</em> ile kapatabilirsiniz.</li>
+  <li>Telefonlarda ücretsiz sürümde Google AdMob ile reklam gösterilir. Apple TV ve Android TV'de reklam yoktur.</li>
+  <li>Ezan Pro abonelikleri App Store veya Google Play üzerinden alınır; iPhone ve Android'de Adapty aracılığıyla doğrulanır.</li>
 </ul>
 
 <h2>Konum</h2>
@@ -38,53 +39,84 @@
   <li><strong>Ne için:</strong> Namaz vakitlerini hesaplamak, kıble yönünü ve Kâbe'ye uzaklığı bulmak, yakındaki camileri göstermek.</li>
   <li><strong>Nasıl:</strong> Konum izni yalnızca uygulamayı kullanırken istenir; arka planda konum alınmaz ve konum en fazla 15 dakikada bir güncellenir. İzin vermek zorunda değilsiniz: şehrinizi elle seçebilirsiniz, bu durumda GPS kullanılmaz.</li>
   <li><strong>Cihazınızda kalanlar:</strong> Son konumun koordinatları ve şehir adı, vakitlerin widget'larda ve bildirimlerde güncel kalması için cihazınızda saklanır.</li>
-  <li><strong>Şehir adı ve şehir arama:</strong> Koordinatlarınızdan şehir ve ülke adını bulmak ve şehir aramak için işletim sisteminin konum hizmeti kullanılır: iPhone'da Apple (CLGeocoder, MapKit), Android'de Google (Android Geocoder). Bu istekler doğrudan Apple'a veya Google'a gider; biz bu verileri görmeyiz.</li>
+  <li><strong>Şehir adı ve şehir arama:</strong> Koordinatlarınızdan şehir ve ülke adını bulmak ve şehir aramak için işletim sisteminin konum hizmeti kullanılır: iPhone ve Apple TV'de Apple (CLGeocoder, MapKit), Android cihazlarda Google (Android Geocoder). Bu istekler doğrudan Apple'a veya Google'a gider; biz bu verileri görmeyiz.</li>
   <li><strong>Yakındaki camiler:</strong> iPhone'da camiler Apple Haritalar'da aranır. Android'de "Camiler" ekranı ya Google Haritalar uygulamasını açar ya da (bu özellik açıksa) konumunuzu yakındaki camileri bulmak için Google Places hizmetine gönderir. Yol tarifi haritalar uygulamanızda açılır.</li>
   <li><strong>Pusula:</strong> Kıble ekranında cihazınızın yön sensörleri kullanılır; bu bilgi cihazdan çıkmaz.</li>
+  <li><strong>Saatler ve TV'ler:</strong> Apple Watch konumu yalnızca iPhone'unuzdan alır. Wear OS uygulaması konumu telefondan alır; saatte konum izni verirseniz saatin kendi konumunu da kullanabilir. Apple TV ve Android TV'de konum isteğe bağlıdır ve yalnızca yaklaşık (şehir düzeyinde) konum istenir; şehrinizi elle de seçebilirsiniz.</li>
 </ul>
 
+<h2>Çökme raporları ve kullanım istatistikleri (Firebase)</h2>
+<p>iPhone ve Android telefon uygulamaları, hataları bulmak ve uygulamanın nasıl kullanıldığını anlamak için Google LLC'nin sunduğu Firebase Crashlytics ve Firebase Analytics hizmetlerini kullanır. Toplanan veriler şunlardır:</p>
+<ul>
+  <li><strong>Çökme raporları (Crashlytics):</strong> çökmenin teknik ayrıntıları (hata kaydı), uygulama sürümü, cihaz modeli, işletim sistemi sürümü ve Crashlytics'in oluşturduğu bir kurulum kimliği.</li>
+  <li><strong>Kullanım istatistikleri (Analytics):</strong> hangi ekranların açıldığı; Pro satın alma ekranının gösterilmesi, satın alma ve geri yükleme adımları; paylaşım kartında seçilen içerik türü, biçim ve tema (yazdığınız mesaj veya imza gönderilmez, yalnızca eklenip eklenmediği); Firebase'in otomatik olaylarıyla (ilk açılış, oturum, güncelleme gibi) birlikte Firebase'in uygulama için oluşturduğu uygulama örneği kimliği (app instance ID) ve temel cihaz ve uygulama bilgileri.</li>
+</ul>
+<p>Konumunuz, şehir adınız, namaz kayıtlarınız, zikir ve kaza sayılarınız, okuma geçmişiniz veya başka bir kişisel içerik Firebase'e gönderilmez. Reklam kişiselleştirme sinyalleri kapalıdır; Analytics verileri reklam kişiselleştirmesi için kullanılmaz. Cihaz reklam kimliğini sağlıyorsa (Android'de reklam kimliği; iPhone'da yalnızca takibe izin verdiyseniz IDFA) Firebase bunu da alabilir.</p>
+<p><strong>Ne zaman açıktır:</strong> Telefonlarda veri toplama yalnızca ayar açıksa ve Google'ın reklam onayı formunu reddetmediyseniz açılır; onay adımı tamamlanmadan veri toplanmaz. iPhone'da ayrıca uygulamalar arası takibi (App Tracking Transparency) reddettiyseniz kapalı kalır. Avrupa Ekonomik Alanı, Birleşik Krallık ve İsviçre'de, onay formunda cihazda bilgi saklamaya izin vermediyseniz kapalı kalır.</p>
+<p><strong>Nasıl kapatılır:</strong> Telefonda <em>Ayarlar › Hakkında › Çökme raporları ve kullanım istatistikleri</em> seçeneğini kapatın; bundan sonra veri toplanmaz.</p>
+<p><strong>Saatler ve TV'ler:</strong> Apple Watch, Wear OS ve Apple TV uygulamalarında Firebase yoktur. Android TV, telefon uygulamasıyla aynı paketi kullanır; TV'de reklam onayı sorulmadığından çökme raporları, Firebase'in otomatik kullanım olayları ve Pro satın alma ve geri yükleme adımları yalnızca bu ayara göre toplanır. Ayar varsayılan olarak açıktır ve şu an Android TV ekranlarında bu ayarı kapatan bir seçenek yoktur. Android TV'de toplanan verilerin silinmesini aşağıdaki adrese yazarak isteyebilirsiniz.</p>
+<p>Ayrıntılar: <a href="https://firebase.google.com/support/privacy">Firebase gizlilik bilgileri</a>.</p>
+
 <h2>Reklamlar (Google AdMob) ve reklam onayı</h2>
-<p>Ücretsiz sürümde Google LLC'nin Google Mobile Ads SDK'sı ile reklam gösterilir. Ezan Pro abonelerine reklam gösterilmez ve reklam isteği yapılmaz. Google; reklam sunmak, ölçmek, sıklığını sınırlamak ve sahtekârlığı önlemek amacıyla şu verileri işleyebilir:</p>
+<p>Telefonlarda ücretsiz sürümde Google LLC'nin Google Mobile Ads SDK'sı ile banner ve tam ekran reklam gösterilir. Ezan Pro abonelerine reklam gösterilmez ve reklam isteği yapılmaz. Apple TV, Android TV ve saat uygulamalarında reklam yoktur. Google; reklam sunmak, ölçmek, sıklığını sınırlamak ve sahtekârlığı önlemek amacıyla şu verileri işleyebilir:</p>
 <ul>
   <li>IP adresi ve buna dayalı yaklaşık konum,</li>
-  <li>Cihaz tanımlayıcıları (Android'de reklam kimliği),</li>
+  <li>Cihaz tanımlayıcıları (Android'de reklam kimliği; iPhone'da izin verdiyseniz IDFA),</li>
   <li>Cihaz ve uygulama bilgileri (model, işletim sistemi sürümü, dil vb.),</li>
   <li>Reklamlarla etkileşimler (gösterim, tıklama) ile performans ve çökme bilgileri.</li>
 </ul>
-<p>Uygulama, AdMob'a konumunuzu, adınızı veya başka bir kişisel bilgiyi kendisi iletmez. iPhone'da uygulamalar arası takip izni (App Tracking Transparency) istenmez, bu yüzden reklam tanımlayıcısı (IDFA) kullanılamaz. Android'de reklam kimliğinizi sıfırlayabilir veya silebilirsiniz: <em>Ayarlar › Gizlilik › Reklamlar</em> (ya da <em>Ayarlar › Google › Reklamlar</em>).</p>
+<p>Uygulama, AdMob'a konumunuzu, adınızı veya başka bir kişisel bilgiyi kendisi iletmez. iPhone'da ücretsiz sürüm, Google'ın onay adımından sonra bir kez uygulamalar arası takip izni (App Tracking Transparency) ister; reklam tanımlayıcısı (IDFA) yalnızca izin verirseniz kullanılabilir. Bu tercihi <em>iPhone Ayarları › Gizlilik ve Güvenlik › Takip</em> bölümünden değiştirebilirsiniz. Android'de reklam kimliğinizi sıfırlayabilir veya silebilirsiniz: <em>Ayarlar › Gizlilik › Reklamlar</em> (ya da <em>Ayarlar › Google › Reklamlar</em>).</p>
 <p><strong>Avrupa Ekonomik Alanı, Birleşik Krallık ve İsviçre:</strong> Reklamlar yüklenmeden önce Google'ın onay formu (User Messaging Platform) gösterilir; kişiselleştirilmiş reklamlara izin verip vermemeyi siz seçersiniz. Seçiminizi uygulamanın Ayarlar bölümündeki "Reklam gizlilik seçenekleri" ile değiştirebilirsiniz.</p>
 <p>Google'ın bu verileri nasıl kullandığı: <a href="https://policies.google.com/technologies/partner-sites">policies.google.com/technologies/partner-sites</a> ve <a href="https://policies.google.com/privacy">Google Gizlilik Politikası</a>.</p>
 
-<h2>Satın almalar (Ezan Pro)</h2>
-<p>Ezan Pro aboneliği iPhone'da Apple App Store, Android'de Google Play üzerinden satın alınır. Ödeme bilgileriniz Apple veya Google tarafından işlenir; biz kart ya da ödeme bilgisi görmeyiz. Uygulama, aboneliğin etkin olup olmadığını mağazadan öğrenir ve bu bilgiyi yalnızca cihazınızda saklar. Ücretsiz deneme için cihazınızda yerel bir hatırlatma bildirimi kurulur. Aboneliğinizi App Store veya Google Play hesap ayarlarınızdan yönetebilir ve iptal edebilirsiniz.</p>
+<h2>Satın almalar (Ezan Pro ve Adapty)</h2>
+<p>Ezan Pro yıllık veya aylık bir aboneliktir ve iPhone ile Apple TV'de Apple App Store, Android telefon ve Android TV'de Google Play üzerinden satın alınır. Diğer Android mağazalarından indirilen sürümde uygulama içi satın alma yoktur. Ödeme tamamen Apple veya Google tarafından işlenir; biz kart ya da ödeme bilgisi görmeyiz.</p>
+<p>iPhone'da ve Google Play sürümünde aboneliği doğrulamak, Pro'yu açmak ve satın alma ekranındaki ürünleri göstermek için bir abonelik yönetim hizmeti olan <a href="https://adapty.io/">Adapty</a> (Adapty Tech Inc.) kullanılır. Adapty; uygulama için oluşturduğu anonim bir profil kimliğini, temel cihaz ve uygulama bilgilerini (model, işletim sistemi sürümü, dil, uygulama sürümü vb.) ve App Store veya Google Play satın alma ve abonelik geçmişinizi saklar. Uygulamanın Adapty ayarlarında IP adresi ve reklam kimliği toplama kapalıdır. Ayrıntılar: <a href="https://adapty.io/privacy">Adapty gizlilik politikası</a>.</p>
+<p>Apple TV uygulaması Adapty kullanmaz; aboneliğin etkin olup olmadığını cihaz üzerinde doğrudan App Store'dan (StoreKit) öğrenir. iPhone'da alınan abonelik aynı Apple hesabıyla Apple TV'de de geçerlidir. Ücretsiz deneme için cihazınızda yerel bir hatırlatma bildirimi kurulur. Aboneliğinizi App Store veya Google Play hesap ayarlarınızdan yönetebilir ve iptal edebilirsiniz.</p>
 
 <h2>Yedekleme ve eşitleme</h2>
 <ul>
-  <li><strong>iPhone (yalnızca Ezan Pro):</strong> Kur'an yer imleri ve kaldığınız yer, dua ve Esma favorileri, kaydettiğiniz ayetler, kaza sayaçları ve işaretlediğiniz namazlar, kendi iCloud hesabınızdaki uygulamaya özel alan üzerinden cihazlarınız arasında eşitlenir. Eşitlemeyi uygulamanın Ayarlar bölümünden kapatabilirsiniz.</li>
-  <li><strong>Android:</strong> Uygulama ayarları ve yukarıdaki kayıtlar, Android'in otomatik yedekleme özelliğiyle kendi Google hesabınıza yedeklenebilir; böylece yeni telefonda geri gelir. Yedeklemeyi cihazınızın <em>Ayarlar › Google › Yedekleme</em> bölümünden yönetebilirsiniz.</li>
+  <li><strong>iPhone, iCloud eşitlemesi (yalnızca Ezan Pro):</strong> Kur'an yer imleri, kaldığınız yer ve okuma planınız; dua, Esma ve hadis favorileri; kaydettiğiniz ayetler; kaza sayaçları, işaretlediğiniz namazlar ve tuttuğunuz oruçlar; kendi zikirleriniz ve günlük zikir hedefiniz; "Özel gün kipi" kayıtları, kendi iCloud hesabınızdaki uygulamaya özel alan üzerinden cihazlarınız arasında eşitlenir. Bunu <em>Ayarlar › Eşitleme › iCloud senkronu</em> ile kapatabilirsiniz.</li>
+  <li><strong>iPhone, Apple TV için ayar paylaşımı (tüm kullanıcılar):</strong> Apple TV'deki Ezan'ın kendini kurabilmesi için iPhone, şehrinizi (koordinatlar yaklaşık 1 km'ye yuvarlanmış olarak), ülkenizi ve vakit hesaplama ayarlarınızı (hesaplama yöntemi, ikindi mezhebi, dakika düzeltmeleri, yüksek enlem kuralı, Hicri tarih düzeltmesi) kendi iCloud hesabınızda saklar. Bu varsayılan olarak açıktır ve Pro gerektirmez. <em>Ayarlar › Eşitleme › Ayarları Apple TV ile paylaş</em> seçeneğini kapattığınızda bu bilgiler iCloud'dan silinir. Apple TV bu bilgileri yalnızca okur ve ilk kurulumda "iPhone ayarlarını kullan" seçeneğini seçerseniz uygular.</li>
+  <li><strong>Android:</strong> Uygulama ayarları ve iCloud eşitlemesinde sayılan kayıtlar, Android'in otomatik yedekleme özelliğiyle kendi Google hesabınıza yedeklenebilir; böylece yeni telefonda geri gelir. Yedeklemeyi cihazınızın <em>Ayarlar › Google › Yedekleme</em> bölümünden yönetebilirsiniz.</li>
 </ul>
 <p>Bu veriler Apple veya Google tarafından sizin hesabınızda saklanır; biz bunlara erişemeyiz.</p>
 
-<h2>Günün ayeti</h2>
-<p>Ana ekrandaki günün ayeti <code>vcloud.web.tr</code> adresindeki sunucudan alınır. İstekte yalnızca dil bilgisi gönderilir; konum, cihaz kimliği veya başka bir kişisel bilgi gönderilmez. Her internet isteğinde olduğu gibi sunucu, isteğin geldiği IP adresini teknik olarak görebilir. Sunucuya ulaşılamazsa uygulama, cihazdaki ayet listesini kullanır.</p>
+<h2>Apple TV ve Android TV</h2>
+<ul>
+  <li>TV uygulamalarında hesap ve reklam yoktur. Apple TV uygulamasında analiz veya çökme raporu aracı yoktur; Android TV için yukarıdaki Firebase bölümüne bakın.</li>
+  <li><strong>Konum:</strong> İsteğe bağlıdır ve yalnızca yaklaşık konum istenir. Şehrinizi elle de arayabilirsiniz: Apple TV'de arama Apple'ın MapKit hizmetiyle, Android TV'de cihazda varsa Android Geocoder ile, yoksa uygulamanın içindeki şehir listesiyle (GeoNames) cihaz üzerinde yapılır.</li>
+  <li><strong>Apple TV:</strong> iPhone'unuz Apple TV ile ayar paylaşıyorsa, ilk kurulumda bu ayarlar kendi iCloud hesabınızdan okunur (yukarıya bakın). Top Shelf (ana ekran) alanındaki vakitler, uygulamanın cihazda bıraktığı şehir ve ayar bilgilerinden cihaz üzerinde hesaplanır.</li>
+  <li><strong>Android TV:</strong> Ekran koruyucu, vakitleri ve saati cihazdaki bilgilerden gösterir. Ezan sesi TV'de cihazdaki kayıtlardan çalınır.</li>
+</ul>
+
+<h2>İnternet bağlantıları</h2>
+<ul>
+  <li><strong>Günün ayeti, Kur'an meali ve hadisler:</strong> Günün ayeti, meal metinleri, hadisler, dualar ve Esma uygulamanın içinde gelir; bunlar için internet isteği yapılmaz.</li>
+  <li><strong>Kur'an tilaveti:</strong> Kur'an sesleri ve okuyucu listesi bizim sunucumuzdan (<code>someplus.work</code>, Cloudflare üzerinden) alınır. İstekte yalnızca hangi okuyucunun hangi sure veya ayet dosyasının istendiği ve tüm kullanıcılar için aynı olan sabit bir uygulama anahtarı bulunur; konum, cihaz kimliği veya başka bir kişisel bilgi gönderilmez. Okuyucu listesi en fazla günde bir kez yenilenir. Her internet isteğinde olduğu gibi sunucu, isteğin geldiği IP adresini teknik olarak görebilir. İndirdiğiniz sureler yalnızca cihazınızda saklanır.</li>
+  <li><strong>Diğerleri:</strong> Yukarıda anlatılan Apple ve Google konum hizmetleri, Google Places (Android camiler ekranı), Firebase, AdMob ve Adapty.</li>
+</ul>
 
 <h2>Cihazınızda kalan veriler</h2>
-<p>Ayarlarınız (hesaplama yöntemi, bildirimler, tema, ezan sesi), işaretlediğiniz namazlar, kaza ve zikir sayıları, Kur'an okuma yeriniz, yer imleri, favoriler, kaydedilen ayetler ve zekat ekranına girdiğiniz tutarlar yalnızca cihazınızda (ve yukarıda anlatılan kendi yedeklerinizde) tutulur; bize gönderilmez. Uygulamayı sildiğinizde cihazınızdan silinir.</p>
+<p>Ayarlarınız (hesaplama yöntemi, bildirimler, tema, ezan sesi, cami kipi), işaretlediğiniz namazlar, tuttuğunuz oruçlar, "Özel gün kipi" kayıtları, kaza ve zikir sayıları, Kur'an okuma yeriniz ve planınız, yer imleri, favoriler, kaydedilen ayetler, indirdiğiniz Kur'an sesleri ve zekat ekranına girdiğiniz tutarlar yalnızca cihazınızda (ve yukarıda anlatılan kendi yedeklerinizde) tutulur; bize gönderilmez. Uygulamayı sildiğinizde cihazınızdan silinir.</p>
 
-<h2>Widget'lar, Apple Watch ve bildirimler</h2>
-<p>Widget'lar ve kilit ekranı/bildirim alanındaki geri sayım, vakitleri ve şehir adını uygulamayla cihaz üzerinde paylaşır. Apple Watch uygulaması bu bilgileri yalnızca iPhone'unuzdan alır. Vakit, Cuma, dini gün ve deneme süresi bildirimleri cihazınızda yerel olarak kurulur; uygulama uzaktan (push) bildirim kullanmaz.</p>
+<h2>Widget'lar, saatler ve bildirimler</h2>
+<p>Widget'lar ve kilit ekranı/bildirim alanındaki geri sayım, vakitleri ve şehir adını uygulamayla cihaz üzerinde paylaşır. Apple Watch uygulaması bu bilgileri yalnızca iPhone'unuzdan (Apple'ın WatchConnectivity bağlantısıyla) alır. Wear OS uygulaması konumu ve vakit ayarlarını telefonunuzdan Google'ın Wearable veri katmanı üzerinden alır. Vakit, Cuma, dini gün ve deneme süresi bildirimleri cihazınızda yerel olarak kurulur; uygulama uzaktan (push) bildirim kullanmaz.</p>
 
 <h2>Paylaşma</h2>
 <p>Ayet, dua, Esma veya imsakiye paylaştığınızda işletim sisteminin paylaşım ekranı açılır; içeriğin nereye gideceğini siz seçersiniz.</p>
 
 <h2>Verilerin paylaşılması</h2>
-<p>Sizinle ilgili kişisel veri toplamadığımız için satmayız ve kimseyle paylaşmayız. Yukarıda anlatılan durumlarda veriler doğrudan Apple veya Google tarafından işlenir ve onların politikalarına tabidir.</p>
+<p>Geliştirici olarak kişisel verilerinizi satmıyoruz. Yukarıda açıklanan çökme, kullanım, reklam ve satın alma verileri yalnızca belirtilen amaçlarla Google (Firebase, AdMob, Google Play, konum hizmetleri) ve Adapty tarafından işlenir; Apple'a ait hizmetler (App Store, iCloud, konum hizmetleri) Apple tarafından işlenir. Bu şirketlerin politikalarına tabidir.</p>
+
+<h2>Verilerin silinmesi</h2>
+<p>Cihazınızdaki verileri uygulamayı silerek kaldırabilirsiniz. iCloud'daki verileri iCloud eşitlemesini kapatarak ya da iPhone'un iCloud ayarlarından, Apple TV için paylaşılan ayarları <em>Ayarları Apple TV ile paylaş</em> seçeneğini kapatarak silebilirsiniz. Firebase, AdMob veya Adapty tarafından işlenen verilerin silinmesini istiyorsanız <a href="mailto:info@someplus.work">info@someplus.work</a> adresine yazabilirsiniz.</p>
 
 <h2>Çocuklar</h2>
 <p>Uygulama özel olarak 13 yaşından küçük çocuklara yönelik değildir ve bilerek çocuklardan kişisel veri toplamaz.</p>
 
 <h2>Haklarınız ve iletişim</h2>
-<p>6698 sayılı KVKK ve AB Genel Veri Koruma Tüzüğü kapsamında kişisel verilerinize erişme, düzeltilmesini veya silinmesini isteme ve işlemeye itiraz etme haklarına sahipsiniz. Sizi tanımlayan bir veri saklamadığımız için çoğu talep uygulamanın kendi ayarlarıyla (konum izni, reklam gizlilik seçenekleri, eşitleme, uygulamayı silme) karşılanır. Sorularınız ve talepleriniz için <a href="mailto:info@someplus.work">info@someplus.work</a> adresine yazabilirsiniz.</p>
+<p>6698 sayılı KVKK ve AB Genel Veri Koruma Tüzüğü kapsamında kişisel verilerinize erişme, düzeltilmesini veya silinmesini isteme ve işlemeye itiraz etme haklarına sahipsiniz. Sizi adınızla tanımlayan bir veri saklamadığımız için çoğu talep uygulamanın kendi ayarlarıyla (konum izni, çökme raporları ve kullanım istatistikleri, reklam gizlilik seçenekleri, eşitleme, uygulamayı silme) karşılanır. Sorularınız ve talepleriniz için <a href="mailto:info@someplus.work">info@someplus.work</a> adresine yazabilirsiniz.</p>
 
 <h2>Değişiklikler</h2>
 <p>Bu politikayı değiştirirsek güncel metni bu sayfada yayımlar ve tarihini güncelleriz.</p>
@@ -92,16 +124,17 @@
 <hr id="en">
 
 <h1>Ezan Privacy Policy</h1>
-<p class="meta">Last updated: November 5, 2026</p>
+<p class="meta">Last updated: November 22, 2026</p>
 
-<p>This policy explains what information the <strong>Ezan</strong> app for iPhone, Apple Watch and Android (the "App") uses and how. The App is developed by Yavuz Yıldırım.</p>
+<p>This policy explains what information the <strong>Ezan</strong> app for iPhone, Apple Watch, Apple TV, Android phones, Wear OS and Android TV (the "App") uses and how. The App is developed by Yavuz Yıldırım.</p>
 
 <h2>In short</h2>
 <ul>
   <li>There is no account. We never ask for your name, e-mail address or phone number.</li>
   <li>Prayer times and the qibla direction are calculated <strong>on your device</strong> from your location. Your location is not sent to our servers.</li>
-  <li>The App itself contains no analytics or user-tracking tools.</li>
-  <li>The free version shows ads served by Google AdMob. Ad-related data processing is done by Google.</li>
+  <li>The phone apps use Google Firebase (Crashlytics and Analytics) for crash reports and usage statistics. You can turn this off in <em>Settings › About › Crash reports and usage statistics</em>.</li>
+  <li>On phones, the free version shows ads served by Google AdMob. There are no ads on Apple TV or Android TV.</li>
+  <li>Ezan Pro subscriptions are bought through the App Store or Google Play and verified through Adapty on iPhone and Android.</li>
 </ul>
 
 <h2>Location</h2>
@@ -109,53 +142,84 @@
   <li><strong>Why:</strong> to calculate prayer times, find the qibla direction and the distance to the Kaaba, and show nearby mosques.</li>
   <li><strong>How:</strong> location permission is requested only while you use the App; location is never collected in the background and is refreshed at most every 15 minutes. You may decline and pick your city by hand instead; GPS is then not used.</li>
   <li><strong>Stored on your device:</strong> the last coordinates and city name, so widgets and notifications stay up to date.</li>
-  <li><strong>City names and city search:</strong> the operating system's location service turns coordinates into a city name and looks up cities you search for: Apple (CLGeocoder, MapKit) on iPhone, Google (Android Geocoder) on Android. These requests go directly to Apple or Google; we do not see them.</li>
+  <li><strong>City names and city search:</strong> the operating system's location service turns coordinates into a city name and looks up cities you search for: Apple (CLGeocoder, MapKit) on iPhone and Apple TV, Google (Android Geocoder) on Android devices. These requests go directly to Apple or Google; we do not see them.</li>
   <li><strong>Nearby mosques:</strong> on iPhone, mosques are searched in Apple Maps. On Android, the Mosques screen either opens the Google Maps app or, when this feature is enabled, sends your location to the Google Places service to find nearby mosques. Directions open in your maps app.</li>
   <li><strong>Compass:</strong> the qibla screen uses your device's orientation sensors; this data never leaves the device.</li>
+  <li><strong>Watches and TVs:</strong> the Apple Watch app gets the location only from your iPhone. The Wear OS app gets it from your phone, and can also use the watch's own location if you grant location permission on the watch. On Apple TV and Android TV, location is optional and only approximate (city-level) location is requested; you can also pick your city by hand.</li>
 </ul>
 
+<h2>Crash reports and usage statistics (Firebase)</h2>
+<p>The iPhone and Android phone apps use Firebase Crashlytics and Firebase Analytics, provided by Google LLC, to find bugs and understand how the App is used. They collect:</p>
+<ul>
+  <li><strong>Crash reports (Crashlytics):</strong> technical details of the crash (the error log), app version, device model, operating system version and an installation ID that Crashlytics creates.</li>
+  <li><strong>Usage statistics (Analytics):</strong> which screens are opened; when the Pro purchase screen is shown and the purchase and restore steps; the content type, format and theme chosen on the share card (any message or signature you type is not sent, only whether one was added); together with Firebase's automatic events (such as first open, session and app update), the app instance ID that Firebase creates for the App, and basic device and app information.</li>
+</ul>
+<p>Your location, city name, prayer records, dhikr and qada counts, reading history and other personal content are never sent to Firebase. Ad personalization signals are turned off, and Analytics data is not used for ad personalization. If the device makes an advertising identifier available (the advertising ID on Android; on iPhone the IDFA, only if you allowed tracking), Firebase may receive it as well.</p>
+<p><strong>When it is on:</strong> on phones, collection starts only when the setting is on and you have not refused Google's ad consent form; nothing is collected before the consent step is complete. On iPhone it also stays off if you refused App Tracking Transparency. In the European Economic Area, the United Kingdom and Switzerland it stays off unless you allowed storing information on your device in the consent form.</p>
+<p><strong>How to turn it off:</strong> on your phone, turn off <em>Settings › About › Crash reports and usage statistics</em>; no further data is then collected.</p>
+<p><strong>Watches and TVs:</strong> the Apple Watch, Wear OS and Apple TV apps do not contain Firebase. Android TV uses the same package as the phone app; because no ad consent is asked on TV, crash reports, Firebase's automatic usage events and the Pro purchase and restore steps are collected according to this setting alone. The setting is on by default, and the Android TV screens currently have no option to turn it off. You can request deletion of the data collected on Android TV by writing to the address below.</p>
+<p>See <a href="https://firebase.google.com/support/privacy">Firebase privacy information</a>.</p>
+
 <h2>Ads (Google AdMob) and ad consent</h2>
-<p>The free version shows ads through Google LLC's Google Mobile Ads SDK. Ezan Pro subscribers see no ads and no ad requests are made. To serve and measure ads, cap their frequency and prevent fraud, Google may process:</p>
+<p>On phones, the free version shows banner and full-screen ads through Google LLC's Google Mobile Ads SDK. Ezan Pro subscribers see no ads and no ad requests are made. The Apple TV, Android TV and watch apps show no ads. To serve and measure ads, cap their frequency and prevent fraud, Google may process:</p>
 <ul>
   <li>IP address and the approximate location derived from it,</li>
-  <li>device identifiers (the advertising ID on Android),</li>
+  <li>device identifiers (the advertising ID on Android; the IDFA on iPhone if you allow it),</li>
   <li>device and app information (model, OS version, language, etc.),</li>
   <li>ad interactions (impressions, taps) and performance and crash data.</li>
 </ul>
-<p>The App itself does not pass your location, name or any other personal information to AdMob. On iPhone the App does not ask for App Tracking Transparency permission, so the advertising identifier (IDFA) is not available. On Android you can reset or delete your advertising ID under <em>Settings › Privacy › Ads</em> (or <em>Settings › Google › Ads</em>).</p>
+<p>The App itself does not pass your location, name or any other personal information to AdMob. On iPhone, the free version asks once for App Tracking Transparency permission, after Google's consent step; the advertising identifier (IDFA) is available only if you allow it. You can change this choice in <em>iPhone Settings › Privacy &amp; Security › Tracking</em>. On Android you can reset or delete your advertising ID under <em>Settings › Privacy › Ads</em> (or <em>Settings › Google › Ads</em>).</p>
 <p><strong>European Economic Area, United Kingdom and Switzerland:</strong> Google's consent form (User Messaging Platform) is shown before any ads load, and you choose whether to allow personalised ads. You can change your choice later with "Ad privacy options" in the App's Settings.</p>
 <p>How Google uses this data: <a href="https://policies.google.com/technologies/partner-sites">policies.google.com/technologies/partner-sites</a> and the <a href="https://policies.google.com/privacy">Google Privacy Policy</a>.</p>
 
-<h2>Purchases (Ezan Pro)</h2>
-<p>The Ezan Pro subscription is bought through the Apple App Store on iPhone and Google Play on Android. Your payment details are processed by Apple or Google; we never see card or payment information. The App asks the store whether your subscription is active and keeps that answer only on your device. A local reminder notification is scheduled for the free trial. You can manage or cancel the subscription in your App Store or Google Play account settings.</p>
+<h2>Purchases (Ezan Pro and Adapty)</h2>
+<p>Ezan Pro is a yearly or monthly subscription, bought through the Apple App Store on iPhone and Apple TV and through Google Play on Android phones and Android TV. The version distributed through other Android stores has no in-app purchases. Payment is handled entirely by Apple or Google; we never see card or payment information.</p>
+<p>On iPhone and in the Google Play version, the App uses <a href="https://adapty.io/">Adapty</a> (Adapty Tech Inc.), a subscription management service, to verify the subscription, unlock Pro and show the products on the purchase screen. Adapty stores an anonymous profile ID it creates for the App, basic device and app information (model, OS version, language, app version, etc.) and your App Store or Google Play purchase and subscription history. IP address and advertising ID collection are turned off in the App's Adapty setup. See <a href="https://adapty.io/privacy">Adapty's privacy policy</a>.</p>
+<p>The Apple TV app does not use Adapty; it checks whether your subscription is active directly with the App Store (StoreKit) on the device. A subscription bought on iPhone also applies on Apple TV with the same Apple Account. A local reminder notification is scheduled on your device for the free trial. You can manage or cancel the subscription in your App Store or Google Play account settings.</p>
 
 <h2>Backup and sync</h2>
 <ul>
-  <li><strong>iPhone (Ezan Pro only):</strong> Quran bookmarks and reading position, dua and Asma favourites, saved verses, qada counters and marked prayers sync between your devices through an app-specific area of your own iCloud account. You can turn sync off in the App's Settings.</li>
-  <li><strong>Android:</strong> the App's settings and the records above may be backed up to your own Google account by Android's automatic backup, so they return on a new phone. You manage this under <em>Settings › Google › Backup</em>.</li>
+  <li><strong>iPhone, iCloud sync (Ezan Pro only):</strong> Quran bookmarks, reading position and reading plan; dua, Asma and hadith favourites; saved verses; qada counters, marked prayers and fasts you kept; your own dhikrs and daily dhikr goal; and "Excused days" records sync between your devices through an app-specific area of your own iCloud account. You can turn this off in <em>Settings › Sync › iCloud sync</em>.</li>
+  <li><strong>iPhone, settings shared with Apple TV (all users):</strong> so that Ezan on Apple TV can set itself up, the iPhone keeps your city (coordinates rounded to about 1 km), country and prayer-time settings (calculation method, Asr madhab, minute adjustments, high-latitude rule, Hijri date adjustment) in your own iCloud account. This is on by default and does not require Pro. Turning off <em>Settings › Sync › Share settings with Apple TV</em> deletes this information from iCloud. Apple TV only reads it, and applies it only if you choose "Use iPhone settings" during setup.</li>
+  <li><strong>Android:</strong> the App's settings and the records listed under iCloud sync may be backed up to your own Google account by Android's automatic backup, so they return on a new phone. You manage this under <em>Settings › Google › Backup</em>.</li>
 </ul>
 <p>This data is stored by Apple or Google in your account; we cannot access it.</p>
 
-<h2>Verse of the day</h2>
-<p>The verse on the home screen is fetched from a server at <code>vcloud.web.tr</code>. The request contains only the language; no location, device identifier or other personal information is sent. As with any internet request, the server can technically see the IP address the request comes from. If the server is unreachable, the App uses a list stored on the device.</p>
+<h2>Apple TV and Android TV</h2>
+<ul>
+  <li>The TV apps have no account and no ads. The Apple TV app contains no analytics or crash reporting tools; for Android TV, see the Firebase section above.</li>
+  <li><strong>Location:</strong> optional, and only approximate location is requested. You can also search for your city by hand: on Apple TV through Apple's MapKit service, on Android TV through the Android Geocoder when the device has one, otherwise on the device using a city list built into the App (GeoNames).</li>
+  <li><strong>Apple TV:</strong> if your iPhone shares settings with Apple TV, they are read from your own iCloud account during setup (see above). The times on the Top Shelf (home screen) are calculated on the device from the city and settings the App keeps there.</li>
+  <li><strong>Android TV:</strong> the screen saver shows the times and the clock from information on the device. On TV the adhan is played from recordings built into the App.</li>
+</ul>
+
+<h2>Internet connections</h2>
+<ul>
+  <li><strong>Verse of the day, Quran translations and hadiths:</strong> the verse of the day, translation texts, hadiths, duas and the Names of Allah come with the App; no internet request is made for them.</li>
+  <li><strong>Quran recitation:</strong> Quran audio and the reciter list are fetched from our server (<code>someplus.work</code>, through Cloudflare). A request contains only which reciter's surah or verse file is wanted and a fixed app key that is the same for every user; no location, device identifier or other personal information is sent. The reciter list is refreshed at most once a day. As with any internet request, the server can technically see the IP address the request comes from. Surahs you download are stored only on your device.</li>
+  <li><strong>Others:</strong> the Apple and Google location services, Google Places (Android Mosques screen), Firebase, AdMob and Adapty described above.</li>
+</ul>
 
 <h2>Data that stays on your device</h2>
-<p>Your settings (calculation method, notifications, theme, adhan sound), marked prayers, qada and dhikr counts, Quran reading position, bookmarks, favourites, saved verses and the amounts you enter in the zakat screen are kept only on your device (and in your own backups described above); they are not sent to us. Deleting the App removes them from your device.</p>
+<p>Your settings (calculation method, notifications, theme, adhan sound, mosque mode), marked prayers, fasts you kept, "Excused days" records, qada and dhikr counts, Quran reading position and plan, bookmarks, favourites, saved verses, downloaded Quran audio and the amounts you enter in the zakat screen are kept only on your device (and in your own backups described above); they are not sent to us. Deleting the App removes them from your device.</p>
 
-<h2>Widgets, Apple Watch and notifications</h2>
-<p>Widgets and the lock-screen/notification countdown share prayer times and the city name with the App on the device. The Apple Watch app receives this information only from your iPhone. Prayer, Friday, religious-day and trial notifications are scheduled locally on your device; the App does not use remote (push) notifications.</p>
+<h2>Widgets, watches and notifications</h2>
+<p>Widgets and the lock-screen/notification countdown share prayer times and the city name with the App on the device. The Apple Watch app receives this information only from your iPhone (through Apple's WatchConnectivity). The Wear OS app receives the location and prayer-time settings from your phone through Google's Wearable data layer. Prayer, Friday, religious-day and trial notifications are scheduled locally on your device; the App does not use remote (push) notifications.</p>
 
 <h2>Sharing</h2>
 <p>When you share a verse, dua, name or prayer calendar, the system share sheet opens and you choose where it goes.</p>
 
 <h2>Who we share data with</h2>
-<p>Because we do not collect personal data about you, we do not sell or share it. In the cases above, data is processed directly by Apple or Google under their own policies.</p>
+<p>We do not sell your personal data. The crash, usage, advertising and purchase data described above is processed by Google (Firebase, AdMob, Google Play, location services) and Adapty only for the purposes stated; Apple's services (App Store, iCloud, location services) are run by Apple. Each is subject to that company's own policies.</p>
+
+<h2>Data deletion</h2>
+<p>You can remove the data on your device by deleting the App. You can delete data in iCloud by turning off iCloud sync or through your iPhone's iCloud settings, and the settings shared with Apple TV by turning off <em>Share settings with Apple TV</em>. To request deletion of data processed by Firebase, AdMob or Adapty, email <a href="mailto:info@someplus.work">info@someplus.work</a>.</p>
 
 <h2>Children</h2>
 <p>The App is not specifically directed at children under 13 and does not knowingly collect personal data from children.</p>
 
 <h2>Your rights and contact</h2>
-<p>Under the Turkish KVKK (Law No. 6698) and the EU GDPR you have the right to access, correct or delete your personal data and to object to its processing. Because we keep no data that identifies you, most requests are met through the App's own settings (location permission, ad privacy options, sync, deleting the App). For questions or requests, write to <a href="mailto:info@someplus.work">info@someplus.work</a>.</p>
+<p>Under the Turkish KVKK (Law No. 6698) and the EU GDPR you have the right to access, correct or delete your personal data and to object to its processing. Because we keep no data that identifies you by name, most requests are met through the App's own settings (location permission, crash reports and usage statistics, ad privacy options, sync, deleting the App). For questions or requests, write to <a href="mailto:info@someplus.work">info@someplus.work</a>.</p>
 
 <h2>Changes</h2>
 <p>If we change this policy, we will publish the new text on this page and update the date.</p>
