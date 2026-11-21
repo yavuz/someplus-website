@@ -21,45 +21,64 @@
 <main>
 
 <h1>Radar Gizlilik Politikası</h1>
-<p class="meta">Son güncelleme: 2 Kasım 2026 · <a href="#en">English version below</a></p>
+<p class="meta">Son güncelleme: 21 Kasım 2026 · <a href="#en">English version below</a></p>
 
-<p>Bu politika, iOS için yayınlanan <strong>Radar</strong> ağ tarayıcı uygulamasının ("Uygulama") hangi verileri nasıl işlediğini açıklar. Uygulama, Yavuz Yıldırım tarafından geliştirilmektedir.</p>
+<p>Bu politika, iOS ve Android için yayınlanan <strong>Radar</strong> ağ tarayıcı uygulamasının ("Uygulama") hangi verileri nasıl işlediğini açıklar. Uygulama, Yavuz Yıldırım tarafından geliştirilmektedir.</p>
 
 <h2>Özet</h2>
 <ul>
   <li>Uygulama hesap oluşturmanızı istemez; adınızı, e-posta adresinizi veya telefon numaranızı toplamaz.</li>
   <li>Ağ taramalarının sonuçları yalnızca kendi cihazınızda saklanır ve bize gönderilmez.</li>
+  <li>Uygulama, nasıl kullanıldığını anlamak için Google Firebase Analytics ile kullanım verisi toplar. Bunu <em>Ayarlar › Kullanım Verilerini Paylaş</em> bölümünden kapatabilirsiniz.</li>
   <li>Uygulama Google AdMob üzerinden reklam gösterir. Radar Pro satın alındığında reklamlar kapanır.</li>
+  <li>Radar Pro satın alımları Adapty aracılığıyla doğrulanır.</li>
 </ul>
 
 <h2>Ağ taraması</h2>
-<p>Uygulama, bağlı olduğunuz Wi-Fi ağındaki cihazları bulmak için yalnızca o yerel ağda çalışır: cihazlara ping atar, Bonjour, SSDP/UPnP, NetBIOS ve ters DNS sorgularıyla cihaz adlarını öğrenmeye çalışır ve yerel ağdaki web arayüzlerinin başlığını okur. Radar Pro'daki port taraması da yalnızca sizin seçtiğiniz, aynı ağdaki bir cihaza bağlanır. Bu işlemler için iOS sizden "Yerel Ağ" izni ister.</p>
-<p>Bulunan cihazların IP adresi, varsa MAC adresi, cihaz adı ve türü, Wi-Fi ağının adı ve tarama tarihi uygulamanın geçmiş bölümünde, yalnızca cihazınızda saklanır. Cihazlara verdiğiniz adlar ve ikonlar da aynı şekilde cihazınızda kalır. Bu bilgiler bize veya başka bir sunucuya gönderilmez; uygulamayı sildiğinizde ya da Geçmiş sekmesinde bir kaydı sola kaydırıp sildiğinizde silinir.</p>
+<p>Uygulama, bağlı olduğunuz Wi-Fi ağındaki cihazları bulmak için yalnızca o yerel ağda çalışır: cihazlara ping atar, Bonjour (mDNS), SSDP/UPnP, NetBIOS ve ters DNS sorgularıyla cihaz adlarını öğrenmeye çalışır ve yerel ağdaki web arayüzlerinin başlığını okur. Radar Pro'daki port taraması ve güvenlik kontrolü de yalnızca aynı ağdaki cihazlara bağlanır; hiçbir cihazda parola denenmez.</p>
+<ul>
+  <li><strong>iOS:</strong> Bu işlemler için iOS sizden "Yerel Ağ" izni ister.</li>
+  <li><strong>Android:</strong> Android 17 ve sonrasında sistem "Yerel ağ erişimi" (yakındaki cihazlar) izni isteyebilir. Uygulama, SSDP ve mDNS ile cihaz bulmak için Wi-Fi çoklu yayın (multicast) kilidini kullanır; bu trafik yalnızca yerel ağda kalır.</li>
+</ul>
+<p>Bulunan cihazların IP adresi, varsa MAC adresi, cihaz adı ve türü, port taraması sonuçları, Wi-Fi ağının adı ve tarama tarihi uygulamanın geçmiş bölümünde, yalnızca cihazınızda saklanır. Cihazlara verdiğiniz adlar ve ikonlar da aynı şekilde cihazınızda kalır. Bu bilgiler bize, Firebase'e, AdMob'a, Adapty'ye veya başka bir sunucuya gönderilmez; uygulamayı sildiğinizde ya da Geçmiş bölümünde bir taramayı sildiğinizde silinir.</p>
 
 <h2>Konum izni</h2>
-<p>iOS, bağlı olduğunuz Wi-Fi ağının adını (SSID) okumak için konum izni gerektirir. Uygulama bu izni yalnızca ağ adını göstermek ve geçmişi ağa göre gruplamak için kullanır; konumunuzu okumaz, saklamaz veya paylaşmaz.</p>
+<p>Hem iOS hem Android, bağlı olduğunuz Wi-Fi ağının adını (SSID) okumak için konum izni gerektirir. Uygulama bu izni yalnızca ağ adını göstermek ve geçmişi ağa göre gruplamak için kullanır. Konumunuz toplanmaz, hiçbir yere gönderilmez ve reklam için kullanılmaz. İzni vermezseniz uygulama çalışmaya devam eder, ağ adı yerine "Bilinmeyen ağ" gösterilir.</p>
+
+<h2>Kullanım verileri (Firebase Analytics)</h2>
+<p>Uygulama, nasıl kullanıldığını anlamak ve geliştirmek için Google LLC'nin sunduğu Firebase Analytics hizmetini kullanır. Toplanan veriler şunlardır:</p>
+<ul>
+  <li>Hangi ekranların açıldığı, taramaların başlatılıp tamamlanması, tarama süresi ve bulunan cihaz sayısı (yalnızca sayılar), satın alma ekranının gösterilmesi gibi kullanım olayları,</li>
+  <li>Firebase'in uygulama için oluşturduğu bir uygulama örneği kimliği (app instance ID) ve temel cihaz ve uygulama bilgileri.</li>
+</ul>
+<p>Ağ adları, IP veya MAC adresleri, cihaz adları ve port sonuçları Firebase'e gönderilmez. Reklamla ilgili onay sinyalleri her zaman "reddedildi" olarak ayarlıdır; bu yüzden Analytics verileri reklam kişiselleştirmesi için kullanılmaz ve Analytics reklam kimliği toplamaz. Avrupa Ekonomik Alanı, Birleşik Krallık ve İsviçre'de Analytics veri depolaması, Google'ın onay formunda verdiğiniz yanıta göre açılır veya kapanır.</p>
+<p>Veri toplamayı istediğiniz zaman <em>Ayarlar › Kullanım Verilerini Paylaş</em> bölümünden kapatabilirsiniz. Kapattığınızda toplama durur ve analiz kimliği sıfırlanır. Ayrıntılar: <a href="https://firebase.google.com/support/privacy">Firebase gizlilik bilgileri</a>.</p>
 
 <h2>Reklamlar (Google AdMob)</h2>
-<p>Uygulama, Google LLC'nin sunduğu Google AdMob hizmetiyle banner ve tam ekran reklam gösterir. AdMob, reklamları sunmak, ölçmek, sıklığını sınırlamak ve sahtekârlığı önlemek amacıyla şu verileri toplayıp işleyebilir:</p>
+<p>Uygulama, Google LLC'nin sunduğu Google AdMob hizmetiyle banner ve tam ekran reklam gösterir; Radar Pro kullanıcılarına reklam gösterilmez. AdMob, reklamları sunmak, ölçmek, sıklığını sınırlamak ve sahtekârlığı önlemek amacıyla şu verileri toplayıp işleyebilir:</p>
 <ul>
   <li>IP adresi ve buna dayalı yaklaşık konum,</li>
-  <li>Cihaz ve uygulama bilgileri (model, işletim sistemi sürümü, dil vb.),</li>
-  <li>Reklamlarla etkileşimler (gösterim, tıklama).</li>
+  <li>Cihaz tanımlayıcıları (Android'de reklam kimliği) ve cihaz ve uygulama bilgileri (model, işletim sistemi sürümü, dil vb.),</li>
+  <li>Reklamlarla etkileşimler (gösterim, tıklama) ve tanılama verileri.</li>
 </ul>
-<p>Uygulama, uygulamalar arası takip izni (App Tracking Transparency) istemez ve reklam tanımlayıcısına (IDFA) erişmez. Avrupa Ekonomik Alanı, Birleşik Krallık ve İsviçre'deki kullanıcılardan reklam verileri için Google'ın onay formuyla izin istenir; bu tercihi uygulamada <em>Ayarlar › Reklam Gizlilik Seçenekleri</em> bölümünden istediğiniz zaman değiştirebilirsiniz.</p>
+<p>iOS'ta uygulama, uygulamalar arası takip izni (App Tracking Transparency) istemez ve reklam tanımlayıcısına (IDFA) erişmez. Android'de reklam kimliğinizi sıfırlayabilir veya silebilirsiniz: <em>Ayarlar › Gizlilik › Reklamlar</em> (ya da <em>Ayarlar › Google › Reklamlar</em>). Avrupa Ekonomik Alanı, Birleşik Krallık ve İsviçre'deki kullanıcılardan reklam verileri için Google'ın onay formuyla izin istenir; bu tercihi uygulamada <em>Ayarlar › Reklam Gizlilik Seçenekleri</em> bölümünden istediğiniz zaman değiştirebilirsiniz.</p>
 <p>Google'ın bu verileri nasıl kullandığı hakkında: <a href="https://policies.google.com/technologies/partner-sites">policies.google.com/technologies/partner-sites</a> ve <a href="https://policies.google.com/privacy">Google Gizlilik Politikası</a>.</p>
 
-<h2>Radar Pro satın alımı</h2>
-<p>Radar Pro, App Store üzerinden tek seferlik bir uygulama içi satın alımdır. Ödeme tamamen Apple tarafından işlenir; ödeme bilgilerinizi görmeyiz. Uygulama, satın alımın geçerli olup olmadığını yalnızca Apple'ın StoreKit hizmetiyle cihaz üzerinde kontrol eder.</p>
+<h2>Radar Pro satın alımı (Adapty)</h2>
+<p>Radar Pro, iOS'ta App Store, Android'de Google Play üzerinden yapılan tek seferlik bir uygulama içi satın alımdır. Ödeme tamamen Apple veya Google tarafından işlenir; ödeme bilgilerinizi görmeyiz.</p>
+<p>Satın alımı doğrulamak ve Radar Pro'yu açmak için uygulama, bir satın alma yönetim hizmeti olan <a href="https://adapty.io/">Adapty</a>'yi (Adapty Tech Inc.) kullanır. Adapty; uygulama için oluşturduğu bir profil kimliğini, temel cihaz ve uygulama bilgilerini ve App Store veya Google Play satın alma geçmişinizi saklar. Uygulamanın Adapty ayarlarında IP adresi ve reklam kimliği toplama kapalıdır. Kullanım verilerinin paylaşımı açıksa, satın alma olaylarının Firebase'e raporlanabilmesi için Firebase uygulama örneği kimliği Adapty profilinize bağlanır; <em>Kullanım Verilerini Paylaş</em> seçeneğini kapattığınızda bu bağlantı kaldırılır. Ayrıntılar: <a href="https://adapty.io/privacy">Adapty gizlilik politikası</a>.</p>
 
 <h2>Geri bildirim</h2>
 <p>Uygulamadan bize e-posta gönderirseniz e-posta adresinizi ve yazdıklarınızı yalnızca size yanıt vermek için kullanırız.</p>
 
 <h2>Verilerin paylaşılması</h2>
-<p>Geliştirici olarak sizinle ilgili kişisel veri toplamıyor, satmıyor veya paylaşmıyoruz. Yukarıda açıklanan reklam verileri doğrudan Google tarafından toplanır ve Google'ın politikalarına tabidir.</p>
+<p>Geliştirici olarak kişisel verilerinizi satmıyoruz. Yukarıda açıklanan kullanım, reklam ve satın alma verileri yalnızca belirtilen amaçlarla Google (Firebase, AdMob) ve Adapty tarafından işlenir ve bu şirketlerin politikalarına tabidir.</p>
+
+<h2>Verilerin silinmesi</h2>
+<p>Tarama geçmişini uygulamanın Geçmiş bölümünden veya uygulamayı silerek kaldırabilirsiniz. Firebase, AdMob veya Adapty tarafından işlenen verilerin silinmesini istiyorsanız <a href="mailto:info@someplus.work">info@someplus.work</a> adresine yazabilirsiniz.</p>
 
 <h2>Çocuklar</h2>
-<p>Uygulama 13 yaşın altındaki çocuklara yönelik değildir ve bilerek çocuklardan kişisel veri toplamaz.</p>
+<p>Uygulama 13 yaşın altındaki çocuklara yönelik değildir (Google Play'deki hedef kitlesi 18 yaş ve üzeridir) ve bilerek çocuklardan kişisel veri toplamaz.</p>
 
 <h2>Haklarınız ve iletişim</h2>
 <p>Kişisel verilerinizle ilgili sorularınız ve 6698 sayılı KVKK kapsamındaki talepleriniz için <a href="mailto:info@someplus.work">info@someplus.work</a> adresine yazabilirsiniz.</p>
@@ -71,40 +90,64 @@
 
 <section id="en" lang="en">
 <h1>Radar Privacy Policy</h1>
-<p class="meta">Last updated: November 2, 2026</p>
+<p class="meta">Last updated: November 21, 2026</p>
 
-<p>This policy explains how the <strong>Radar</strong> network scanner app for iOS ("the App"), developed by Yavuz Yıldırım, handles data.</p>
+<p>This policy explains how the <strong>Radar</strong> network scanner app for iOS and Android ("the App"), developed by Yavuz Yıldırım, handles data.</p>
 
 <h2>Summary</h2>
 <ul>
   <li>The App does not require an account and does not collect your name, email address or phone number.</li>
   <li>Network scan results are stored only on your device and are never sent to us.</li>
+  <li>The App collects usage data through Google Firebase Analytics to understand how it is used. You can turn this off in <em>Settings › Share Usage Data</em>.</li>
   <li>The App shows ads through Google AdMob. Buying Radar Pro turns the ads off.</li>
+  <li>Radar Pro purchases are verified through Adapty.</li>
 </ul>
 
 <h2>Network scanning</h2>
-<p>To find the devices on the Wi-Fi network you are connected to, the App works only on that local network: it pings devices, looks up their names through Bonjour, SSDP/UPnP, NetBIOS and reverse DNS, and reads the title of web interfaces on the local network. The Radar Pro port scan also connects only to a device on the same network that you pick. iOS asks for Local Network permission for this.</p>
-<p>The IP address, MAC address when available, name and type of each device found, the Wi-Fi network name and the scan date are kept in the App's history, on your device only. Names and icons you give devices stay on your device too. None of this is sent to us or to any other server, and it is removed when you delete the App or swipe to delete an entry in the History tab.</p>
+<p>To find the devices on the Wi-Fi network you are connected to, the App works only on that local network: it pings devices, looks up their names through Bonjour (mDNS), SSDP/UPnP, NetBIOS and reverse DNS, and reads the title of web interfaces on the local network. The Radar Pro port scan and security check also connect only to devices on the same network, and never try passwords on any device.</p>
+<ul>
+  <li><strong>iOS:</strong> iOS asks for Local Network permission for this.</li>
+  <li><strong>Android:</strong> on Android 17 and later, the system may ask for Local network access (nearby devices) permission. The App uses a Wi-Fi multicast lock to discover devices through SSDP and mDNS; this traffic stays on the local network.</li>
+</ul>
+<p>The IP address, MAC address when available, name and type of each device found, port scan results, the Wi-Fi network name and the scan date are kept in the App's history, on your device only. Names and icons you give devices stay on your device too. None of this is sent to us, Firebase, AdMob, Adapty or any other server, and it is removed when you delete the App or delete a scan in History.</p>
 
 <h2>Location permission</h2>
-<p>iOS requires location permission to read the name (SSID) of the Wi-Fi network you are connected to. The App uses it only to show the network name and group your history by network; it does not read, store or share your location.</p>
+<p>Both iOS and Android require location permission to read the name (SSID) of the Wi-Fi network you are connected to. The App uses it only to show the network name and group your history by network. Your location is not collected, not sent anywhere and not used for ads. If you do not grant it, the App still works and shows "Unknown network" instead of the network name.</p>
+
+<h2>Usage data (Firebase Analytics)</h2>
+<p>The App uses Firebase Analytics, provided by Google LLC, to understand and improve how it is used. It collects:</p>
+<ul>
+  <li>usage events such as which screens are opened, scans started and completed, scan duration and the number of devices found (numbers only), and when the purchase screen is shown,</li>
+  <li>an app instance ID that Firebase creates for the App, and basic device and app information.</li>
+</ul>
+<p>Network names, IP or MAC addresses, device names and port results are never sent to Firebase. Ad-related consent signals are always set to denied, so Analytics data is not used for ad personalization and Analytics does not collect the advertising ID. In the European Economic Area, the United Kingdom and Switzerland, Analytics storage is turned on or off according to your answer in Google's consent form.</p>
+<p>You can turn collection off at any time in <em>Settings › Share Usage Data</em>. Turning it off stops collection and resets the analytics ID. See <a href="https://firebase.google.com/support/privacy">Firebase privacy information</a>.</p>
 
 <h2>Advertising (Google AdMob)</h2>
-<p>The App shows banner and full-screen ads through Google AdMob, provided by Google LLC. To serve and measure ads, cap their frequency and prevent fraud, AdMob may collect and process your IP address and approximate location derived from it, device and app information, and ad interactions.</p>
-<p>The App does not request App Tracking Transparency permission and does not access the advertising identifier (IDFA). Users in the European Economic Area, the United Kingdom and Switzerland are asked for consent through Google's consent form, and can change their choice at any time in <em>Settings › Ad Privacy Choices</em>.</p>
+<p>The App shows banner and full-screen ads through Google AdMob, provided by Google LLC; Radar Pro users see no ads. To serve and measure ads, cap their frequency and prevent fraud, AdMob may collect and process:</p>
+<ul>
+  <li>your IP address and approximate location derived from it,</li>
+  <li>device identifiers (the advertising ID on Android) and device and app information (model, operating system version, language, etc.),</li>
+  <li>ad interactions (impressions, clicks) and diagnostic data.</li>
+</ul>
+<p>On iOS the App does not request App Tracking Transparency permission and does not access the advertising identifier (IDFA). On Android you can reset or delete your advertising ID under <em>Settings › Privacy › Ads</em> (or <em>Settings › Google › Ads</em>). Users in the European Economic Area, the United Kingdom and Switzerland are asked for consent through Google's consent form, and can change their choice at any time in <em>Settings › Ad Privacy Choices</em>.</p>
 <p>See <a href="https://policies.google.com/technologies/partner-sites">How Google uses information from sites or apps that use its services</a> and the <a href="https://policies.google.com/privacy">Google Privacy Policy</a>.</p>
 
-<h2>Radar Pro purchase</h2>
-<p>Radar Pro is a one-time in-app purchase through the App Store. Payment is handled entirely by Apple and we never see your payment details. The App checks whether the purchase is active only through Apple's StoreKit, on your device.</p>
+<h2>Radar Pro purchase (Adapty)</h2>
+<p>Radar Pro is a one-time in-app purchase through the App Store on iOS and Google Play on Android. Payment is handled entirely by Apple or Google and we never see your payment details.</p>
+<p>To verify the purchase and unlock Radar Pro, the App uses <a href="https://adapty.io/">Adapty</a> (Adapty Tech Inc.), a purchase management service. Adapty stores a profile ID it creates for the App, basic device and app information, and your App Store or Google Play purchase history. IP address and advertising ID collection are turned off in the App's Adapty setup. When usage data sharing is on, the Firebase app instance ID is linked to your Adapty profile so purchase events can be reported to Firebase; turning <em>Share Usage Data</em> off removes this link. See <a href="https://adapty.io/privacy">Adapty's privacy policy</a>.</p>
 
 <h2>Feedback</h2>
 <p>If you email us from the App, we use your email address and message only to reply to you.</p>
 
 <h2>Sharing</h2>
-<p>We do not collect, sell or share personal data about you. The advertising data described above is collected directly by Google under Google's policies.</p>
+<p>We do not sell your personal data. The usage, advertising and purchase data described above is processed by Google (Firebase, AdMob) and Adapty only for the purposes stated, under their own policies.</p>
+
+<h2>Data deletion</h2>
+<p>You can remove your scan history in the App's History section or by deleting the App. To request deletion of data processed by Firebase, AdMob or Adapty, email <a href="mailto:info@someplus.work">info@someplus.work</a>.</p>
 
 <h2>Children</h2>
-<p>The App is not directed to children under 13 and does not knowingly collect personal data from children.</p>
+<p>The App is not directed to children under 13 (its target audience on Google Play is 18 and over) and does not knowingly collect personal data from children.</p>
 
 <h2>Contact</h2>
 <p>For questions or requests about your data, email <a href="mailto:info@someplus.work">info@someplus.work</a>.</p>
