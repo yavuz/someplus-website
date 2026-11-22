@@ -2,6 +2,7 @@ import Link from "next/link";
 import { company, phoneHref, whatsappHref } from "@/lib/company";
 import { type Locale } from "@/lib/products";
 import { serviceHref, services } from "@/lib/services";
+import { MobileApps } from "./mobile-apps";
 import { QuoteForm } from "./quote-form";
 import { ServiceIcon } from "./service-icon";
 import { SiteFooter } from "./site-footer";
@@ -601,6 +602,8 @@ export function HomePage({ locale }: { locale: Locale }) {
             </article>
           </div>
         </section>
+
+        <MobileApps locale={locale} />
 
         <section className="section faq-section" id={ids.faq}>
           <div className="shell faq-inner">

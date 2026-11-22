@@ -3476,3 +3476,43 @@ img {
     animation: none;
   }
 }
+
+/* Mobile apps section (home) */
+.app-card {
+  min-height: 0;
+  gap: 22px;
+}
+
+.app-card-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 16px;
+  padding-top: 18px;
+  border-top: 1px solid var(--line);
+}
+
+.app-card-links a {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  color: var(--ink);
+  font-size: 0.83rem;
+  font-weight: 780;
+  text-decoration: none;
+  transition: color 180ms ease;
+}
+
+.app-card-links a:hover {
+  color: var(--blue);
+}
+
+.app-card-links a span {
+  color: var(--blue);
+}
+
+.app-store-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 28px;
+}

@@ -45,5 +45,7 @@ sync when changing user-facing copy.
 ## Extension Icons
 
 Company contact details live in `lib/company.ts`; empty fields are hidden on the site.
-Extension metadata is centralized in `lib/products.ts`. Public icon assets live
+Extension metadata is centralized in `lib/products.ts`.
+Mobile apps (App Store / Google Play) shown on the home page live in
+`lib/apps.ts`, with icons in `public/images/apps/`. Public icon assets live
 in `public/images/icons/`.
